@@ -10,7 +10,15 @@ import Foundation
 
 class GestureListWireFrame: GestureListWireFramProtocol {
     
-    class func creatGestureListModule(gestureListRef: GestureListCollectionViewController) {
+    class func creatTheView(_ viewRef: ViewController) {
         
+        let presenter: GestureListOutputPresenterProtocol & GestureListPresenterProtocol = GestureListPresenter()
+        let list = GestureListInterector()
+        let wireframe = GestureListWireFrame()
+        viewRef.presenter = presenter
+        viewRef.presenter.view = viewRef
+        viewRef.presenter.interector = list
+        viewRef.presenter.wireframe = wireframe
+        viewRef.presenter.interector?.presenter = presenter
     }
 }
