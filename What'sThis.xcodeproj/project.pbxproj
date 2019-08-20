@@ -21,8 +21,8 @@
 		4782B436230AE07800ED329D /* Gestures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4782B435230AE07800ED329D /* Gestures.swift */; };
 		4782B438230AE0AF00ED329D /* GestureListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4782B437230AE0AF00ED329D /* GestureListPresenter.swift */; };
 		4782B43B230AE1A000ED329D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4782B43A230AE1A000ED329D /* Constants.swift */; };
-		4782B43E230AE34200ED329D /* GestureListCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4782B43C230AE34200ED329D /* GestureListCollectionViewController.swift */; };
-		4782B43F230AE34200ED329D /* GestureListCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4782B43D230AE34200ED329D /* GestureListCollectionViewController.xib */; };
+		4782B441230C019500ED329D /* GestureCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4782B440230C019500ED329D /* GestureCollectionViewCell.swift */; };
+		47900D6A230C213700A316DE /* gestures.json in Resources */ = {isa = PBXBuildFile; fileRef = 47900D69230C213700A316DE /* gestures.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,8 +63,8 @@
 		4782B435230AE07800ED329D /* Gestures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gestures.swift; sourceTree = "<group>"; };
 		4782B437230AE0AF00ED329D /* GestureListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureListPresenter.swift; sourceTree = "<group>"; };
 		4782B43A230AE1A000ED329D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		4782B43C230AE34200ED329D /* GestureListCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureListCollectionViewController.swift; sourceTree = "<group>"; };
-		4782B43D230AE34200ED329D /* GestureListCollectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GestureListCollectionViewController.xib; sourceTree = "<group>"; };
+		4782B440230C019500ED329D /* GestureCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureCollectionViewCell.swift; sourceTree = "<group>"; };
+		47900D69230C213700A316DE /* gestures.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = gestures.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,7 +123,7 @@
 				473DD83122F9CCB00002524F /* LaunchScreen.storyboard */,
 				473DD83422F9CCB00002524F /* Info.plist */,
 				473DD82C22F9CCAD0002524F /* What_sThis.xcdatamodeld */,
-				4782B43D230AE34200ED329D /* GestureListCollectionViewController.xib */,
+				47900D69230C213700A316DE /* gestures.json */,
 			);
 			path = "What'sThis";
 			sourceTree = "<group>";
@@ -149,8 +149,8 @@
 		4782B428230ADC4100ED329D /* View */ = {
 			isa = PBXGroup;
 			children = (
-				4782B43C230AE34200ED329D /* GestureListCollectionViewController.swift */,
 				473DD82722F9CCAD0002524F /* ViewController.swift */,
+				4782B440230C019500ED329D /* GestureCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -322,8 +322,8 @@
 			files = (
 				473DD83322F9CCB00002524F /* LaunchScreen.storyboard in Resources */,
 				473DD83022F9CCB00002524F /* Assets.xcassets in Resources */,
-				4782B43F230AE34200ED329D /* GestureListCollectionViewController.xib in Resources */,
 				473DD82B22F9CCAD0002524F /* Main.storyboard in Resources */,
+				47900D6A230C213700A316DE /* gestures.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,13 +348,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4782B43E230AE34200ED329D /* GestureListCollectionViewController.swift in Sources */,
 				4782B438230AE0AF00ED329D /* GestureListPresenter.swift in Sources */,
 				473DD82822F9CCAD0002524F /* ViewController.swift in Sources */,
 				473DD82622F9CCAD0002524F /* AppDelegate.swift in Sources */,
 				4782B434230AE06500ED329D /* GestureListInterector.swift in Sources */,
 				4782B432230AE04C00ED329D /* GestureListWireFrame.swift in Sources */,
 				473DD82E22F9CCAD0002524F /* What_sThis.xcdatamodeld in Sources */,
+				4782B441230C019500ED329D /* GestureCollectionViewCell.swift in Sources */,
 				4782B436230AE07800ED329D /* Gestures.swift in Sources */,
 				4782B430230ADE0A00ED329D /* Protocols.swift in Sources */,
 				4782B43B230AE1A000ED329D /* Constants.swift in Sources */,
