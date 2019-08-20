@@ -13,4 +13,3 @@ struct EntityCast {
     static let image = "image"
     static let description = "desc"
 }
-
