@@ -8,12 +8,53 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, GestureListViewProtocol {
 
-    @IBOutlet weak var listStackView: UIStackView!
+    @IBOutlet weak var gesturesCollectionView: UICollectionView!
+    
+    var gesture = [Gestures]()
+    var presenter: GestureListPresenterProtocol = GestureListPresenter()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        gesturesCollectionView.delegate = self
+        gesturesCollectionView.dataSource = self
+        GestureListWireFrame.creatTheView(self)
+        
+        presenter.mainViewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    func reloadData(listOfGestures: ArrayOfGestures) {
+        gesture = listOfGestures.data
+        gesturesCollectionView.reloadData()
+    }
+}
+
+extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return gesture.count
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let gestureCell = gesturesCollectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! GestureCollectionViewCell
+        
+        gestureCell.fillData(gesture[indexPath.row])
+        return gestureCell
+    }
+}
+
+extension ViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 150, height: 150.0)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12)
     }
 }
 
