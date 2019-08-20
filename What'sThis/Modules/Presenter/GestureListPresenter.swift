@@ -9,11 +9,20 @@
 import Foundation
 
 class GestureListPresenter: GestureListPresenterProtocol {
-    weak var view: GestureListViewProtocol?
-    weak var wireFrame: GestureListWireFramProtocol?
-    weak var interector: GestureListInputInterectorProtocl?
+    var wireframe: GestureListWireFramProtocol?
+    var view: GestureListViewProtocol?
+    var interector: GestureListInputInterectorProtocl?
+    
+    func mainViewDidLoad () {
+        interector?.fetchGestureData()
+    }
 }
 
 extension GestureListPresenter: GestureListOutputPresenterProtocol {
-    
+    func fetchIsComplete(gustures: ArrayOfGestures?) {
+        guard let listOfGesture = gustures else {
+            return
+        }
+        view?.reloadData(listOfGestures: listOfGesture)
+    }
 }
