@@ -9,14 +9,22 @@
 import Foundation
 import UIKit
 
-struct Gestures {
+struct Gestures: Codable {
     var name: String!
     var description: String!
     var imageName: String!
     
-    init(attributes: [String: String]) {
-        self.name = attributes[EntityCast.name]
-        self.description = attributes[EntityCast.description]
-        self.imageName = attributes[EntityCast.image]
+    enum CodingKeys: String, CodingKey {
+        case name
+        case description
+        case imageName
+    }
+}
+
+struct ArrayOfGestures: Codable {
+    var data: [Gestures]!
+    
+    enum CodingKeys: String, CodingKey {
+        case data
     }
 }
