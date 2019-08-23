@@ -9,13 +9,19 @@
 import UIKit
 import CoreData
 
-@UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        window = UIWindow()
+        let initialStoryBoard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = initialStoryBoard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+        GestureListWireFrame.creatTheView(vc)
+        window?.rootViewController = vc
+        window?.makeKeyAndVisible()
         // Override point for customization after application launch.
         return true
     }

@@ -13,21 +13,20 @@ class ViewController: UIViewController, GestureListViewProtocol {
     @IBOutlet weak var gesturesCollectionView: UICollectionView!
     
     var gesture = [Gestures]()
-    var presenter: GestureListPresenterProtocol = GestureListPresenter()
+    var presenter: GestureListPresenterProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        gesturesCollectionView.delegate = self
-        gesturesCollectionView.dataSource = self
-        GestureListWireFrame.creatTheView(self)
+        gesturesCollectionView?.delegate = self
+        gesturesCollectionView?.dataSource = self
         
-        presenter.mainViewDidLoad()
+        presenter?.mainViewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
     
     func reloadData(listOfGestures: ArrayOfGestures) {
         gesture = listOfGestures.data
-        gesturesCollectionView.reloadData()
+        gesturesCollectionView?.reloadData()
     }
 }
 

@@ -24,6 +24,8 @@
 		4782B441230C019500ED329D /* GestureCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4782B440230C019500ED329D /* GestureCollectionViewCell.swift */; };
 		47900D6A230C213700A316DE /* gestures.json in Resources */ = {isa = PBXBuildFile; fileRef = 47900D69230C213700A316DE /* gestures.json */; };
 		47900D6C230C3F4300A316DE /* TopLevelHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47900D6B230C3F4300A316DE /* TopLevelHelper.swift */; };
+		47900D8A230EE96D00A316DE /* EntityTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47900D89230EE96D00A316DE /* EntityTest.swift */; };
+		47900D8C230FF73900A316DE /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47900D8B230FF73900A316DE /* main.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +69,8 @@
 		4782B440230C019500ED329D /* GestureCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureCollectionViewCell.swift; sourceTree = "<group>"; };
 		47900D69230C213700A316DE /* gestures.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = gestures.json; sourceTree = "<group>"; };
 		47900D6B230C3F4300A316DE /* TopLevelHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopLevelHelper.swift; sourceTree = "<group>"; };
+		47900D89230EE96D00A316DE /* EntityTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityTest.swift; sourceTree = "<group>"; };
+		47900D8B230FF73900A316DE /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +130,7 @@
 				473DD83422F9CCB00002524F /* Info.plist */,
 				473DD82C22F9CCAD0002524F /* What_sThis.xcdatamodeld */,
 				47900D69230C213700A316DE /* gestures.json */,
+				47900D8B230FF73900A316DE /* main.swift */,
 			);
 			path = "What'sThis";
 			sourceTree = "<group>";
@@ -133,9 +138,12 @@
 		473DD83C22F9CCB10002524F /* What'sThisTests */ = {
 			isa = PBXGroup;
 			children = (
+				474FBEBA23100AC300375421 /* Fake classes */,
+				47900D84230EA3DF00A316DE /* fakeImages */,
 				473DD83D22F9CCB10002524F /* What_sThisTests.swift */,
 				473DD83F22F9CCB10002524F /* Info.plist */,
 				47900D6B230C3F4300A316DE /* TopLevelHelper.swift */,
+				47900D89230EE96D00A316DE /* EntityTest.swift */,
 			);
 			path = "What'sThisTests";
 			sourceTree = "<group>";
@@ -147,6 +155,13 @@
 				473DD84A22F9CCB10002524F /* Info.plist */,
 			);
 			path = "What'sThisUITests";
+			sourceTree = "<group>";
+		};
+		474FBEBA23100AC300375421 /* Fake classes */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Fake classes";
 			sourceTree = "<group>";
 		};
 		4782B428230ADC4100ED329D /* View */ = {
@@ -217,6 +232,13 @@
 				4782B43A230AE1A000ED329D /* Constants.swift */,
 			);
 			path = Commons;
+			sourceTree = "<group>";
+		};
+		47900D84230EA3DF00A316DE /* fakeImages */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = fakeImages;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -358,6 +380,7 @@
 				4782B432230AE04C00ED329D /* GestureListWireFrame.swift in Sources */,
 				473DD82E22F9CCAD0002524F /* What_sThis.xcdatamodeld in Sources */,
 				4782B441230C019500ED329D /* GestureCollectionViewCell.swift in Sources */,
+				47900D8C230FF73900A316DE /* main.swift in Sources */,
 				4782B436230AE07800ED329D /* Gestures.swift in Sources */,
 				4782B430230ADE0A00ED329D /* Protocols.swift in Sources */,
 				4782B43B230AE1A000ED329D /* Constants.swift in Sources */,
@@ -370,6 +393,7 @@
 			files = (
 				47900D6C230C3F4300A316DE /* TopLevelHelper.swift in Sources */,
 				473DD83E22F9CCB10002524F /* What_sThisTests.swift in Sources */,
+				47900D8A230EE96D00A316DE /* EntityTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -545,6 +569,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "TaraTandel.What-sThis";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_REFLECTION_METADATA_LEVEL = none;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -563,6 +588,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "TaraTandel.What-sThis";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_REFLECTION_METADATA_LEVEL = none;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -574,6 +600,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = KCCZ4PVUZS;
 				INFOPLIST_FILE = "What'sThisTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -582,6 +609,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "TaraTandel.What-sThisTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_REFLECTION_METADATA_LEVEL = none;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/What'sThis.app/What'sThis";
@@ -594,6 +622,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = KCCZ4PVUZS;
 				INFOPLIST_FILE = "What'sThisTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -602,6 +631,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "TaraTandel.What-sThisTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_REFLECTION_METADATA_LEVEL = none;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/What'sThis.app/What'sThis";
