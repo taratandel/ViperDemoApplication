@@ -9,10 +9,15 @@
 import Foundation
 
 class GestureListPresenter: GestureListPresenterProtocol {
-    var wireframe: GestureListWireFramProtocol?
+    private var wireFrame: GestureListWireFramProtocol?
     var view: GestureListViewProtocol?
-    var interector: GestureListInputInterectorProtocl?
+    private var interector: GestureListInputInterectorProtocl?
     
+    init(wireFrame: GestureListWireFramProtocol, interector: GestureListInputInterectorProtocl) {
+        self.wireFrame = wireFrame
+        self.interector = interector
+    }
+
     func mainViewDidLoad () {
         interector?.fetchGestureData()
     }

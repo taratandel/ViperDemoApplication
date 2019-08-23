@@ -138,7 +138,6 @@
 		473DD83C22F9CCB10002524F /* What'sThisTests */ = {
 			isa = PBXGroup;
 			children = (
-				474FBEBA23100AC300375421 /* Fake classes */,
 				47900D84230EA3DF00A316DE /* fakeImages */,
 				473DD83D22F9CCB10002524F /* What_sThisTests.swift */,
 				473DD83F22F9CCB10002524F /* Info.plist */,
@@ -155,13 +154,6 @@
 				473DD84A22F9CCB10002524F /* Info.plist */,
 			);
 			path = "What'sThisUITests";
-			sourceTree = "<group>";
-		};
-		474FBEBA23100AC300375421 /* Fake classes */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Fake classes";
 			sourceTree = "<group>";
 		};
 		4782B428230ADC4100ED329D /* View */ = {

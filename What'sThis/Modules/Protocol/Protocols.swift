@@ -18,8 +18,6 @@ protocol GestureListViewProtocol: class {
 protocol GestureListPresenterProtocol: class {
     
     var view: GestureListViewProtocol? {set get}
-    var interector: GestureListInputInterectorProtocl? {set get}
-    var wireframe: GestureListWireFramProtocol? {set get}
     
     func mainViewDidLoad()
 }
