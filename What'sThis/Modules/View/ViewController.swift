@@ -28,6 +28,10 @@ class ViewController: UIViewController, GestureListViewProtocol {
         gesture = listOfGestures.data
         gesturesCollectionView?.reloadData()
     }
+    
+    func fetchFailed () {
+        //show error
+    }
 }
 
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {

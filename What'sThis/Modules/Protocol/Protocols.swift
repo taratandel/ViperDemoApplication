@@ -12,6 +12,7 @@ import UIKit
 //Presenter -> View
 protocol GestureListViewProtocol: class {
     func reloadData(listOfGestures: ArrayOfGestures)
+    func fetchFailed()
 }
 
 //View -> Presenter

@@ -9,12 +9,12 @@
 import XCTest
 @testable import What_sThis
 
-class What_sThisTestsView: XCTestCase {
+class What_sThisTestsPresenter: XCTestCase {
 
-    class mockWireFrame: GestureListWireFramProtocol {
+    class MockWireFrame: GestureListWireFramProtocol {
         static func creatTheView(_ viewRef: ViewController) {
-            let list = mockInterector()
-            let wireFrame = mockWireFrame()
+            let list = MockInterector()
+            let wireFrame = MockWireFrame()
             let presenter = GestureListPresenter(wireFrame: wireFrame, interector: list)
             viewRef.presenter = presenter
 
@@ -25,30 +25,37 @@ class What_sThisTestsView: XCTestCase {
     }
 
     
-    class mockInterector: GestureListInputInterectorProtocl {
+    class MockInterector: GestureListInputInterectorProtocl {
         var presenter: GestureListOutputPresenterProtocol?
         
         func fetchGestureData() {
-            
+            let gestures = [Gestures(name: "gest1", description: "gest desc", imageName: "g1"), Gestures(name: "gest2", description: "gest desc", imageName: "g2")]
+
+            presenter?.fetchIsComplete(gustures: ArrayOfGestures(data: gestures))
         }
-        
-        
     }
     
     var viewC: ViewController!
     var gestureArrayes: ArrayOfGestures!
     
     var presenterDidCalled: Bool!
+    var fetchDidFailed: Bool!
+    
 
     private var topLevelUIUtilities: TopLevelUIUtilities<ViewController>!
 
     override func setUp() {
         super.setUp()
+        
         presenterDidCalled = false
+        fetchDidFailed = false
+        
         viewC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ViewController") as? ViewController
-        mockWireFrame.creatTheView(viewC)
+        MockWireFrame.creatTheView(viewC)
+        
         let gestures = [Gestures(name: "gest1", description: "gest desc", imageName: "g1"), Gestures(name: "gest2", description: "gest desc", imageName: "g2")]
         gestureArrayes = ArrayOfGestures(data: gestures)
+        
         topLevelUIUtilities = TopLevelUIUtilities<ViewController>()
         topLevelUIUtilities.setupTopLevelUI(withViewController: viewC)
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -59,15 +66,70 @@ class What_sThisTestsView: XCTestCase {
         gestureArrayes = nil
         topLevelUIUtilities.tearDownTopLevelUI()
         topLevelUIUtilities = nil
+        presenterDidCalled = nil
+        fetchDidFailed = nil
         super.tearDown()
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     
-    func testReloadData() {
-        viewC.reloadData(listOfGestures: gestureArrayes)
+//    func testReloadData() {
+//        viewC.reloadData(listOfGestures: gestureArrayes)
+//
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
+//            XCTAssertEqual(self.viewC.gesturesCollectionView.visibleCells.count, 2)
+//        } )
+//    }
+    
+    func testMainViewDidLoad () {
+        let wireframe = MockWireFrame()
+        let interector = MockInterector()
+        let presenter = GestureListPresenter(wireFrame: wireframe, interector: interector)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
-            XCTAssertEqual(self.viewC.gesturesCollectionView.visibleCells.count, 2)
-        } )
+        interector.presenter = presenter
+        
+        presenter.view = self
+        
+        presenter.mainViewDidLoad()
+        
+        XCTAssertTrue(presenterDidCalled)
+    }
+    
+    func testFetchIsComplete () {
+        let wireframe = MockWireFrame()
+        let interector = MockInterector()
+        let presenter = GestureListPresenter(wireFrame: wireframe, interector: interector)
+        
+        interector.presenter = presenter
+        
+        presenter.view = self
+        
+        presenter.fetchIsComplete(gustures: gestureArrayes)
+        
+        XCTAssertTrue(presenterDidCalled)
+    }
+    
+    func testFetchFailed() {
+        let wireframe = MockWireFrame()
+        let interector = MockInterector()
+        let presenter = GestureListPresenter(wireFrame: wireframe, interector: interector)
+        
+        interector.presenter = presenter
+        
+        presenter.view = self
+        
+        presenter.fetchIsComplete(gustures: nil)
+        
+        XCTAssertTrue(fetchDidFailed)
+        XCTAssertFalse(presenterDidCalled)
+    }
+}
+
+extension What_sThisTestsPresenter: GestureListViewProtocol {
+    func reloadData(listOfGestures: ArrayOfGestures) {
+        presenterDidCalled = true
+    }
+    
+    func fetchFailed() {
+        fetchDidFailed = true
     }
 }

@@ -15,6 +15,8 @@
 		473DD83322F9CCB00002524F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 473DD83122F9CCB00002524F /* LaunchScreen.storyboard */; };
 		473DD83E22F9CCB10002524F /* What_sThisTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473DD83D22F9CCB10002524F /* What_sThisTests.swift */; };
 		473DD84922F9CCB10002524F /* What_sThisUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473DD84822F9CCB10002524F /* What_sThisUITests.swift */; };
+		474FBEC32313E32600375421 /* g2.png in Resources */ = {isa = PBXBuildFile; fileRef = 474FBEC12313E32500375421 /* g2.png */; };
+		474FBEC42313E32600375421 /* g1.png in Resources */ = {isa = PBXBuildFile; fileRef = 474FBEC22313E32500375421 /* g1.png */; };
 		4782B430230ADE0A00ED329D /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4782B42F230ADE0A00ED329D /* Protocols.swift */; };
 		4782B432230AE04C00ED329D /* GestureListWireFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4782B431230AE04C00ED329D /* GestureListWireFrame.swift */; };
 		4782B434230AE06500ED329D /* GestureListInterector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4782B433230AE06500ED329D /* GestureListInterector.swift */; };
@@ -60,6 +62,8 @@
 		473DD84422F9CCB10002524F /* What'sThisUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "What'sThisUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		473DD84822F9CCB10002524F /* What_sThisUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = What_sThisUITests.swift; sourceTree = "<group>"; };
 		473DD84A22F9CCB10002524F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		474FBEC12313E32500375421 /* g2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = g2.png; sourceTree = "<group>"; };
+		474FBEC22313E32500375421 /* g1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = g1.png; sourceTree = "<group>"; };
 		4782B42F230ADE0A00ED329D /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		4782B431230AE04C00ED329D /* GestureListWireFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureListWireFrame.swift; sourceTree = "<group>"; };
 		4782B433230AE06500ED329D /* GestureListInterector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureListInterector.swift; sourceTree = "<group>"; };
@@ -229,6 +233,8 @@
 		47900D84230EA3DF00A316DE /* fakeImages */ = {
 			isa = PBXGroup;
 			children = (
+				474FBEC22313E32500375421 /* g1.png */,
+				474FBEC12313E32500375421 /* g2.png */,
 			);
 			path = fakeImages;
 			sourceTree = "<group>";
@@ -348,6 +354,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				474FBEC32313E32600375421 /* g2.png in Resources */,
+				474FBEC42313E32600375421 /* g1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

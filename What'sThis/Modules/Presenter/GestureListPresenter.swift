@@ -26,6 +26,7 @@ class GestureListPresenter: GestureListPresenterProtocol {
 extension GestureListPresenter: GestureListOutputPresenterProtocol {
     func fetchIsComplete(gustures: ArrayOfGestures?) {
         guard let listOfGesture = gustures else {
+            view?.fetchFailed()
             return
         }
         view?.reloadData(listOfGestures: listOfGesture)
