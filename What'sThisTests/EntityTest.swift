@@ -16,8 +16,8 @@ class EntityTest: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        let gesture1 = Gestures(name: "test name", description: "test desc", imageName: "test img name")
-        let gesture2 = Gestures(name: "test name2", description: "test desc2", imageName: "test img name2")
+        let gesture1 = Gestures(name: "test name", descr: "test desc", imN: "test img name")
+        let gesture2 = Gestures(name: "test name2", descr: "test desc2", imN: "test img name2")
         
         arrayOfGestures = ArrayOfGestures(data: [gesture2,gesture1])
         // Put setup code here. This method is called before the invocation of each test method in the class.

@@ -14,6 +14,12 @@ struct Gestures: Codable {
     var description: String!
     var imageName: String!
     
+    init(name: String, descr: String, imN: String) {
+        self.name = name
+        self.description = descr
+        self.imageName = imN
+    }
+    
     enum CodingKeys: String, CodingKey {
         case name
         case description
@@ -23,6 +29,10 @@ struct Gestures: Codable {
 
 struct ArrayOfGestures: Codable {
     var data: [Gestures]!
+    
+    init(data: [Gestures]) {
+        self.data = data
+    }
     
     enum CodingKeys: String, CodingKey {
         case data

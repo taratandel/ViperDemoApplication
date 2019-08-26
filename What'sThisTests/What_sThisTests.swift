@@ -11,30 +11,6 @@ import XCTest
 
 class What_sThisTestsPresenter: XCTestCase {
 
-    class MockWireFrame: GestureListWireFramProtocol {
-        static func creatTheView(_ viewRef: ViewController) {
-            let list = MockInterector()
-            let wireFrame = MockWireFrame()
-            let presenter = GestureListPresenter(wireFrame: wireFrame, interector: list)
-            viewRef.presenter = presenter
-
-            list.presenter = presenter
-        }
-        
-        
-    }
-
-    
-    class MockInterector: GestureListInputInterectorProtocl {
-        var presenter: GestureListOutputPresenterProtocol?
-        
-        func fetchGestureData() {
-            let gestures = [Gestures(name: "gest1", description: "gest desc", imageName: "g1"), Gestures(name: "gest2", description: "gest desc", imageName: "g2")]
-
-            presenter?.fetchIsComplete(gustures: ArrayOfGestures(data: gestures))
-        }
-    }
-    
     var viewC: ViewController!
     var gestureArrayes: ArrayOfGestures!
     
@@ -53,7 +29,7 @@ class What_sThisTestsPresenter: XCTestCase {
         viewC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ViewController") as? ViewController
         MockWireFrame.creatTheView(viewC)
         
-        let gestures = [Gestures(name: "gest1", description: "gest desc", imageName: "g1"), Gestures(name: "gest2", description: "gest desc", imageName: "g2")]
+        let gestures = [Gestures(name: "gest1", descr: "gest desc", imN: "g1"), Gestures(name: "gest2", descr: "gest desc", imN: "g2")]
         gestureArrayes = ArrayOfGestures(data: gestures)
         
         topLevelUIUtilities = TopLevelUIUtilities<ViewController>()
@@ -72,13 +48,17 @@ class What_sThisTestsPresenter: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     
-//    func testReloadData() {
-//        viewC.reloadData(listOfGestures: gestureArrayes)
-//
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
-//            XCTAssertEqual(self.viewC.gesturesCollectionView.visibleCells.count, 2)
-//        } )
-//    }
+    func testReloadData() {
+        viewC.reloadData(listOfGestures: gestureArrayes)
+
+        let expectation = XCTestExpectation(description: "visible cells are correct")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            XCTAssertEqual(self.viewC.gesturesCollectionView.visibleCells.count, 2)
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 0.3)
+    }
     
     func testMainViewDidLoad () {
         let wireframe = MockWireFrame()
