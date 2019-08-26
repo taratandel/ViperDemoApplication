@@ -28,15 +28,7 @@ class ViewController: UIViewController, GestureListViewProtocol {
         gesture = listOfGestures.data
         gesturesCollectionView?.reloadData()
     }
-    func fetchFaild(title: String, message: String) {
-        let buttons = ButtonsAction.init(title: "cancel", style: .cancel, handler: {action in
-            //here I want to dissmiss the alert I dont know how
-        })
-        
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert).showAlert(buttons: nil)
-        alert.show(self, sender: nil)
-        
-    }
+    
     func fetchFailed () {
         let buttons = ButtonsAction.init(title: "title", style: .cancel, handler: {
             alert.dissmiss
