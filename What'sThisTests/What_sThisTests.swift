@@ -29,7 +29,7 @@ class What_sThisTestsPresenter: XCTestCase {
         viewC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ViewController") as? ViewController
         MockWireFrame.creatTheView(viewC)
         
-        let gestures = [Gestures(name: "gest1", descr: "gest desc", imN: "g1"), Gestures(name: "gest2", descr: "gest desc", imN: "g2")]
+        let gestures = [Gestures(name: "gest1", descr: "gest desc", imN: "FakeImage2"), Gestures(name: "gest2", descr: "gest desc", imN: "FakeImage2")]
         gestureArrayes = ArrayOfGestures(data: gestures)
         
         topLevelUIUtilities = TopLevelUIUtilities<ViewController>()
