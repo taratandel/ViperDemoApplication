@@ -1,0 +1,16 @@
+PODS:
+  - CDAlertView (0.10.0)
+
+DEPENDENCIES:
+  - CDAlertView
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - CDAlertView
+
+SPEC CHECKSUMS:
+  CDAlertView: ee6a87c90c4283c8d316d55633db1a6981f1cc51
+
+PODFILE CHECKSUM: 1f7261e9c178d03cbef11443e7cc8fced4d73740
+
+COCOAPODS: 1.7.5
