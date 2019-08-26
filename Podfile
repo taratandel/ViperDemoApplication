@@ -6,7 +6,7 @@ target 'What\'sThis' do
   use_frameworks!
 
   # Pods for What'sThis
-   pod "CDAlertView"
+   
   target 'What\'sThisTests' do
     inherit! :search_paths
     # Pods for testing

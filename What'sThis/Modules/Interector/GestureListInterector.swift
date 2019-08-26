@@ -12,7 +12,7 @@ class GestureListInterector: GestureListInputInterectorProtocl {
     weak var presenter: GestureListOutputPresenterProtocol?
     
     func fetchGestureData() {
-        presenter?.fetchIsComplete(gustures: fetchData())
+        presenter?.fetchIsComplete(gustures: /*fetchData()*/ nil)
     }
     
     private func fetchData() -> ArrayOfGestures? {

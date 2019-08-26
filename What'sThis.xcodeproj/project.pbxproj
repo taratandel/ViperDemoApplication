@@ -18,6 +18,7 @@
 		474FBEC32313E32600375421 /* FakeImage2.png in Resources */ = {isa = PBXBuildFile; fileRef = 474FBEC12313E32500375421 /* FakeImage2.png */; };
 		474FBEC42313E32600375421 /* FakeImage1.png in Resources */ = {isa = PBXBuildFile; fileRef = 474FBEC22313E32500375421 /* FakeImage1.png */; };
 		474FBEC62313ECFF00375421 /* MockClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474FBEC52313ECFF00375421 /* MockClasses.swift */; };
+		474FBEC9231410A800375421 /* AlertV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474FBEC8231410A800375421 /* AlertV.swift */; };
 		4782B430230ADE0A00ED329D /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4782B42F230ADE0A00ED329D /* Protocols.swift */; };
 		4782B432230AE04C00ED329D /* GestureListWireFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4782B431230AE04C00ED329D /* GestureListWireFrame.swift */; };
 		4782B434230AE06500ED329D /* GestureListInterector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4782B433230AE06500ED329D /* GestureListInterector.swift */; };
@@ -70,6 +71,7 @@
 		474FBEC12313E32500375421 /* FakeImage2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FakeImage2.png; sourceTree = "<group>"; };
 		474FBEC22313E32500375421 /* FakeImage1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FakeImage1.png; sourceTree = "<group>"; };
 		474FBEC52313ECFF00375421 /* MockClasses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockClasses.swift; sourceTree = "<group>"; };
+		474FBEC8231410A800375421 /* AlertV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertV.swift; sourceTree = "<group>"; };
 		4782B42F230ADE0A00ED329D /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		4782B431230AE04C00ED329D /* GestureListWireFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureListWireFrame.swift; sourceTree = "<group>"; };
 		4782B433230AE06500ED329D /* GestureListInterector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureListInterector.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 				473DD82522F9CCAD0002524F /* AppDelegate.swift */,
 				473DD82922F9CCAD0002524F /* Main.storyboard */,
 				473DD83122F9CCB00002524F /* LaunchScreen.storyboard */,
+				473DD82F22F9CCB00002524F /* Assets.xcassets */,
 				473DD83422F9CCB00002524F /* Info.plist */,
 				473DD82C22F9CCAD0002524F /* What_sThis.xcdatamodeld */,
 				47900D69230C213700A316DE /* gestures.json */,
@@ -183,7 +186,6 @@
 		474FBEC72314066200375421 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				473DD82F22F9CCB00002524F /* Assets.xcassets */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -254,6 +256,7 @@
 			isa = PBXGroup;
 			children = (
 				4782B43A230AE1A000ED329D /* Constants.swift */,
+				474FBEC8231410A800375421 /* AlertV.swift */,
 			);
 			path = Commons;
 			sourceTree = "<group>";
@@ -287,7 +290,6 @@
 				252652B03B308B9CB58C3CA8 /* Pods-What'sThisUITests.debug.xcconfig */,
 				8CF8B3B443D4D2EE699294B3 /* Pods-What'sThisUITests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -302,7 +304,6 @@
 				473DD81E22F9CCAD0002524F /* Sources */,
 				473DD81F22F9CCAD0002524F /* Frameworks */,
 				473DD82022F9CCAD0002524F /* Resources */,
-				DCA5E7FA73B8FCA99F8B1BAE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -491,23 +492,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		DCA5E7FA73B8FCA99F8B1BAE /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-What'sThis/Pods-What'sThis-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-What'sThis/Pods-What'sThis-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-What'sThis/Pods-What'sThis-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -516,6 +500,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4782B438230AE0AF00ED329D /* GestureListPresenter.swift in Sources */,
+				474FBEC9231410A800375421 /* AlertV.swift in Sources */,
 				473DD82822F9CCAD0002524F /* ViewController.swift in Sources */,
 				473DD82622F9CCAD0002524F /* AppDelegate.swift in Sources */,
 				4782B434230AE06500ED329D /* GestureListInterector.swift in Sources */,
