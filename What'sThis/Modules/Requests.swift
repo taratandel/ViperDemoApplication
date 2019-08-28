@@ -7,31 +7,31 @@
 //
 
 import Foundation
-import Alamofire
+//import Alamofire
 
 class FetchRemoteData {
     
     var gestures: ArrayOfGestures!
     
-    private func getTheData(url: String?, completionHandler: @escaping (ArrayOfGestures?, Error?) -> Void, method: HTTPMethod, headers: HTTPHeaders?, parameters: [String: Any]) {
-        if let reqUrl = url {
-            Alamofire.request(reqUrl, method: method, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseData {
-                response in
-                switch response.result{
-                case .success(let value):
-                    self.validateResponse(value)
-                    completionHandler(self.gestures, nil)
-                case .failure(let err):
-                    completionHandler(nil, err)
-                }
-                self.validateResponse(response)
-                
-                
-            }
-        } else {
-            
-        }
-    }
+//    private func getTheData(url: String?, completionHandler: @escaping (ArrayOfGestures?, Error?) -> Void, method: HTTPMethod, headers: HTTPHeaders?, parameters: [String: Any]) {
+//        if let reqUrl = url {
+//            Alamofire.request(reqUrl, method: method, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseData {
+//                response in
+//                switch response.result{
+//                case .success(let value):
+//                    self.validateResponse(value)
+//                    completionHandler(self.gestures, nil)
+//                case .failure(let err):
+//                    completionHandler(nil, err)
+//                }
+//                self.validateResponse(response)
+//
+//
+//            }
+//        } else {
+//
+//        }
+//    }
     
     private func validateResponse(_ res: Any) {
         
