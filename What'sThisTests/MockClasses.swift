@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Alamofire
 @testable import What_sThis
 
 
@@ -51,4 +52,12 @@ class MockOutputInterector: GestureListOutputPresenterProtocol {
 
 class MockClient: FetchRemoteData {
     
+    override func prepareRequest(endPoint: String?, completionHandler: @escaping (ArrayOfGestures?, Error?) -> Void) {
+        let g1 = Gestures.init(name: "gest1", descr: "gest1 desc", imN: "g1")
+        let g2 = Gestures(name: "gest1", descr: "gest1 desc", imN: "g1")
+        var gestureL = [Gestures]()
+        gestureL.append(g1)
+        gestureL.append(g2)
+        completionHandler(gestureL, nil)
+    }
 }

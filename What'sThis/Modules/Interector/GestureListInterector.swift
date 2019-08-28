@@ -14,22 +14,13 @@ class GestureListInterector: GestureListInputInterectorProtocl {
     var client: FetchRemoteData?
     
     func fetchGestureData() {
-        presenter?.fetchIsComplete(gustures: fetchData())
+        self.fetchData() {
+            response, error in
+            self.presenter?.fetchIsComplete(gustures: response)
+        }
     }
     
-    private func fetchData() -> ArrayOfGestures? {
-        
-        if let path = Bundle.main.path(forResource: "gestures", ofType: "json") {
-            do {
-                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
-                let parsedData = try JSONDecoder().decode(ArrayOfGestures.self, from: data)
-                return parsedData
-            } catch  {
-                print("error")
-                return nil
-            }
-        } else {
-            return nil
-        }
+    private func fetchData(completionHandler: @escaping (ArrayOfGestures?, Error?) -> Void) {
+        client?.prepareRequest(completionHandler: completionHandler)
     }
 }
