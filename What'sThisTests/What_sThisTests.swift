@@ -60,11 +60,21 @@ class What_sThisTestsPresenter: XCTestCase {
         wait(for: [expectation], timeout: 0.3)
     }
     
+    func testFetchIsFailed() {
+        let actions = [UIAlertAction(title: "Cancel", style: .destructive, handler: { action in
+            print("handled")
+        })]
+        viewC.fetchFailed(title: "title", message: "message", actions: actions)
+        
+        XCTAssertTrue(viewC.presentedViewController is UIAlertController)
+        XCTAssertEqual(viewC.presentedViewController?.title, "title")
+    }
+    
     func testMainViewDidLoad () {
         let wireframe = MockWireFrame()
         let interector = MockInterector()
-        let presenter = GestureListPresenter(wireFrame: wireframe, interector: interector)
-        
+        let client = MockClient()
+        let presenter = GestureListPresenter(wireFrame: wireframe, interector: interector, client: client)
         interector.presenter = presenter
         
         presenter.view = self
@@ -77,7 +87,8 @@ class What_sThisTestsPresenter: XCTestCase {
     func testFetchIsComplete () {
         let wireframe = MockWireFrame()
         let interector = MockInterector()
-        let presenter = GestureListPresenter(wireFrame: wireframe, interector: interector)
+        let client = MockClient()
+        let presenter = GestureListPresenter(wireFrame: wireframe, interector: interector, client: client)
         
         interector.presenter = presenter
         
@@ -91,7 +102,8 @@ class What_sThisTestsPresenter: XCTestCase {
     func testFetchFailed() {
         let wireframe = MockWireFrame()
         let interector = MockInterector()
-        let presenter = GestureListPresenter(wireFrame: wireframe, interector: interector)
+        let client = MockClient()
+        let presenter = GestureListPresenter(wireFrame: wireframe, interector: interector, client: client)
         
         interector.presenter = presenter
         
@@ -105,11 +117,12 @@ class What_sThisTestsPresenter: XCTestCase {
 }
 
 extension What_sThisTestsPresenter: GestureListViewProtocol {
-    func reloadData(listOfGestures: ArrayOfGestures) {
-        presenterDidCalled = true
+    func fetchFailed(title: String, message: String, actions: [UIAlertAction]) {
+        fetchDidFailed = true
+
     }
     
-    func fetchFailed() {
-        fetchDidFailed = true
+    func reloadData(listOfGestures: ArrayOfGestures) {
+        presenterDidCalled = true
     }
 }

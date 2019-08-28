@@ -14,8 +14,10 @@ class GestureListWireFrame: GestureListWireFramProtocol {
         let list = GestureListInterector()
         let wireframe = GestureListWireFrame()
         
-        let presenter: GestureListOutputPresenterProtocol & GestureListPresenterProtocol = GestureListPresenter(wireFrame: wireframe, interector: list)
-
+        let webClinet = FetchRemoteData()
+        
+        let presenter: GestureListOutputPresenterProtocol & GestureListPresenterProtocol = GestureListPresenter(wireFrame: wireframe, interector: list, client: webClinet)
+        
         viewRef.presenter = presenter
         viewRef.presenter.view = viewRef
 

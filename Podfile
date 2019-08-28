@@ -6,14 +6,14 @@ target 'What\'sThis' do
   use_frameworks!
 
   # Pods for What'sThis
-   
+  pod "Alamofire"
+
   target 'What\'sThisTests' do
     inherit! :search_paths
     # Pods for testing
   end
 
   target 'What\'sThisUITests' do
-    inherit! :search_paths
     # Pods for testing
   end
 

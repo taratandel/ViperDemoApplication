@@ -14,7 +14,8 @@ class MockWireFrame: GestureListWireFramProtocol {
     static func creatTheView(_ viewRef: ViewController) {
         let list = MockInterector()
         let wireFrame = MockWireFrame()
-        let presenter = GestureListPresenter(wireFrame: wireFrame, interector: list)
+        let client = MockClient()
+        let presenter = GestureListPresenter(wireFrame: wireFrame, interector: list, client: client)
         presenter.view = viewRef
         viewRef.presenter = presenter
         
@@ -26,6 +27,8 @@ class MockWireFrame: GestureListWireFramProtocol {
 
 
 class MockInterector: GestureListInputInterectorProtocl {
+    var client: FetchRemoteData?
+    
     var presenter: GestureListOutputPresenterProtocol?
     
     func fetchGestureData() {
@@ -39,3 +42,13 @@ class MockInterector: GestureListInputInterectorProtocl {
     }
 }
 
+class MockOutputInterector: GestureListOutputPresenterProtocol {
+    var gestures: ArrayOfGestures?
+    func fetchIsComplete(gustures: ArrayOfGestures?) {
+        gestures = gustures
+    }
+}
+
+class MockClient: FetchRemoteData {
+    
+}

@@ -11,11 +11,14 @@ import Foundation
 class GestureListInterector: GestureListInputInterectorProtocl {
     weak var presenter: GestureListOutputPresenterProtocol?
     
+    var client: FetchRemoteData?
+    
     func fetchGestureData() {
-        presenter?.fetchIsComplete(gustures: /*fetchData()*/ nil)
+        presenter?.fetchIsComplete(gustures: fetchData())
     }
     
     private func fetchData() -> ArrayOfGestures? {
+        
         if let path = Bundle.main.path(forResource: "gestures", ofType: "json") {
             do {
                 let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)

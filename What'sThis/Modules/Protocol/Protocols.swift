@@ -12,7 +12,7 @@ import UIKit
 //Presenter -> View
 protocol GestureListViewProtocol: class {
     func reloadData(listOfGestures: ArrayOfGestures)
-    func fetchFailed()
+    func fetchFailed(title: String, message: String, actions: [UIAlertAction])
 }
 
 //View -> Presenter
@@ -27,6 +27,7 @@ protocol GestureListPresenterProtocol: class {
 protocol GestureListInputInterectorProtocl: class {
     
     var presenter: GestureListOutputPresenterProtocol? {set get}
+    var client: FetchRemoteData? {get set}
     
     func fetchGestureData()
 }

@@ -20,8 +20,12 @@ class ViewController: UIViewController, GestureListViewProtocol {
         gesturesCollectionView?.delegate = self
         gesturesCollectionView?.dataSource = self
         
-        presenter?.mainViewDidLoad()
+//        presenter?.mainViewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        presenter?.mainViewDidLoad()
     }
     
     func reloadData(listOfGestures: ArrayOfGestures) {
@@ -29,12 +33,8 @@ class ViewController: UIViewController, GestureListViewProtocol {
         gesturesCollectionView?.reloadData()
     }
     
-    func fetchFailed () {
-        let buttons = ButtonsAction.init(title: "title", style: .cancel, handler: {
-            alert.dissmiss
-        })
-        let alert = UIAlertController().showAlert(buttons: buttons).show(
-
+    func fetchFailed(title: String, message: String, actions: [UIAlertAction]) {
+        showAlert(title: title, message: message, actions: actions)
     }
 }
 
@@ -64,4 +64,3 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
         return UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12)
     }
 }
-
