@@ -33,6 +33,14 @@
 		47FAA1172316BFE0003C041A /* What_sThisTestInterector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FAA1162316BFDF003C041A /* What_sThisTestInterector.swift */; };
 		47FAA1192316C077003C041A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47FAA1182316C077003C041A /* Assets.xcassets */; };
 		47FAA11B2317BC35003C041A /* What_ThisTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FAA11A2317BC35003C041A /* What_ThisTestViewController.swift */; };
+		47FAA1232317DCE0003C041A /* GestureDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FAA1212317DCE0003C041A /* GestureDetailsViewController.swift */; };
+		47FAA1242317DCE0003C041A /* GestureDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47FAA1222317DCE0003C041A /* GestureDetailsViewController.xib */; };
+		47FAA1262317DFAC003C041A /* GestureDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FAA1252317DFAC003C041A /* GestureDetails.swift */; };
+		47FAA129231802FD003C041A /* UIApplication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FAA128231802FD003C041A /* UIApplication+Extensions.swift */; };
+		47FAA12C2318082E003C041A /* GestureDetailsWireFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FAA12B2318082E003C041A /* GestureDetailsWireFrame.swift */; };
+		47FAA12F23180FF1003C041A /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FAA12E23180FF1003C041A /* Protocols.swift */; };
+		47FAA131231811C9003C041A /* GestureDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FAA130231811C9003C041A /* GestureDetailsPresenter.swift */; };
+		47FAA135231812A8003C041A /* GestureDetailsInterector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FAA134231812A7003C041A /* GestureDetailsInterector.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +93,14 @@
 		47FAA1162316BFDF003C041A /* What_sThisTestInterector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = What_sThisTestInterector.swift; sourceTree = "<group>"; };
 		47FAA1182316C077003C041A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "What'sThis/Assets.xcassets"; sourceTree = SOURCE_ROOT; };
 		47FAA11A2317BC35003C041A /* What_ThisTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = What_ThisTestViewController.swift; sourceTree = "<group>"; };
+		47FAA1212317DCE0003C041A /* GestureDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureDetailsViewController.swift; sourceTree = "<group>"; };
+		47FAA1222317DCE0003C041A /* GestureDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GestureDetailsViewController.xib; sourceTree = "<group>"; };
+		47FAA1252317DFAC003C041A /* GestureDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureDetails.swift; sourceTree = "<group>"; };
+		47FAA128231802FD003C041A /* UIApplication+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extensions.swift"; sourceTree = "<group>"; };
+		47FAA12B2318082E003C041A /* GestureDetailsWireFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureDetailsWireFrame.swift; sourceTree = "<group>"; };
+		47FAA12E23180FF1003C041A /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
+		47FAA130231811C9003C041A /* GestureDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureDetailsPresenter.swift; sourceTree = "<group>"; };
+		47FAA134231812A7003C041A /* GestureDetailsInterector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureDetailsInterector.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,13 +241,9 @@
 		4782B42E230ADCF200ED329D /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				47FAA11D2317D982003C041A /* GesturesDetail */,
+				47FAA11C2317D959003C041A /* GesturesList */,
 				47FAA1142316BFC7003C041A /* Requests.swift */,
-				4782B42D230ADCBF00ED329D /* WireFrame */,
-				4782B42C230ADC9500ED329D /* Protocol */,
-				4782B42B230ADC8400ED329D /* Interector */,
-				4782B42A230ADC4D00ED329D /* Entity */,
-				4782B429230ADC4700ED329D /* Presenter */,
-				4782B428230ADC4100ED329D /* View */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -241,6 +253,7 @@
 			children = (
 				47FAA1122316BFB0003C041A /* UIViewController+Extensions.swift */,
 				4782B43A230AE1A000ED329D /* Constants.swift */,
+				47FAA128231802FD003C041A /* UIApplication+Extensions.swift */,
 			);
 			path = Commons;
 			sourceTree = "<group>";
@@ -252,6 +265,81 @@
 				474FBEC12313E32500375421 /* FakeImage2.png */,
 			);
 			path = fakeImages;
+			sourceTree = "<group>";
+		};
+		47FAA11C2317D959003C041A /* GesturesList */ = {
+			isa = PBXGroup;
+			children = (
+				4782B42D230ADCBF00ED329D /* WireFrame */,
+				4782B42C230ADC9500ED329D /* Protocol */,
+				4782B42B230ADC8400ED329D /* Interector */,
+				4782B42A230ADC4D00ED329D /* Entity */,
+				4782B429230ADC4700ED329D /* Presenter */,
+				4782B428230ADC4100ED329D /* View */,
+			);
+			path = GesturesList;
+			sourceTree = "<group>";
+		};
+		47FAA11D2317D982003C041A /* GesturesDetail */ = {
+			isa = PBXGroup;
+			children = (
+				47FAA133231811E6003C041A /* Interector */,
+				47FAA132231811CF003C041A /* Presenter */,
+				47FAA12D23180B73003C041A /* Protocol */,
+				47FAA12A23180805003C041A /* WireFrame */,
+				47FAA1272317DFB0003C041A /* Entity */,
+				47FAA11E2317DC87003C041A /* View */,
+			);
+			path = GesturesDetail;
+			sourceTree = "<group>";
+		};
+		47FAA11E2317DC87003C041A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				47FAA1212317DCE0003C041A /* GestureDetailsViewController.swift */,
+				47FAA1222317DCE0003C041A /* GestureDetailsViewController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		47FAA1272317DFB0003C041A /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				47FAA1252317DFAC003C041A /* GestureDetails.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		47FAA12A23180805003C041A /* WireFrame */ = {
+			isa = PBXGroup;
+			children = (
+				47FAA12B2318082E003C041A /* GestureDetailsWireFrame.swift */,
+			);
+			path = WireFrame;
+			sourceTree = "<group>";
+		};
+		47FAA12D23180B73003C041A /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				47FAA12E23180FF1003C041A /* Protocols.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		47FAA132231811CF003C041A /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				47FAA130231811C9003C041A /* GestureDetailsPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		47FAA133231811E6003C041A /* Interector */ = {
+			isa = PBXGroup;
+			children = (
+				47FAA134231812A7003C041A /* GestureDetailsInterector.swift */,
+			);
+			path = Interector;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -362,6 +450,7 @@
 				473DD82B22F9CCAD0002524F /* Main.storyboard in Resources */,
 				47900D6A230C213700A316DE /* gestures.json in Resources */,
 				47FAA1192316C077003C041A /* Assets.xcassets in Resources */,
+				47FAA1242317DCE0003C041A /* GestureDetailsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -391,14 +480,21 @@
 				4782B438230AE0AF00ED329D /* GestureListPresenter.swift in Sources */,
 				473DD82822F9CCAD0002524F /* ViewController.swift in Sources */,
 				473DD82622F9CCAD0002524F /* AppDelegate.swift in Sources */,
+				47FAA12F23180FF1003C041A /* Protocols.swift in Sources */,
 				4782B434230AE06500ED329D /* GestureListInterector.swift in Sources */,
 				47FAA1152316BFC8003C041A /* Requests.swift in Sources */,
 				47FAA1132316BFB0003C041A /* UIViewController+Extensions.swift in Sources */,
+				47FAA131231811C9003C041A /* GestureDetailsPresenter.swift in Sources */,
+				47FAA129231802FD003C041A /* UIApplication+Extensions.swift in Sources */,
 				4782B432230AE04C00ED329D /* GestureListWireFrame.swift in Sources */,
 				473DD82E22F9CCAD0002524F /* What_sThis.xcdatamodeld in Sources */,
 				4782B441230C019500ED329D /* GestureCollectionViewCell.swift in Sources */,
+				47FAA1232317DCE0003C041A /* GestureDetailsViewController.swift in Sources */,
 				47900D8C230FF73900A316DE /* main.swift in Sources */,
+				47FAA12C2318082E003C041A /* GestureDetailsWireFrame.swift in Sources */,
+				47FAA1262317DFAC003C041A /* GestureDetails.swift in Sources */,
 				4782B436230AE07800ED329D /* Gestures.swift in Sources */,
+				47FAA135231812A8003C041A /* GestureDetailsInterector.swift in Sources */,
 				4782B430230ADE0A00ED329D /* Protocols.swift in Sources */,
 				4782B43B230AE1A000ED329D /* Constants.swift in Sources */,
 			);

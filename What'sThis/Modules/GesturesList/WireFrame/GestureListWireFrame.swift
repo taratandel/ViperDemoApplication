@@ -23,4 +23,8 @@ class GestureListWireFrame: GestureListWireFramProtocol {
 
         list.presenter = presenter
     }
+    
+    func presentDetailsView() {
+        
+    }
 }
