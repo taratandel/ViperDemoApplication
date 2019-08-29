@@ -41,4 +41,5 @@ protocol GestureListOutputPresenterProtocol: class {
 //Presenter -> WireFrame
 protocol GestureListWireFramProtocol: class {
     static func creatTheView(_ viewRef: ViewController)
+    func presentDetailsView(for id: String)
 }

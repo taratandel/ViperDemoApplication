@@ -13,6 +13,7 @@ class GestureDetailsViewController: UIViewController {
     @IBOutlet weak var gestureDetail: UITextView!
     
     var gestureDetails: GestureDetails?
+    var presenter: GestureDetailsPresenterProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,16 +23,4 @@ class GestureDetailsViewController: UIViewController {
     required init?(coder aDecoder: NSCoder) {
         return nil
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

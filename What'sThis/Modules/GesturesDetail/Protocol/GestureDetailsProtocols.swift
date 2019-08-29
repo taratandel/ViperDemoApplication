@@ -10,34 +10,34 @@ import Foundation
 
 //Presenter -> View
 protocol GestureDetailsViewProtocol: class {
-    func reloadData(listOfGestures: [Gestures])
-    func fetchFailed(title: String, message: String, actions: [UIAlertAction])
+//    func reloadData(listOfGestures: [Gestures])
+//    func fetchFailed(title: String, message: String, actions: [UIAlertAction])
 }
 
 //View -> Presenter
 protocol GestureDetailsPresenterProtocol: class {
     
-    var view: GestureListViewProtocol? {set get}
-    
-    func mainViewDidLoad()
+//    var view: GestureListViewProtocol? {set get}
+//
+//    func mainViewDidLoad()
 }
 
 //Presenter -> Interector
 protocol GestureDetailsInputInterectorProtocl: class {
-    var presenter: GestureListOutputPresenterProtocol? {set get}
-    var client: FetchRemoteData? {get set}
-    var gestures: [Gestures]? {get set}
-    
-    func fetchGestureData()
+//    var presenter: GestureListOutputPresenterProtocol? {set get}
+//    var client: FetchRemoteData? {get set}
+//    var gestures: [Gestures]? {get set}
+//
+//    func fetchGestureData()
 }
 
 //Interector -> Presenter
 protocol GestureDetailsOutputPresenterProtocol: class {
-    func fetchIsComplete()
+//    func fetchIsComplete()
     
 }
 
 //Presenter -> WireFrame
 protocol GestureDetailsWireFramProtocol: class {
-    static func creatTheGestureDetailsView(_ viewRef: ViewController)
+    static func creatTheGestureDetailsView(_ id: String)
 }

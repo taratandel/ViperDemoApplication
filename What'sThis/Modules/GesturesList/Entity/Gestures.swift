@@ -11,18 +11,18 @@ import UIKit
 
 struct Gestures: Codable {
     var name: String!
-    var description: String!
+    var id: String!
     var imageName: String!
-    
+
     init(name: String, descr: String, imN: String) {
         self.name = name
-        self.description = descr
+        self.id = descr
         self.imageName = imN
     }
     
     enum CodingKeys: String, CodingKey {
         case name
-        case description
+        case id
         case imageName
     }
 }

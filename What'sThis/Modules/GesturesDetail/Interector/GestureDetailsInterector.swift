@@ -8,6 +8,8 @@
 
 import Foundation
 
-class GestureDetailsInterector {
+class GestureDetailsInterector: GestureDetailsInputInterectorProtocl {
     
+    var presenter: GestureDetailsOutputPresenterProtocol!
+    var gestureDetails: GestureDetails!
 }

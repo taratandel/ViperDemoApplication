@@ -8,6 +8,12 @@
 
 import Foundation
 
-class GestureDetailsPresentor {
+class GestureDetailsPresentor: GestureDetailsPresenterProtocol {
+    var interector: GestureDetailsInputInterectorProtocl!
+    var interface: GestureDetailsViewProtocol!
+    var router: GestureDetailsWireFrame!
+}
+
+extension GestureDetailsPresentor: GestureDetailsOutputPresenterProtocol {
     
 }

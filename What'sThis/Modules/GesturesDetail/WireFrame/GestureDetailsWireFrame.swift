@@ -8,6 +8,8 @@
 
 import Foundation
 
-class GestureDetailsWireFrame {
-    
+class GestureDetailsWireFrame: GestureDetailsWireFramProtocol {
+    static func creatTheGestureDetailsView(_ id: String) {
+        
+    }
 }
