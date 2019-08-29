@@ -11,7 +11,7 @@ import UIKit
 
 //Presenter -> View
 protocol GestureListViewProtocol: class {
-    func reloadData(listOfGestures: ArrayOfGestures)
+    func reloadData(listOfGestures: [Gestures])
     func fetchFailed(title: String, message: String, actions: [UIAlertAction])
 }
 
@@ -25,17 +25,16 @@ protocol GestureListPresenterProtocol: class {
 
 //Presenter -> Interector
 protocol GestureListInputInterectorProtocl: class {
-    
     var presenter: GestureListOutputPresenterProtocol? {set get}
     var client: FetchRemoteData? {get set}
+    var gestures: [Gestures]? {get set}
     
     func fetchGestureData()
 }
 
 //Interector -> Presenter
 protocol GestureListOutputPresenterProtocol: class {
-    
-    func fetchIsComplete(gustures: ArrayOfGestures?)
+    func fetchIsComplete()
     
 }
 

@@ -14,6 +14,8 @@ class GestureListPresenter: GestureListPresenterProtocol {
     var view: GestureListViewProtocol?
     private var interector: GestureListInputInterectorProtocl?
     
+    var gestures: [Gestures]?
+    
     init(wireFrame: GestureListWireFramProtocol, interector: GestureListInputInterectorProtocl, client: FetchRemoteData) {
         self.wireFrame = wireFrame
         self.interector = interector
@@ -26,8 +28,11 @@ class GestureListPresenter: GestureListPresenterProtocol {
 }
 
 extension GestureListPresenter: GestureListOutputPresenterProtocol {
-    func fetchIsComplete(gustures: ArrayOfGestures?) {
-        guard let listOfGesture = gustures else {
+    
+    
+    func fetchIsComplete() {
+        
+        guard let listOfGesture = gestures else {
             let actions = [UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) in
                 print("Cancel tapped")
             })]

@@ -19,21 +19,19 @@ class ViewController: UIViewController, GestureListViewProtocol {
         super.viewDidLoad()
         gesturesCollectionView?.delegate = self
         gesturesCollectionView?.dataSource = self
-        
-//        presenter?.mainViewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
     }
     
     override func viewDidAppear(_ animated: Bool) {
         presenter?.mainViewDidLoad()
     }
     
-    func reloadData(listOfGestures: ArrayOfGestures) {
-        gesture = listOfGestures.data
+    func reloadData(listOfGestures: [Gestures]) {
+        gesture = listOfGestures
         gesturesCollectionView?.reloadData()
     }
     
     func fetchFailed(title: String, message: String, actions: [UIAlertAction]) {
+        gesture = [Gestures]()
         showAlert(title: title, message: message, actions: actions)
     }
 }

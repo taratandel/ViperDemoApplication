@@ -7,7 +7,7 @@
 //
 
 import Foundation
-//import Alamofire
+import UIKit
 @testable import What_sThis
 
 
@@ -26,8 +26,8 @@ class MockWireFrame: GestureListWireFramProtocol {
     
 }
 
-
 class MockInterector: GestureListInputInterectorProtocl {
+    var gestures: [Gestures]?
     var client: FetchRemoteData?
     
     var presenter: GestureListOutputPresenterProtocol?
@@ -35,18 +35,21 @@ class MockInterector: GestureListInputInterectorProtocl {
     func fetchGestureData() {
         let g1 = Gestures.init(name: "gest1", descr: "gest1 desc", imN: "g1")
         let g2 = Gestures(name: "gest1", descr: "gest1 desc", imN: "g1")
-        var gestures = [Gestures]()
-        gestures.append(g1)
-        gestures.append(g2)
-        let aOg = ArrayOfGestures(data: gestures)
-        presenter?.fetchIsComplete(gustures: aOg)
+        gestures = [Gestures]()
+        gestures?.append(g1)
+        gestures?.append(g2)
+        presenter?.fetchIsComplete()
     }
 }
 
+
 class MockOutputInterector: GestureListOutputPresenterProtocol {
-    var gestures: ArrayOfGestures?
-    func fetchIsComplete(gustures: ArrayOfGestures?) {
-        gestures = gustures
+    var vc: ViewController!
+    func fetchIsComplete() {
+        guard let vcUnwrapped = vc else {
+            return
+        }
+        vcUnwrapped.showAlert(title: "fakeTitle", message: "fake message", actions: [UIAlertAction(title: "cancel", style: .cancel, handler: {action in})])
     }
 }
 
@@ -58,6 +61,19 @@ class MockClient: FetchRemoteData {
         var gestureL = [Gestures]()
         gestureL.append(g1)
         gestureL.append(g2)
-        completionHandler(gestureL, nil)
+        completionHandler(ArrayOfGestures(data: gestureL), nil)
+    }
+}
+
+class MockVC: ViewController {
+    var dataReloaded = false
+    var fetchFailed = false
+    
+    override func reloadData(listOfGestures: [Gestures]) {
+        dataReloaded = true
+    }
+    
+    override func fetchFailed(title: String, message: String, actions: [UIAlertAction]) {
+        fetchFailed = true
     }
 }

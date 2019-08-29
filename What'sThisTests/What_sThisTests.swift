@@ -11,77 +11,52 @@ import XCTest
 
 class What_sThisTestsPresenter: XCTestCase {
 
-    var viewC: ViewController!
+    var viewC: MockVC!
     var gestureArrayes: ArrayOfGestures!
     
-    var presenterDidCalled: Bool!
-    var fetchDidFailed: Bool!
+//    var presenterDidCalled: Bool!
+//    var fetchDidFailed: Bool!
     
 
-    private var topLevelUIUtilities: TopLevelUIUtilities<ViewController>!
 
     override func setUp() {
         super.setUp()
         
-        presenterDidCalled = false
-        fetchDidFailed = false
+        viewC = MockVC()
+//        presenterDidCalled = false
+//        fetchDidFailed = false
         
-        viewC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ViewController") as? ViewController
-        MockWireFrame.creatTheView(viewC)
+//        MockWireFrame.creatTheView(viewC)
         
         let gestures = [Gestures(name: "gest1", descr: "gest desc", imN: "FakeImage2"), Gestures(name: "gest2", descr: "gest desc", imN: "FakeImage2")]
         gestureArrayes = ArrayOfGestures(data: gestures)
         
-        topLevelUIUtilities = TopLevelUIUtilities<ViewController>()
-        topLevelUIUtilities.setupTopLevelUI(withViewController: viewC)
+
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
 
     override func tearDown() {
         viewC = nil
         gestureArrayes = nil
-        topLevelUIUtilities.tearDownTopLevelUI()
-        topLevelUIUtilities = nil
-        presenterDidCalled = nil
-        fetchDidFailed = nil
+//        topLevelUIUtilities.tearDownTopLevelUI()
+//        topLevelUIUtilities = nil
+//        presenterDidCalled = nil
+//        fetchDidFailed = nil
         super.tearDown()
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-    
-    func testReloadData() {
-        viewC.reloadData(listOfGestures: gestureArrayes)
+    /* these are viewController tests I have to seperate them this doesnt work
 
-        let expectation = XCTestExpectation(description: "visible cells are correct")
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-            XCTAssertEqual(self.viewC.gesturesCollectionView.visibleCells.count, 2)
-            expectation.fulfill()
-        }
-        
-        wait(for: [expectation], timeout: 0.3)
-    }
-    
-    func testFetchIsFailed() {
-        let actions = [UIAlertAction(title: "Cancel", style: .destructive, handler: { action in
-            print("handled")
-        })]
-        viewC.fetchFailed(title: "title", message: "message", actions: actions)
-        
-        XCTAssertTrue(viewC.presentedViewController is UIAlertController)
-        XCTAssertEqual(viewC.presentedViewController?.title, "title")
-    }
-    
+    */
     func testMainViewDidLoad () {
         let wireframe = MockWireFrame()
         let interector = MockInterector()
         let client = MockClient()
         let presenter = GestureListPresenter(wireFrame: wireframe, interector: interector, client: client)
         interector.presenter = presenter
-        
-        presenter.view = self
-        
         presenter.mainViewDidLoad()
         
-        XCTAssertTrue(presenterDidCalled)
+        XCTAssertEqual(interector.gestures?.count, 2)
     }
     
     func testFetchIsComplete () {
@@ -90,13 +65,12 @@ class What_sThisTestsPresenter: XCTestCase {
         let client = MockClient()
         let presenter = GestureListPresenter(wireFrame: wireframe, interector: interector, client: client)
         
+        presenter.view = viewC
+        presenter.gestures = gestureArrayes.data
         interector.presenter = presenter
+        presenter.fetchIsComplete()
         
-        presenter.view = self
-        
-        presenter.fetchIsComplete(gustures: gestureArrayes)
-        
-        XCTAssertTrue(presenterDidCalled)
+        XCTAssertTrue(viewC.dataReloaded)
     }
     
     func testFetchFailed() {
@@ -105,24 +79,11 @@ class What_sThisTestsPresenter: XCTestCase {
         let client = MockClient()
         let presenter = GestureListPresenter(wireFrame: wireframe, interector: interector, client: client)
         
+        presenter.view = viewC
         interector.presenter = presenter
-        
-        presenter.view = self
-        
-        presenter.fetchIsComplete(gustures: nil)
-        
-        XCTAssertTrue(fetchDidFailed)
-        XCTAssertFalse(presenterDidCalled)
-    }
-}
+        presenter.fetchIsComplete()
 
-extension What_sThisTestsPresenter: GestureListViewProtocol {
-    func fetchFailed(title: String, message: String, actions: [UIAlertAction]) {
-        fetchDidFailed = true
-
-    }
-    
-    func reloadData(listOfGestures: ArrayOfGestures) {
-        presenterDidCalled = true
+        XCTAssertTrue(viewC.fetchFailed)
+        
     }
 }

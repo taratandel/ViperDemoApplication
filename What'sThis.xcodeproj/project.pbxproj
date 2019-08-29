@@ -32,6 +32,7 @@
 		47FAA1152316BFC8003C041A /* Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FAA1142316BFC7003C041A /* Requests.swift */; };
 		47FAA1172316BFE0003C041A /* What_sThisTestInterector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FAA1162316BFDF003C041A /* What_sThisTestInterector.swift */; };
 		47FAA1192316C077003C041A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47FAA1182316C077003C041A /* Assets.xcassets */; };
+		47FAA11B2317BC35003C041A /* What_ThisTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FAA11A2317BC35003C041A /* What_ThisTestViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,7 @@
 		47FAA1142316BFC7003C041A /* Requests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Requests.swift; sourceTree = "<group>"; };
 		47FAA1162316BFDF003C041A /* What_sThisTestInterector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = What_sThisTestInterector.swift; sourceTree = "<group>"; };
 		47FAA1182316C077003C041A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "What'sThis/Assets.xcassets"; sourceTree = SOURCE_ROOT; };
+		47FAA11A2317BC35003C041A /* What_ThisTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = What_ThisTestViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +159,7 @@
 				47900D6B230C3F4300A316DE /* TopLevelHelper.swift */,
 				47900D89230EE96D00A316DE /* EntityTest.swift */,
 				474FBEC52313ECFF00375421 /* MockClasses.swift */,
+				47FAA11A2317BC35003C041A /* What_ThisTestViewController.swift */,
 			);
 			path = "What'sThisTests";
 			sourceTree = "<group>";
@@ -405,6 +408,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47FAA11B2317BC35003C041A /* What_ThisTestViewController.swift in Sources */,
 				474FBEC62313ECFF00375421 /* MockClasses.swift in Sources */,
 				47900D6C230C3F4300A316DE /* TopLevelHelper.swift in Sources */,
 				473DD83E22F9CCB10002524F /* What_sThisTests.swift in Sources */,

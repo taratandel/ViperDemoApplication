@@ -12,11 +12,13 @@ class GestureListInterector: GestureListInputInterectorProtocl {
     weak var presenter: GestureListOutputPresenterProtocol?
     
     var client: FetchRemoteData?
+    var gestures: [Gestures]?
     
     func fetchGestureData() {
         self.fetchData() {
             response, error in
-            self.presenter?.fetchIsComplete(gustures: response)
+            self.gestures = response?.data
+            self.presenter?.fetchIsComplete()
         }
     }
     

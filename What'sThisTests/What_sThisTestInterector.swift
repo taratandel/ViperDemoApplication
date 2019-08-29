@@ -16,22 +16,27 @@ class What_sThisTestInterector: XCTestCase {
     
     override func setUp() {
         interector = GestureListInterector()
-        let presenter: GestureListOutputPresenterProtocol = MockOutputInterector()
+        let presenter = MockOutputInterector()
         
         interector.presenter = presenter
+        
+        let client = MockClient()
+        interector.client = client
         
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
 
     override func tearDown() {
         interector.presenter = nil
+        interector.client = nil
         interector = nil
+
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     
     func testFetchGestureData() {
         interector.fetchGestureData()
+
+        XCTAssertEqual(interector.gestures?.count, 2)
     }
-    
-    
 }
