@@ -8,7 +8,7 @@
 
 import Foundation
 
-class GestureListWireFrame: GestureListWireFramProtocol {
+class GestureListWireFrame: TopViewControllerGettable, GestureListWireFramProtocol {
     
     class func creatTheView(_ viewRef: ViewController) {
         let list = GestureListInterector()
@@ -25,6 +25,9 @@ class GestureListWireFrame: GestureListWireFramProtocol {
     }
     
     func presentDetailsView(for id: String) {
-        let detailView = GestureDetailsViewProtocol(
+        let detailView = GestureDetailsViewController(id: id)
+        GestureDetailsWireFrame.creatTheGestureDetailsView(detailView)
+        guard let listViewVC = topNavController else { return }
+        listViewVC.pushViewController(detailView, animated: true)
     }
 }

@@ -8,11 +8,12 @@
 import UIKit
 
 struct GestureDetails {
-    let isFavorite: Bool!
-    let desc: String!
-    let imgName: String!
+    let isFavorite: Bool?
+    let desc: String?
+    let imgName: String?
+    let id: String?
     
     func getImage() -> UIImage? {
-        return UIImage(named: imgName)
+        return UIImage(named: imgName ?? "")
     }
 }

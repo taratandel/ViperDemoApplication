@@ -20,7 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let initialStoryBoard = UIStoryboard(name: "Main", bundle: nil)
         let vc = initialStoryBoard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
         GestureListWireFrame.creatTheView(vc)
-        window?.rootViewController = vc
+        let nav = UINavigationController()
+        nav.viewControllers = [vc]
+        window?.rootViewController = nav
         window?.makeKeyAndVisible()
         // Override point for customization after application launch.
         return true

@@ -12,6 +12,10 @@ import UIKit
 
 
 class MockWireFrame: GestureListWireFramProtocol {
+    func presentDetailsView(for id: String) {
+        
+    }
+    
     static func creatTheView(_ viewRef: ViewController) {
         let list = MockInterector()
         let wireFrame = MockWireFrame()

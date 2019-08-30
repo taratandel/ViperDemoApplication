@@ -1,0 +1,10 @@
+{
+    "success": true,
+    "message": "request was successful",
+    "data": {
+        "id": "1",
+        "imgName": "gD1",
+        "desc": "this is the long long long long long long long long long long long long long long long long long long long long description of 1",
+        "isFavorite": true
+    }
+}

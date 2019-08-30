@@ -9,9 +9,18 @@
 import Foundation
 
 class GestureDetailsPresentor: GestureDetailsPresenterProtocol {
-    var interector: GestureDetailsInputInterectorProtocl!
-    var interface: GestureDetailsViewProtocol!
-    var router: GestureDetailsWireFrame!
+    var interface: GestureDetailsViewProtocol?
+    private var interector: GestureDetailsInputInterectorProtocl!
+    private var router: GestureDetailsWireFrame!
+    
+    init(interector: GestureDetailsInputInterectorProtocl, router: GestureDetailsWireFrame) {
+        self.interector = interector
+        self.router = router
+    }
+    
+    func detailsViewDidLoad(id: String) {
+        interector.fetchTheDetails(id)
+    }
 }
 
 extension GestureDetailsPresentor: GestureDetailsOutputPresenterProtocol {

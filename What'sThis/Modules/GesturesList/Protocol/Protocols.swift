@@ -21,6 +21,7 @@ protocol GestureListPresenterProtocol: class {
     var view: GestureListViewProtocol? {set get}
     
     func mainViewDidLoad()
+    func didSelectGesture(id: String)
 }
 
 //Presenter -> Interector

@@ -10,6 +10,10 @@ import Foundation
 
 class GestureDetailsInterector: GestureDetailsInputInterectorProtocl {
     
-    var presenter: GestureDetailsOutputPresenterProtocol!
-    var gestureDetails: GestureDetails!
+    var presenter: GestureDetailsOutputPresenterProtocol?
+    var gestureDetails: GestureDetails?
+    
+    func fetchTheDetails(_ id: String) {
+        
+    }
 }

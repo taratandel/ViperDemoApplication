@@ -14,13 +14,23 @@ class GestureDetailsViewController: UIViewController {
     
     var gestureDetails: GestureDetails?
     var presenter: GestureDetailsPresenterProtocol!
-    
+    var id: String!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        presenter.detailsViewDidLoad(id: id)
         // Do any additional setup after loading the view.
     }
+    
+    init (id: String) {
+        self.id = id
+        super.init(nibName: nil, bundle: nil)
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         return nil
     }
+}
+
+extension GestureDetailsViewController: GestureDetailsViewProtocol {
+    
 }

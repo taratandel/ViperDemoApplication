@@ -51,6 +51,10 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         gestureCell.fillData(gesture[indexPath.row])
         return gestureCell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        presenter.didSelectGesture(id: gesture[indexPath.row].id)
+    }
 }
 
 extension ViewController: UICollectionViewDelegateFlowLayout {

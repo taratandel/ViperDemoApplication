@@ -17,18 +17,17 @@ protocol GestureDetailsViewProtocol: class {
 //View -> Presenter
 protocol GestureDetailsPresenterProtocol: class {
     
-//    var view: GestureListViewProtocol? {set get}
-//
+    var interface: GestureDetailsViewProtocol? {set get}
+    func detailsViewDidLoad(id: String)
 //    func mainViewDidLoad()
 }
 
 //Presenter -> Interector
 protocol GestureDetailsInputInterectorProtocl: class {
-//    var presenter: GestureListOutputPresenterProtocol? {set get}
-//    var client: FetchRemoteData? {get set}
-//    var gestures: [Gestures]? {get set}
-//
-//    func fetchGestureData()
+    var presenter: GestureDetailsOutputPresenterProtocol? {set get}
+    var gestureDetails: GestureDetails? {set get}
+    
+    func fetchTheDetails(_ id: String)
 }
 
 //Interector -> Presenter
@@ -39,5 +38,5 @@ protocol GestureDetailsOutputPresenterProtocol: class {
 
 //Presenter -> WireFrame
 protocol GestureDetailsWireFramProtocol: class {
-    static func creatTheGestureDetailsView(_ id: String)
+    static func creatTheGestureDetailsView(_ view: GestureDetailsViewController)
 }
