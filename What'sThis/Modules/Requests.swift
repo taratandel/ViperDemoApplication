@@ -8,15 +8,23 @@
 
 import Foundation
 //import Alamofire
-protocol RequestProtocol {
-    func requestIsComplete()
+protocol RequestProtocol: class {
+    func requestIsComplete(parsedData: Any?)
+}
+
+enum RequestType {
+    case list
+    case detail
 }
 class FetchRemoteData {
     
     var gestures: ArrayOfGestures!
-    var requestProtocol
-    private func request (url: String?, /*method: HTTPMethod,*/  parameter: [String: Any?] /*header: HTTPHeaders,*/ ) {
-        
+    weak var requestProtocol: RequestProtocol?
+    private func request (url: String?, /*method: HTTPMethod,*/  parameter: [String: Any?], reqType: RequestType /*header: HTTPHeaders,*/ ) {
+        if let path = Bundle.main.path(forResource: "gestures", ofType: "json") {
+        let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+            self.validateResponse(data, for: reqType)
+    }
     }
 //    private func getTheData(url: String?, completionHandler: @escaping (ArrayOfGestures?, Error?) -> Void, method: HTTPMethod, headers: HTTPHeaders?, parameters: [String: Any]) {
 //        if let reqUrl = url {
@@ -38,14 +46,24 @@ class FetchRemoteData {
 //        }
 //    }
     
-    private func validateResponse(_ res: Any) {
+    private func validateResponse(_ res: Data?, for type: RequestType) {
+        if (res != nil) {
+            
+            switch type {
+            case .list:
+                let parsedData = try? JSONDecoder().decode(ArrayOfGestures.self, from: res!)
+            case .detail:
+                let parsedData = try? JSONDecoder().decode(GestureDetails.self, from: res!)
+            }
+
+
+        }
         
     }
     
     func prepareRequest(endPoint: String? = nil) {
         switch endPoint {
         case "list":
-//            let method = .GET
             let URL = "listURL"
         case "details":
             if let path = Bundle.main.path(forResource: "gestures", ofType: "json") {

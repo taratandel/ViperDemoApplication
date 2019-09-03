@@ -7,7 +7,7 @@
 //
 import UIKit
 
-struct GestureDetails {
+struct GestureDetails: Codable {
     let isFavorite: Bool?
     let desc: String?
     let imgName: String?
