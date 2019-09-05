@@ -11,18 +11,23 @@ import Foundation
 class GestureListInterector: GestureListInputInterectorProtocl {
     weak var presenter: GestureListOutputPresenterProtocol?
     
-    var client: FetchRemoteData?
+    var client: GetListData?
     var gestures: [Gestures]?
     
     func fetchGestureData() {
-        self.fetchData() {
-            response, error in
-            self.gestures = response?.data
-            self.presenter?.fetchIsComplete()
-        }
+        client?.getTheData()
+    }
+}
+
+extension GestureListInterector: ListRequestProtocol {
+    func listRequestIsComplete(parsedData: ArrayOfGestures) {
+        gestures = parsedData.gestures
+        presenter?.fetchIsComplete()
     }
     
-    private func fetchData(completionHandler: @escaping (ArrayOfGestures?, Error?) -> Void) {
-        client?.prepareRequest(completionHandler: completionHandler)
+    func listRequestFailed(error: Error) {
+        
     }
+    
+    
 }

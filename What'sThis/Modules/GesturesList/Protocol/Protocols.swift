@@ -27,7 +27,7 @@ protocol GestureListPresenterProtocol: class {
 //Presenter -> Interector
 protocol GestureListInputInterectorProtocl: class {
     var presenter: GestureListOutputPresenterProtocol? {set get}
-    var client: FetchRemoteData? {get set}
+    var client: GetListData? {get set}
     var gestures: [Gestures]? {get set}
     
     func fetchGestureData()
@@ -43,4 +43,9 @@ protocol GestureListOutputPresenterProtocol: class {
 protocol GestureListWireFramProtocol: class {
     static func creatTheView(_ viewRef: ViewController)
     func presentDetailsView(for id: String)
+}
+
+// list services
+protocol GetListData: class {
+    func getTheData()
 }

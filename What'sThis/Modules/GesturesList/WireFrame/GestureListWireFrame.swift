@@ -14,7 +14,7 @@ class GestureListWireFrame: TopViewControllerGettable, GestureListWireFramProtoc
         let list = GestureListInterector()
         let wireframe = GestureListWireFrame()
         
-        let webClinet = FetchRemoteData()
+        let webClinet = FetchRemoteData(requestProtocol: list)
         
         let presenter: GestureListOutputPresenterProtocol & GestureListPresenterProtocol = GestureListPresenter(wireFrame: wireframe, interector: list, client: webClinet)
         
