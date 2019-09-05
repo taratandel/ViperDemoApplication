@@ -23,7 +23,7 @@ enum RequestType {
     }
 }
 
-class FetchRemoteData: GetListData {
+class FetchRemoteData {
     var gestures: ArrayOfGestures!
     weak var requestProtocol: ReqeustServices?
     
@@ -40,28 +40,22 @@ class FetchRemoteData: GetListData {
             }
         }
     }
-    
+}
+
+extension FetchRemoteData: GetListData {
     func getTheListData() {
         self.request(url: RequestType.list.path, method: .get, parameter: nil, header: nil) {
             response in
-            switch response.result {
-            case .success(_):
-                do {
-                    let parsedData = try JSONDecoder().decode(Response.self, from: response.data ?? Data())
-                    if parsedData.success {self.requestProtocol?.listRequestIsComplete(parsedData: parsedData.data)}
-                    else {
-                        self.requestProtocol?.listRequestFailed(error: MovieErrorType.serverError, errorMessage: parsedData.message)
-                    }
-                }
-                catch {
-                    self.requestProtocol?.listRequestFailed(error: MovieErrorType.badRequest, errorMessage: nil)
-                }
-            case .failure(let error):
-                self.requestProtocol?.listRequestFailed(error: error, errorMessage: nil)
-            }
+            self.requestProtocol?.requestIsComplete(response)
         }
     }
-    
-    
 }
 
+extension FetchRemoteData: GetDetailsDataProtocol {
+    func getDetails(parameters: Parameters) {
+        self.request(url: RequestType.list.path, method: .post, parameter: parameters, header: nil) {
+            response in
+            
+        }
+    }
+}

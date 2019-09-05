@@ -40,3 +40,8 @@ protocol GestureDetailsOutputPresenterProtocol: class {
 protocol GestureDetailsWireFramProtocol: class {
     static func creatTheGestureDetailsView(_ view: GestureDetailsViewController)
 }
+
+// details request
+protocol GetDetailsDataProtocol: class {
+    func getDetails(parameters: [String: Any])
+}

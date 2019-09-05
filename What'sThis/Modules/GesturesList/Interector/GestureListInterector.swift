@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Alamofire
 
 class GestureListInterector: GestureListInputInterectorProtocl {
     weak var presenter: GestureListOutputPresenterProtocol?
@@ -20,14 +21,24 @@ class GestureListInterector: GestureListInputInterectorProtocl {
 }
 
 extension GestureListInterector: ReqeustServices {
-    func listRequestIsComplete(parsedData: ArrayOfGestures) {
-        gestures = parsedData.gestures
-        presenter?.fetchIsComplete()
+    func requestIsComplete(_ response: DataResponse<Any>) {
+        switch response.result {
+        case .success(_):
+            do {
+                let parsedData = try JSONDecoder().decode(Response.self, from: response.data ?? Data())
+                if parsedData.success {
+                    gestures = parsedData.data.gestures
+                    presenter?.fetchIsComplete()
+                }
+                else {
+                    presenter?.fetchFailed(error: MovieErrorType.serverError, message: parsedData.message)
+                }
+            }
+            catch {
+                presenter?.fetchFailed(error: MovieErrorType.badRequest, message: nil)
+            }
+        case .failure(let error):
+            presenter?.fetchFailed(error: error, message: nil)
+        }
     }
-    
-    func listRequestFailed(error: Error, errorMessage: String?) {
-        presenter?.fetchFailed(error: error, message: errorMessage)
-    }
-    
-    
 }

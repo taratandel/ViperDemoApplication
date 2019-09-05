@@ -7,14 +7,9 @@
 //
 
 import Foundation
+import Alamofire
 
-protocol ListRequestProtocol: class {
-    func listRequestIsComplete(parsedData: ArrayOfGestures)
-    func listRequestFailed(error: Error, errorMessage: String?)
+protocol ReqeustServices: class {
+    func requestIsComplete(_ response: DataResponse<Any>)
 }
 
-protocol ReqeustServices: ListRequestProtocol, DetailRequestProtocol {
-    
-}
-
-protocol DetailRequestProtocol {}
