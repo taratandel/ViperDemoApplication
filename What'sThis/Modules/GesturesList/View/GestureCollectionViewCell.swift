@@ -14,8 +14,6 @@ class GestureCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var gestureName: UILabel!
     
     func fillData (_ gesture: Gestures) {
-//        self.gestureName.sizeToFit()
-
         self.gestureImage.image = UIImage(named: gesture.imageName)
         self.gestureImage.backgroundColor = .red
         self.gestureName.text = gesture.name
