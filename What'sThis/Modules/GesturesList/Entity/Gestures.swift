@@ -10,9 +10,9 @@ import Foundation
 import UIKit
 
 struct Gestures: Codable {
-    var name: String!
-    var id: String!
-    var imageName: String!
+    var name: String
+    var id: String
+    var imageName: String
 
     init(name: String, descr: String, imN: String) {
         self.name = name
@@ -28,13 +28,19 @@ struct Gestures: Codable {
 }
 
 struct ArrayOfGestures: Codable {
-    var data: [Gestures]!
+    var gestures: [Gestures]
     
-    init(data: [Gestures]) {
-        self.data = data
+    init(gestures: [Gestures]) {
+        self.gestures = gestures
     }
     
     enum CodingKeys: String, CodingKey {
-        case data
+        case gestures
     }
+}
+
+struct Response: Codable {
+    var success: Bool
+    var message: String
+    var data : ArrayOfGestures
 }
