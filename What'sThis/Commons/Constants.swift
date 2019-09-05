@@ -13,3 +13,7 @@ struct EntityCast {
     static let image = "image"
     static let description = "desc"
 }
+
+struct EndPoints {
+    static let serverEndPoint = "http://demo9059959.mockable.io"
+}

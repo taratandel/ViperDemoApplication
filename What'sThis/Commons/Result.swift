@@ -10,6 +10,8 @@ import Foundation
 
 public enum MovieErrorType: Error {
     case noInternet
+    case badRequest
+    case serverError
 }
 
 enum Result<T> {
