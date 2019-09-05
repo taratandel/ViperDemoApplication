@@ -51,7 +51,7 @@ class FetchRemoteData: GetListData {
         }
     }
     
-    func getTheData() {
+    func getTheListData() {
         self.request(url: RequestType.list.path, method: .get, parameter: nil, header: nil) {
             response in
             switch response.result {
@@ -64,7 +64,6 @@ class FetchRemoteData: GetListData {
                     }
                 }
                 catch {
-                    
                     self.requestProtocol?.listRequestFailed(error: MovieErrorType.badRequest)
                 }
             case .failure(let error):

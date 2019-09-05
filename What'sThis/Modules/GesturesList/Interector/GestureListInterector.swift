@@ -15,7 +15,7 @@ class GestureListInterector: GestureListInputInterectorProtocl {
     var gestures: [Gestures]?
     
     func fetchGestureData() {
-        client?.getTheData()
+        client?.getTheListData()
     }
 }
 

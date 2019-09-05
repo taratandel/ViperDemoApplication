@@ -47,5 +47,5 @@ protocol GestureListWireFramProtocol: class {
 
 // list services
 protocol GetListData: class {
-    func getTheData()
+    func getTheListData()
 }
