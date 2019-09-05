@@ -19,6 +19,7 @@
 		474FBEC62313ECFF00375421 /* MockClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474FBEC52313ECFF00375421 /* MockClasses.swift */; };
 		475F21C5231FA4B10078D0F2 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 475F21C4231FA4B10078D0F2 /* Alamofire.framework */; };
 		475F21C9231FA5860078D0F2 /* Alamofire.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 475F21C8231FA5860078D0F2 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		475F21D5232122AD0078D0F2 /* RequestProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475F21D4232122AD0078D0F2 /* RequestProtocols.swift */; };
 		4782B430230ADE0A00ED329D /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4782B42F230ADE0A00ED329D /* Protocols.swift */; };
 		4782B432230AE04C00ED329D /* GestureListWireFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4782B431230AE04C00ED329D /* GestureListWireFrame.swift */; };
 		4782B434230AE06500ED329D /* GestureListInterector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4782B433230AE06500ED329D /* GestureListInterector.swift */; };
@@ -96,6 +97,7 @@
 		474FBEC52313ECFF00375421 /* MockClasses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockClasses.swift; sourceTree = "<group>"; };
 		475F21C4231FA4B10078D0F2 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		475F21C8231FA5860078D0F2 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		475F21D4232122AD0078D0F2 /* RequestProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestProtocols.swift; sourceTree = "<group>"; };
 		4782B42F230ADE0A00ED329D /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		4782B431230AE04C00ED329D /* GestureListWireFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureListWireFrame.swift; sourceTree = "<group>"; };
 		4782B433230AE06500ED329D /* GestureListInterector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureListInterector.swift; sourceTree = "<group>"; };
@@ -288,6 +290,7 @@
 				4782B43A230AE1A000ED329D /* Constants.swift */,
 				47FAA128231802FD003C041A /* UIApplication+Extensions.swift */,
 				47FAA13A23193624003C041A /* Result.swift */,
+				475F21D4232122AD0078D0F2 /* RequestProtocols.swift */,
 			);
 			path = Commons;
 			sourceTree = "<group>";
@@ -540,6 +543,7 @@
 				473DD82622F9CCAD0002524F /* AppDelegate.swift in Sources */,
 				47FAA12F23180FF1003C041A /* GestureDetailsProtocols.swift in Sources */,
 				4782B434230AE06500ED329D /* GestureListInterector.swift in Sources */,
+				475F21D5232122AD0078D0F2 /* RequestProtocols.swift in Sources */,
 				47FAA1152316BFC8003C041A /* Requests.swift in Sources */,
 				47FAA1132316BFB0003C041A /* UIViewController+Extensions.swift in Sources */,
 				47FAA131231811C9003C041A /* GestureDetailsPresenter.swift in Sources */,

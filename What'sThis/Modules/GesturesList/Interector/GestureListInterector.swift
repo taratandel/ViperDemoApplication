@@ -19,14 +19,14 @@ class GestureListInterector: GestureListInputInterectorProtocl {
     }
 }
 
-extension GestureListInterector: ListRequestProtocol {
+extension GestureListInterector: ReqeustServices {
     func listRequestIsComplete(parsedData: ArrayOfGestures) {
         gestures = parsedData.gestures
         presenter?.fetchIsComplete()
     }
     
-    func listRequestFailed(error: Error) {
-        
+    func listRequestFailed(error: Error, errorMessage: String?) {
+        presenter?.fetchFailed(error: error, message: errorMessage)
     }
     
     

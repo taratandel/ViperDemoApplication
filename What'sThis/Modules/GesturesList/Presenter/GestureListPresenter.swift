@@ -14,8 +14,6 @@ class GestureListPresenter: GestureListPresenterProtocol {
     var view: GestureListViewProtocol?
     private var interector: GestureListInputInterectorProtocl?
     
-//    var gestures: [Gestures]?
-    
     init(wireFrame: GestureListWireFramProtocol, interector: GestureListInputInterectorProtocl, client: FetchRemoteData) {
         self.wireFrame = wireFrame
         self.interector = interector
@@ -44,4 +42,35 @@ extension GestureListPresenter: GestureListOutputPresenterProtocol {
         }
         view?.reloadData(listOfGestures: listOfGesture)
     }
+    
+    func fetchFailed(error: Error, message: String?) {
+        if message != nil {
+            switch error {
+            case MovieErrorType.badRequest:
+                let actions = [UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) in
+                })]
+                view?.fetchFailed(title: "Request Error", message: message!, actions: actions)
+            case MovieErrorType.noInternet:
+                let actions = [UIAlertAction(title: "Retry", style: .cancel, handler: { (action) in
+                    self.mainViewDidLoad()
+                })]
+                view?.fetchFailed(title: "NO Internet", message: message!, actions: actions)
+            case MovieErrorType.serverError:
+                let actions = [UIAlertAction(title: "Retry", style: .cancel, handler: { (action) in
+                    self.mainViewDidLoad()
+                })]
+                view?.fetchFailed(title: "Server Error", message: message!, actions: actions)
+            default:
+                let actions = [UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) in
+                })]
+                view?.fetchFailed(title: "Request Failed", message: message!, actions: actions)
+            }
+        } else {
+            let actions = [UIAlertAction(title: "Retry", style: .cancel, handler: {(action) in
+                self.mainViewDidLoad()
+            })]
+            view?.fetchFailed(title: "Oops", message: error.localizedDescription, actions: actions)
+        }
+    }
 }
+

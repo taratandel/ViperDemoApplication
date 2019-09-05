@@ -8,16 +8,6 @@
 
 import Foundation
 import Alamofire
-protocol ListRequestProtocol: class {
-    func listRequestIsComplete(parsedData: ArrayOfGestures)
-    func listRequestFailed(error: Error, errorMessage: String?)
-}
-
-extension ListRequestProtocol {
-    func listRequestFailed(error: Error, errorMessage: String? = nil) {
-        return listRequestFailed(error: error, errorMessage: errorMessage)
-    }
-}
 
 enum RequestType {
     case list
@@ -35,9 +25,9 @@ enum RequestType {
 
 class FetchRemoteData: GetListData {
     var gestures: ArrayOfGestures!
-    weak var requestProtocol: ListRequestProtocol?
+    weak var requestProtocol: ReqeustServices?
     
-    init(requestProtocol: ListRequestProtocol) {
+    init(requestProtocol: ReqeustServices) {
         self.requestProtocol = requestProtocol
     }
     
@@ -64,12 +54,14 @@ class FetchRemoteData: GetListData {
                     }
                 }
                 catch {
-                    self.requestProtocol?.listRequestFailed(error: MovieErrorType.badRequest)
+                    self.requestProtocol?.listRequestFailed(error: MovieErrorType.badRequest, errorMessage: nil)
                 }
             case .failure(let error):
-                self.requestProtocol?.listRequestFailed(error: error)
+                self.requestProtocol?.listRequestFailed(error: error, errorMessage: nil)
             }
         }
     }
+    
+    
 }
 

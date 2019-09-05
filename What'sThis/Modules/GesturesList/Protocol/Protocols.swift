@@ -36,6 +36,7 @@ protocol GestureListInputInterectorProtocl: class {
 //Interector -> Presenter
 protocol GestureListOutputPresenterProtocol: class {
     func fetchIsComplete()
+    func fetchFailed(error: Error, message: String?)
     
 }
 
