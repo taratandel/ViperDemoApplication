@@ -7,18 +7,37 @@
 //
 
 import Foundation
+import Alamofire
 
 class GestureDetailsInterector: GestureDetailsInputInterectorProtocl {
     
     var presenter: GestureDetailsOutputPresenterProtocol?
     var gestureDetails: GestureDetails?
-    var client: GetDetailsData?
+    var client: GetDetailsDataProtocol?
     
     func fetchTheDetails(_ id: String) {
-        client.g
+        client?.getDetails(id: id)
     }
 }
 
-extension GestureListInterector: DetailRequestProtocol {
-    
+extension GestureDetailsInterector: RequestServices {
+    func requestIsComplete(_ response: DataResponse<Any>) {
+        switch response.result {
+        case .success(_):
+            do {
+                let parsedData = try JSONDecoder().decode(DetailsResponse.self, from: response.data ?? Data())
+                if parsedData.success {
+                    gestureDetails = parsedData.data
+                    presenter?.fetchIsComplete()
+                } else {
+                    presenter?.fetchFailed(error: MovieErrorType.serverError, errorMessage: parsedData.message)
+                }
+            }
+            catch {
+                presenter?.fetchFailed(error: MovieErrorType.badRequest, errorMessage: nil)
+            }
+        case .failure(let error):
+            presenter?.fetchFailed(error: error, errorMessage: nil)
+        }
+    }
 }

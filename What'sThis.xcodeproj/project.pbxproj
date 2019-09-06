@@ -20,6 +20,9 @@
 		475F21C5231FA4B10078D0F2 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 475F21C4231FA4B10078D0F2 /* Alamofire.framework */; };
 		475F21C9231FA5860078D0F2 /* Alamofire.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 475F21C8231FA5860078D0F2 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		475F21D5232122AD0078D0F2 /* RequestProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475F21D4232122AD0078D0F2 /* RequestProtocols.swift */; };
+		475F21D9232269670078D0F2 /* IndicatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475F21D7232269670078D0F2 /* IndicatorViewController.swift */; };
+		475F21DA232269670078D0F2 /* IndicatorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 475F21D8232269670078D0F2 /* IndicatorViewController.xib */; };
+		475F21DE2322874D0078D0F2 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475F21DD2322874D0078D0F2 /* BaseViewController.swift */; };
 		4782B430230ADE0A00ED329D /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4782B42F230ADE0A00ED329D /* Protocols.swift */; };
 		4782B432230AE04C00ED329D /* GestureListWireFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4782B431230AE04C00ED329D /* GestureListWireFrame.swift */; };
 		4782B434230AE06500ED329D /* GestureListInterector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4782B433230AE06500ED329D /* GestureListInterector.swift */; };
@@ -98,6 +101,9 @@
 		475F21C4231FA4B10078D0F2 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		475F21C8231FA5860078D0F2 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		475F21D4232122AD0078D0F2 /* RequestProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestProtocols.swift; sourceTree = "<group>"; };
+		475F21D7232269670078D0F2 /* IndicatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorViewController.swift; sourceTree = "<group>"; };
+		475F21D8232269670078D0F2 /* IndicatorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IndicatorViewController.xib; sourceTree = "<group>"; };
+		475F21DD2322874D0078D0F2 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		4782B42F230ADE0A00ED329D /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		4782B431230AE04C00ED329D /* GestureListWireFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureListWireFrame.swift; sourceTree = "<group>"; };
 		4782B433230AE06500ED329D /* GestureListInterector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureListInterector.swift; sourceTree = "<group>"; };
@@ -224,6 +230,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		475F21D6232269430078D0F2 /* IndicatorView */ = {
+			isa = PBXGroup;
+			children = (
+				475F21D7232269670078D0F2 /* IndicatorViewController.swift */,
+				475F21D8232269670078D0F2 /* IndicatorViewController.xib */,
+			);
+			path = IndicatorView;
+			sourceTree = "<group>";
+		};
 		4782B428230ADC4100ED329D /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -286,11 +301,13 @@
 		4782B439230AE19100ED329D /* Commons */ = {
 			isa = PBXGroup;
 			children = (
+				475F21D6232269430078D0F2 /* IndicatorView */,
 				47FAA1122316BFB0003C041A /* UIViewController+Extensions.swift */,
 				4782B43A230AE1A000ED329D /* Constants.swift */,
 				47FAA128231802FD003C041A /* UIApplication+Extensions.swift */,
 				47FAA13A23193624003C041A /* Result.swift */,
 				475F21D4232122AD0078D0F2 /* RequestProtocols.swift */,
+				475F21DD2322874D0078D0F2 /* BaseViewController.swift */,
 			);
 			path = Commons;
 			sourceTree = "<group>";
@@ -489,6 +506,7 @@
 				473DD83322F9CCB00002524F /* LaunchScreen.storyboard in Resources */,
 				473DD82B22F9CCAD0002524F /* Main.storyboard in Resources */,
 				47900D6A230C213700A316DE /* gestures.json in Resources */,
+				475F21DA232269670078D0F2 /* IndicatorViewController.xib in Resources */,
 				47FAA1192316C077003C041A /* Assets.xcassets in Resources */,
 				47FAA1242317DCE0003C041A /* GestureDetailsViewController.xib in Resources */,
 			);
@@ -543,9 +561,11 @@
 				473DD82622F9CCAD0002524F /* AppDelegate.swift in Sources */,
 				47FAA12F23180FF1003C041A /* GestureDetailsProtocols.swift in Sources */,
 				4782B434230AE06500ED329D /* GestureListInterector.swift in Sources */,
+				475F21DE2322874D0078D0F2 /* BaseViewController.swift in Sources */,
 				475F21D5232122AD0078D0F2 /* RequestProtocols.swift in Sources */,
 				47FAA1152316BFC8003C041A /* Requests.swift in Sources */,
 				47FAA1132316BFB0003C041A /* UIViewController+Extensions.swift in Sources */,
+				475F21D9232269670078D0F2 /* IndicatorViewController.swift in Sources */,
 				47FAA131231811C9003C041A /* GestureDetailsPresenter.swift in Sources */,
 				47FAA129231802FD003C041A /* UIApplication+Extensions.swift in Sources */,
 				4782B432230AE04C00ED329D /* GestureListWireFrame.swift in Sources */,

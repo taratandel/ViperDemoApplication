@@ -12,7 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GestureDetailsViewController" customModule="What_sThis" customModuleProvider="target">
             <connections>
-                <outlet property="gestureDetail" destination="thl-UD-uA8" id="Amp-PA-HIh"/>
+                <outlet property="gestureDetailTextView" destination="thl-UD-uA8" id="Nld-Ki-9Nh"/>
                 <outlet property="gestureImg" destination="eRV-Cp-MUe" id="djZ-mD-LJK"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

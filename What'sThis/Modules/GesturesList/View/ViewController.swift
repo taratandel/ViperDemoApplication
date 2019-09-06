@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, GestureListViewProtocol {
+class ViewController: BaseViewController, GestureListViewProtocol {
 
     @IBOutlet weak var gesturesCollectionView: UICollectionView!
     
@@ -17,6 +17,7 @@ class ViewController: UIViewController, GestureListViewProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        showIndicatorView(with: "Wait :/")
         gesturesCollectionView?.delegate = self
         gesturesCollectionView?.dataSource = self
     }
@@ -26,14 +27,18 @@ class ViewController: UIViewController, GestureListViewProtocol {
     }
     
     func reloadData(listOfGestures: [Gestures]) {
+        removeIndicator()
         gesture = listOfGestures
         gesturesCollectionView?.reloadData()
     }
     
     func fetchFailed(title: String, message: String, actions: [UIAlertAction]) {
+        removeIndicator()
         gesture = [Gestures]()
         showAlert(title: title, message: message, actions: actions)
     }
+    
+//    func showIndicatorView
 }
 
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {

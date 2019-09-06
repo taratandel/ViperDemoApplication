@@ -17,3 +17,9 @@ struct GestureDetails: Codable {
         return UIImage(named: imgName ?? "")
     }
 }
+
+struct DetailsResponse: Codable {
+    var success: Bool
+    var message: String
+    var data: GestureDetails
+}

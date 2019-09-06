@@ -12,15 +12,16 @@ import Alamofire
 class GestureListInterector: GestureListInputInterectorProtocl {
     weak var presenter: GestureListOutputPresenterProtocol?
     
-    var client: GetListData?
+    var client: GetListDataProtocol?
     var gestures: [Gestures]?
     
     func fetchGestureData() {
         client?.getTheListData()
+        
     }
 }
 
-extension GestureListInterector: ReqeustServices {
+extension GestureListInterector: RequestServices {
     func requestIsComplete(_ response: DataResponse<Any>) {
         switch response.result {
         case .success(_):

@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 
-protocol ReqeustServices: class {
+protocol RequestServices: class {
     func requestIsComplete(_ response: DataResponse<Any>)
 }
 

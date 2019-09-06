@@ -8,15 +8,16 @@
 
 import UIKit
 
-class GestureDetailsViewController: UIViewController {
+class GestureDetailsViewController: BaseViewController {
     @IBOutlet weak var gestureImg: UIImageView!
-    @IBOutlet weak var gestureDetail: UITextView!
+    @IBOutlet weak var gestureDetailTextView: UITextView!
     
     var gestureDetails: GestureDetails?
     var presenter: GestureDetailsPresenterProtocol!
     var id: String!
     override func viewDidLoad() {
         super.viewDidLoad()
+        showIndicatorView(with: "wait dg ah ://")
         presenter.detailsViewDidLoad(id: id)
         // Do any additional setup after loading the view.
     }
@@ -32,5 +33,14 @@ class GestureDetailsViewController: UIViewController {
 }
 
 extension GestureDetailsViewController: GestureDetailsViewProtocol {
+    func reloadData(gestureDetail: GestureDetails) {
+        removeIndicator()
+        gestureDetails = gestureDetail
+        gestureImg.image = gestureDetail.getImage()
+        gestureDetailTextView.text = gestureDetail.desc
+    }
     
+    func fetchFailed(title: String, message: String, actions: [UIAlertAction]) {
+        showAlert(title: title, message: message, actions: actions)
+    }
 }

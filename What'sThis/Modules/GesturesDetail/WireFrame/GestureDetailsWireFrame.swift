@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class GestureDetailsWireFrame: GestureDetailsWireFramProtocol {
     
@@ -17,9 +18,13 @@ class GestureDetailsWireFrame: GestureDetailsWireFramProtocol {
         
         let presenter: GestureDetailsPresenterProtocol & GestureDetailsOutputPresenterProtocol = GestureDetailsPresentor(interector: interector, router: wireFrame)
         
+        let client = FetchRemoteData(requestProtocol: interector)
+        
         view.presenter = presenter
         view.presenter.interface = view
         
         interector.presenter = presenter
+        interector.client = client
+
     }
 }

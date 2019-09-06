@@ -7,11 +7,11 @@
 //
 
 import Foundation
-
+import UIKit
 //Presenter -> View
 protocol GestureDetailsViewProtocol: class {
-//    func reloadData(listOfGestures: [Gestures])
-//    func fetchFailed(title: String, message: String, actions: [UIAlertAction])
+    func reloadData(gestureDetail: GestureDetails)
+    func fetchFailed(title: String, message: String, actions: [UIAlertAction])
 }
 
 //View -> Presenter
@@ -19,7 +19,6 @@ protocol GestureDetailsPresenterProtocol: class {
     
     var interface: GestureDetailsViewProtocol? {set get}
     func detailsViewDidLoad(id: String)
-//    func mainViewDidLoad()
 }
 
 //Presenter -> Interector
@@ -32,16 +31,18 @@ protocol GestureDetailsInputInterectorProtocl: class {
 
 //Interector -> Presenter
 protocol GestureDetailsOutputPresenterProtocol: class {
-//    func fetchIsComplete()
+    func fetchIsComplete()
+    func fetchFailed(error: Error, errorMessage: String?)
     
 }
 
 //Presenter -> WireFrame
 protocol GestureDetailsWireFramProtocol: class {
     static func creatTheGestureDetailsView(_ view: GestureDetailsViewController)
+    func openMainView(_ view: UIViewController)
 }
 
 // details request
 protocol GetDetailsDataProtocol: class {
-    func getDetails(parameters: [String: Any])
+    func getDetails(id: String)
 }

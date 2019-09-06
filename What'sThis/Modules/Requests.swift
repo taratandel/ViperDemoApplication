@@ -25,9 +25,9 @@ enum RequestType {
 
 class FetchRemoteData {
     var gestures: ArrayOfGestures!
-    weak var requestProtocol: ReqeustServices?
+    weak var requestProtocol: RequestServices?
     
-    init(requestProtocol: ReqeustServices) {
+    init(requestProtocol: RequestServices) {
         self.requestProtocol = requestProtocol
     }
     
@@ -42,7 +42,7 @@ class FetchRemoteData {
     }
 }
 
-extension FetchRemoteData: GetListData {
+extension FetchRemoteData: GetListDataProtocol {
     func getTheListData() {
         self.request(url: RequestType.list.path, method: .get, parameter: nil, header: nil) {
             response in
@@ -52,10 +52,10 @@ extension FetchRemoteData: GetListData {
 }
 
 extension FetchRemoteData: GetDetailsDataProtocol {
-    func getDetails(parameters: Parameters) {
-        self.request(url: RequestType.list.path, method: .post, parameter: parameters, header: nil) {
+    func getDetails(id: String) {
+        self.request(url: RequestType.detail(gestureID: id).path, method: .get, parameter: nil, header: nil) {
             response in
-            
+            self.requestProtocol?.requestIsComplete(response)
         }
     }
 }
