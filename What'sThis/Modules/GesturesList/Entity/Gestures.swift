@@ -27,20 +27,8 @@ struct Gestures: Codable {
     }
 }
 
-struct ArrayOfGestures: Codable {
-    var gestures: [Gestures]
-    
-    init(gestures: [Gestures]) {
-        self.gestures = gestures
-    }
-    
-    enum CodingKeys: String, CodingKey {
-        case gestures
-    }
-}
-
 struct Response: Codable {
     var success: Bool
     var message: String
-    var data : ArrayOfGestures
+    var data : [String: [Gestures]]
 }

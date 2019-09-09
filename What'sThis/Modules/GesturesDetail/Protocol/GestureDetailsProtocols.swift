@@ -39,7 +39,7 @@ protocol GestureDetailsOutputPresenterProtocol: class {
 //Presenter -> WireFrame
 protocol GestureDetailsWireFramProtocol: class {
     static func creatTheGestureDetailsView(_ view: GestureDetailsViewController)
-    func openMainView(_ view: UIViewController)
+    func openMainView()
 }
 
 // details request

@@ -27,4 +27,14 @@ class GestureDetailsWireFrame: GestureDetailsWireFramProtocol {
         interector.client = client
 
     }
+    
+    func openMainView() {
+        let nav = UINavigationController()
+        let initialStoryBoard = UIStoryboard(name: "Main", bundle: nil)
+        let vcs = initialStoryBoard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+        GestureListWireFrame.creatTheView(vcs)
+        nav.viewControllers = [vcs]
+        UIApplication.shared.keyWindow?.rootViewController = nav
+        
+    }
 }

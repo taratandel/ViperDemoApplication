@@ -12,8 +12,17 @@ class ViewController: BaseViewController, GestureListViewProtocol {
 
     @IBOutlet weak var gesturesCollectionView: UICollectionView!
     
-    var gesture = [Gestures]()
+    var gesture = [String: [Gestures]]()
     var presenter: GestureListPresenterProtocol!
+    
+    private let itemsPerRow = 3
+    
+    private let sectionInsets = UIEdgeInsets(top: 50.0,
+                                             left: 20.0,
+                                             bottom: 50.0,
+                                             right: 20.0)
+    
+    private var headerItems = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,48 +35,59 @@ class ViewController: BaseViewController, GestureListViewProtocol {
         presenter?.mainViewDidLoad()
     }
     
-    func reloadData(listOfGestures: [Gestures]) {
+    func reloadData(listOfGestures: [String: [Gestures]], listOfHeaders: [String]) {
         removeIndicator()
         gesture = listOfGestures
+        headerItems = listOfHeaders
         gesturesCollectionView?.reloadData()
+        gesturesCollectionView.layoutIfNeeded()
     }
     
     func fetchFailed(title: String, message: String, actions: [UIAlertAction]) {
         removeIndicator()
-        gesture = [Gestures]()
+        gesture = [String: [Gestures]]()
         showAlert(title: title, message: message, actions: actions)
     }
-    
-//    func showIndicatorView
 }
 
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return gesture.count
+        return gesture[headerItems[section]]?.count ?? 0
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        return gesture.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let gestureCell = gesturesCollectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! GestureCollectionViewCell
-        
-        gestureCell.fillData(gesture[indexPath.row])
+        guard let gestureDataToBuild = gesture[headerItems[indexPath.section]]?[indexPath.row] else {
+            return UICollectionViewCell()
+        }
+        gestureCell.fillData(gestureDataToBuild)
         return gestureCell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        presenter.didSelectGesture(id: gesture[indexPath.row].id)
+//        presenter?.didSelectGesture(id: gesture[indexPath.row].id)
     }
 }
 
 extension ViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 150, height: 150.0)
+        let paddingSpace = sectionInsets.left * CGFloat(itemsPerRow + 1)
+        let availableWidth = view.frame.width - paddingSpace
+        let widthPerItem = availableWidth / CGFloat(itemsPerRow)
+        
+        return CGSize(width: widthPerItem, height: widthPerItem)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12)
+        return sectionInsets
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return sectionInsets.left
+    }
+    
 }

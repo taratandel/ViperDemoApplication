@@ -24,7 +24,6 @@ enum RequestType {
 }
 
 class FetchRemoteData {
-    var gestures: ArrayOfGestures!
     weak var requestProtocol: RequestServices?
     
     init(requestProtocol: RequestServices) {

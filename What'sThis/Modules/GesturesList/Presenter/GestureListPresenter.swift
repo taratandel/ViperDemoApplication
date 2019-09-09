@@ -11,7 +11,7 @@ import UIKit
 
 class GestureListPresenter: GestureListPresenterProtocol {
     private var wireFrame: GestureListWireFramProtocol?
-    var view: GestureListViewProtocol?
+    weak var view: GestureListViewProtocol?
     private var interector: GestureListInputInterectorProtocl?
     
     init(wireFrame: GestureListWireFramProtocol, interector: GestureListInputInterectorProtocl, client: FetchRemoteData) {
@@ -40,7 +40,12 @@ extension GestureListPresenter: GestureListOutputPresenterProtocol {
             view?.fetchFailed(title: "Something is Wrong", message: "Please try again", actions: actions)
             return
         }
-        view?.reloadData(listOfGestures: listOfGesture)
+        
+        var arrayOfHeaders = [String]()
+        for item in listOfGesture {
+            arrayOfHeaders.append(item.key)
+        }
+        view?.reloadData(listOfGestures: listOfGesture, listOfHeaders: arrayOfHeaders)
     }
     
     func fetchFailed(error: Error, message: String?) {
@@ -51,23 +56,23 @@ extension GestureListPresenter: GestureListOutputPresenterProtocol {
                 })]
                 view?.fetchFailed(title: "Request Error", message: message!, actions: actions)
             case MovieErrorType.noInternet:
-                let actions = [UIAlertAction(title: "Retry", style: .cancel, handler: { (action) in
-                    self.mainViewDidLoad()
+                let actions = [UIAlertAction(title: "Retry", style: .cancel, handler: { [weak self](action) in
+                    self?.mainViewDidLoad()
                 })]
                 view?.fetchFailed(title: "NO Internet", message: message!, actions: actions)
             case MovieErrorType.serverError:
-                let actions = [UIAlertAction(title: "Retry", style: .cancel, handler: { (action) in
-                    self.mainViewDidLoad()
+                let actions = [UIAlertAction(title: "Retry", style: .cancel, handler: { [weak self](action) in
+                    self?.mainViewDidLoad()
                 })]
                 view?.fetchFailed(title: "Server Error", message: message!, actions: actions)
             default:
-                let actions = [UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) in
+                let actions = [UIAlertAction(title: "Cancel", style: .cancel, handler: {(action) in
                 })]
                 view?.fetchFailed(title: "Request Failed", message: message!, actions: actions)
             }
         } else {
-            let actions = [UIAlertAction(title: "Retry", style: .cancel, handler: {(action) in
-                self.mainViewDidLoad()
+            let actions = [UIAlertAction(title: "Retry", style: .cancel, handler: { [weak self](action) in
+                self?.mainViewDidLoad()
             })]
             view?.fetchFailed(title: "Oops", message: error.localizedDescription, actions: actions)
         }

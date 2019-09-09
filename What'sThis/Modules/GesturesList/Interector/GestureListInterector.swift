@@ -13,7 +13,7 @@ class GestureListInterector: GestureListInputInterectorProtocl {
     weak var presenter: GestureListOutputPresenterProtocol?
     
     var client: GetListDataProtocol?
-    var gestures: [Gestures]?
+    var gestures: [String:[Gestures]]?
     
     func fetchGestureData() {
         client?.getTheListData()
@@ -28,7 +28,7 @@ extension GestureListInterector: RequestServices {
             do {
                 let parsedData = try JSONDecoder().decode(Response.self, from: response.data ?? Data())
                 if parsedData.success {
-                    gestures = parsedData.data.gestures
+                    gestures = parsedData.data
                     presenter?.fetchIsComplete()
                 }
                 else {

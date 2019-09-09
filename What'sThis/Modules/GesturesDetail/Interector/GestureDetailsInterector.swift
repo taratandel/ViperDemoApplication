@@ -11,7 +11,7 @@ import Alamofire
 
 class GestureDetailsInterector: GestureDetailsInputInterectorProtocl {
     
-    var presenter: GestureDetailsOutputPresenterProtocol?
+    weak var presenter: GestureDetailsOutputPresenterProtocol?
     var gestureDetails: GestureDetails?
     var client: GetDetailsDataProtocol?
     
