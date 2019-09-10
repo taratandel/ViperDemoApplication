@@ -8,23 +8,12 @@
 
 import Foundation
 import UIKit
+import SDWebImage
 
 struct Gestures: Codable {
     var name: String
     var id: String
-    var imageName: String
-
-    init(name: String, descr: String, imN: String) {
-        self.name = name
-        self.id = descr
-        self.imageName = imN
-    }
-    
-    enum CodingKeys: String, CodingKey {
-        case name
-        case id
-        case imageName
-    }
+    var thumbNailImageURL: String
 }
 
 struct Response: Codable {

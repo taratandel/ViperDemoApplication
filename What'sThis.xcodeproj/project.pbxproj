@@ -24,6 +24,9 @@
 		475F21DA232269670078D0F2 /* IndicatorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 475F21D8232269670078D0F2 /* IndicatorViewController.xib */; };
 		475F21DE2322874D0078D0F2 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475F21DD2322874D0078D0F2 /* BaseViewController.swift */; };
 		475F21E02326A2510078D0F2 /* HeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475F21DF2326A2510078D0F2 /* HeaderCollectionReusableView.swift */; };
+		475F21E42327B4060078D0F2 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 475F21E32327B4030078D0F2 /* SDWebImage.framework */; };
+		475F21E52327B4F80078D0F2 /* SDWebImage.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 475F21E32327B4030078D0F2 /* SDWebImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		475F21E72327F69F0078D0F2 /* FlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475F21E62327F69F0078D0F2 /* FlowLayout.swift */; };
 		4782B430230ADE0A00ED329D /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4782B42F230ADE0A00ED329D /* Protocols.swift */; };
 		4782B432230AE04C00ED329D /* GestureListWireFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4782B431230AE04C00ED329D /* GestureListWireFrame.swift */; };
 		4782B434230AE06500ED329D /* GestureListInterector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4782B433230AE06500ED329D /* GestureListInterector.swift */; };
@@ -76,6 +79,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				475F21E52327B4F80078D0F2 /* SDWebImage.framework in CopyFiles */,
 				475F21C9231FA5860078D0F2 /* Alamofire.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -106,6 +110,8 @@
 		475F21D8232269670078D0F2 /* IndicatorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IndicatorViewController.xib; sourceTree = "<group>"; };
 		475F21DD2322874D0078D0F2 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		475F21DF2326A2510078D0F2 /* HeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCollectionReusableView.swift; sourceTree = "<group>"; };
+		475F21E32327B4030078D0F2 /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDWebImage.framework; path = Carthage/Build/iOS/SDWebImage.framework; sourceTree = "<group>"; };
+		475F21E62327F69F0078D0F2 /* FlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowLayout.swift; sourceTree = "<group>"; };
 		4782B42F230ADE0A00ED329D /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		4782B431230AE04C00ED329D /* GestureListWireFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureListWireFrame.swift; sourceTree = "<group>"; };
 		4782B433230AE06500ED329D /* GestureListInterector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureListInterector.swift; sourceTree = "<group>"; };
@@ -139,6 +145,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				475F21E42327B4060078D0F2 /* SDWebImage.framework in Frameworks */,
 				475F21C5231FA4B10078D0F2 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -163,6 +170,7 @@
 		473DD81922F9CCAD0002524F = {
 			isa = PBXGroup;
 			children = (
+				475F21E32327B4030078D0F2 /* SDWebImage.framework */,
 				475F21C8231FA5860078D0F2 /* Alamofire.framework */,
 				473DD82422F9CCAD0002524F /* What'sThis */,
 				473DD83C22F9CCB10002524F /* What'sThisTests */,
@@ -247,6 +255,7 @@
 				473DD82722F9CCAD0002524F /* ViewController.swift */,
 				4782B440230C019500ED329D /* GestureCollectionViewCell.swift */,
 				475F21DF2326A2510078D0F2 /* HeaderCollectionReusableView.swift */,
+				475F21E62327F69F0078D0F2 /* FlowLayout.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -543,6 +552,7 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SDWebImage.framework",
 			);
 			outputFileListPaths = (
 			);
@@ -580,6 +590,7 @@
 				47FAA12C2318082E003C041A /* GestureDetailsWireFrame.swift in Sources */,
 				47FAA1262317DFAC003C041A /* GestureDetails.swift in Sources */,
 				4782B436230AE07800ED329D /* Gestures.swift in Sources */,
+				475F21E72327F69F0078D0F2 /* FlowLayout.swift in Sources */,
 				47FAA135231812A8003C041A /* GestureDetailsInterector.swift in Sources */,
 				47FAA13B23193624003C041A /* Result.swift in Sources */,
 				4782B430230ADE0A00ED329D /* Protocols.swift in Sources */,

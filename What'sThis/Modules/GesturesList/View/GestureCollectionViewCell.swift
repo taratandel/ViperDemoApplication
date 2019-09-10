@@ -7,18 +7,32 @@
 //
 
 import UIKit
+import SDWebImage
 
 class GestureCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var gestureImage: UIImageView!
     @IBOutlet weak var gestureName: UILabel!
+    @IBOutlet weak var imageLoader: UIActivityIndicatorView!
     
     func fillData (_ gesture: Gestures) {
-        self.gestureImage.image = UIImage(named: gesture.imageName)
+        imageLoader.startAnimating()
+        self.gestureImage.sd_imageIndicator = SDWebImageActivityIndicator.gray
+        self.gestureImage.sd_setImage(with: URL(string: gesture.thumbNailImageURL), placeholderImage: UIImage(named: "g1"), options: .progressiveLoad, completed: {
+            [weak self]  (_,_,_,_) in
+            self?.imageLoader.isHidden = true
+        })
         self.gestureImage.backgroundColor = .red
         self.gestureName.text = gesture.name
         self.gestureName.backgroundColor = .darkGray
         self.gestureName.textColor = .white
         self.backgroundColor = .black
+    }
+    
+    override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
+        layoutIfNeeded()
+        let layoutAttributes = super.preferredLayoutAttributesFitting(layoutAttributes)
+        layoutAttributes.bounds.size = systemLayoutSizeFitting(UIView.layoutFittingCompressedSize, withHorizontalFittingPriority: .required, verticalFittingPriority: .defaultLow)
+        return layoutAttributes
     }
 }

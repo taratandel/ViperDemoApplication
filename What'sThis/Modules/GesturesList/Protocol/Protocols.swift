@@ -13,6 +13,7 @@ import UIKit
 protocol GestureListViewProtocol: class {
     func reloadData(listOfGestures: [String: [Gestures]], listOfHeaders: [String])
     func fetchFailed(title: String, message: String, actions: [UIAlertAction])
+
 }
 
 //View -> Presenter
@@ -22,6 +23,11 @@ protocol GestureListPresenterProtocol: class {
     
     func mainViewDidLoad()
     func didSelectGesture(id: String)
+    
+    func getGesturesForHeader(at indexPath: IndexPath) -> Gestures?
+    func getTheNumberOfItemsInSection(_ section: Int) -> Int?
+    func getTheTitleHeader(at section: Int) -> String?
+    func getTheNumberOfSections() -> Int?
 }
 
 //Presenter -> Interector

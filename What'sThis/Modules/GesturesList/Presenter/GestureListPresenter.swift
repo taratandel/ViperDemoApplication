@@ -31,7 +31,6 @@ class GestureListPresenter: GestureListPresenterProtocol {
 
 extension GestureListPresenter: GestureListOutputPresenterProtocol {
     
-    
     func fetchIsComplete() {
         guard let listOfGesture = interector?.gestures else {
             let actions = [UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) in
@@ -77,5 +76,34 @@ extension GestureListPresenter: GestureListOutputPresenterProtocol {
             view?.fetchFailed(title: "Oops", message: error.localizedDescription, actions: actions)
         }
     }
+    
+    func getGesturesForHeader(at indexPath: IndexPath) -> Gestures? {
+        guard let headerTitle = getTheTitleHeader(at: indexPath.section) else {
+            return nil
+        }
+        return self.interector?.gestures?[headerTitle]?[indexPath.row]
+    }
+    
+    func getTheNumberOfItemsInSection(_ section: Int) -> Int? {
+        guard let headerTitle = getTheTitleHeader(at: section) else {
+            return nil
+        }
+        return self.interector?.gestures?[headerTitle]?.count
+    }
+    
+    func getTheTitleHeader(at section: Int) -> String? {
+        var headerItems: [String] = []
+        guard let gestures = self.interector?.gestures else {
+            return nil
+        }
+        for item in gestures {
+            headerItems.append(item.key)
+        }
+        
+        return headerItems[section]
+    }
+    
+    func getTheNumberOfSections() -> Int? {
+        return self.interector?.gestures?.count
+    }
 }
-

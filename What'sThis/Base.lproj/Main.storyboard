@@ -54,29 +54,36 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="a0d-bR-HmK">
+                                                    <rect key="frame" x="65" y="46.5" width="20" height="20"/>
+                                                </activityIndicatorView>
                                             </subviews>
                                         </view>
                                         <constraints>
-                                            <constraint firstItem="9gq-B4-48t" firstAttribute="leading" secondItem="UaH-W1-JZX" secondAttribute="leading" constant="12" id="1HS-zD-ksL"/>
+                                            <constraint firstItem="9gq-B4-48t" firstAttribute="leading" secondItem="UaH-W1-JZX" secondAttribute="leading" constant="12" id="0Wb-in-Q2G"/>
+                                            <constraint firstItem="a0d-bR-HmK" firstAttribute="centerX" secondItem="9gq-B4-48t" secondAttribute="centerX" id="MTw-QW-9em"/>
                                             <constraint firstItem="Cqk-F3-QCQ" firstAttribute="top" secondItem="9gq-B4-48t" secondAttribute="bottom" constant="8" id="UMT-N3-kbB"/>
                                             <constraint firstItem="Cqk-F3-QCQ" firstAttribute="leading" secondItem="UaH-W1-JZX" secondAttribute="leadingMargin" constant="12" id="hwn-ww-lyg"/>
-                                            <constraint firstAttribute="trailing" secondItem="9gq-B4-48t" secondAttribute="trailing" constant="12" id="iXH-5w-cUO"/>
+                                            <constraint firstItem="a0d-bR-HmK" firstAttribute="centerY" secondItem="9gq-B4-48t" secondAttribute="centerY" id="iTl-Zo-rHb"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="Cqk-F3-QCQ" secondAttribute="trailing" constant="12" id="ldi-i1-wsb"/>
                                             <constraint firstItem="9gq-B4-48t" firstAttribute="top" secondItem="UaH-W1-JZX" secondAttribute="top" constant="12" id="rB5-XZ-qjd"/>
+                                            <constraint firstAttribute="bottom" secondItem="Cqk-F3-QCQ" secondAttribute="bottom" constant="20.5" id="v4Z-p7-AcM"/>
+                                            <constraint firstAttribute="trailing" secondItem="9gq-B4-48t" secondAttribute="trailing" constant="12" id="ypu-pg-6Jb"/>
                                         </constraints>
                                         <size key="customSize" width="150" height="150"/>
                                         <connections>
                                             <outlet property="gestureImage" destination="9gq-B4-48t" id="nLe-g2-xWu"/>
                                             <outlet property="gestureName" destination="Cqk-F3-QCQ" id="V7G-z7-N1K"/>
+                                            <outlet property="imageLoader" destination="a0d-bR-HmK" id="rPp-H7-GMZ"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="GestureListCollectionViewHeader" id="j1k-VI-Fr9" customClass="HeaderCollectionReusableView" customModule="What_sThis" customModuleProvider="target">
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="HeaderCollectionReusableView" id="j1k-VI-Fr9" customClass="HeaderCollectionReusableView" customModule="What_sThis" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qMc-pW-jIN">
-                                            <rect key="frame" x="166" y="34" width="42" height="21"/>
+                                            <rect key="frame" x="166.5" y="34.5" width="42" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -87,6 +94,9 @@
                                         <constraint firstItem="qMc-pW-jIN" firstAttribute="centerX" secondItem="j1k-VI-Fr9" secondAttribute="centerX" id="WL4-6z-xF4"/>
                                         <constraint firstItem="qMc-pW-jIN" firstAttribute="centerY" secondItem="j1k-VI-Fr9" secondAttribute="centerY" id="c9o-ow-t1E"/>
                                     </constraints>
+                                    <connections>
+                                        <outlet property="sectionHeaderLabel" destination="qMc-pW-jIN" id="bOs-Fe-2Ek"/>
+                                    </connections>
                                 </collectionReusableView>
                             </collectionView>
                         </subviews>

@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+import UIKit
 
 class GestureListInterector: GestureListInputInterectorProtocl {
     weak var presenter: GestureListOutputPresenterProtocol?
