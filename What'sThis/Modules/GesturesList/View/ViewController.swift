@@ -48,7 +48,6 @@ class ViewController: BaseViewController, GestureListViewProtocol {
         (gesturesCollectionView.collectionViewLayout as! UICollectionViewFlowLayout).estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         (gesturesCollectionView.collectionViewLayout as! UICollectionViewFlowLayout).sectionInsetReference = .fromLayoutMargins
         
-        gesturesCollectionView.collectionViewLayout = FlowLayout()
         gesturesCollectionView.contentInsetAdjustmentBehavior = .always
         
         gesturesCollectionView?.delegate = self
@@ -134,7 +133,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
         let availableWidth = view.frame.width - paddingSpace
         let widthPerItem = availableWidth / CGFloat(itemsPerRow)
 
-        return CGSize(width: widthPerItem, height: 100)
+        return CGSize(width: widthPerItem, height: widthPerItem)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
