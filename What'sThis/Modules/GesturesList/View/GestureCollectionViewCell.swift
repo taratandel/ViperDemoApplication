@@ -15,6 +15,19 @@ class GestureCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var gestureName: UILabel!
     @IBOutlet weak var imageLoader: UIActivityIndicatorView!
     
+    override var isSelected: Bool {
+        didSet {
+            gestureImage.layer.borderWidth = isSelected ? 10 : 2
+            gestureImage.layer.borderColor = isSelected ? UIColor.red.cgColor : UIColor.blue.cgColor
+
+        }
+    }
+    
+    override func awakeFromNib() {
+        isSelected = false
+        super.awakeFromNib()
+    }
+    
     func fillData (_ gesture: Gestures) {
         imageLoader.startAnimating()
         self.gestureImage.sd_imageIndicator = SDWebImageActivityIndicator.gray
@@ -35,4 +48,11 @@ class GestureCollectionViewCell: UICollectionViewCell {
         layoutAttributes.bounds.size = systemLayoutSizeFitting(UIView.layoutFittingCompressedSize, withHorizontalFittingPriority: .required, verticalFittingPriority: .defaultLow)
         return layoutAttributes
     }
+
 }
+//extension GestureCollectionViewCell: UIGestureRecognizerDelegate {
+//
+//    @objc func changeTheBorderColor() {
+//        willSelect = true
+//    }
+//}

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		471F7AC62328FF75007FAF1D /* TopBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471F7AC42328FF75007FAF1D /* TopBarViewController.swift */; };
+		471F7AC72328FF75007FAF1D /* TopBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 471F7AC52328FF75007FAF1D /* TopBarViewController.xib */; };
 		473DD82622F9CCAD0002524F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473DD82522F9CCAD0002524F /* AppDelegate.swift */; };
 		473DD82822F9CCAD0002524F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473DD82722F9CCAD0002524F /* ViewController.swift */; };
 		473DD82B22F9CCAD0002524F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 473DD82922F9CCAD0002524F /* Main.storyboard */; };
@@ -86,6 +88,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		471F7AC42328FF75007FAF1D /* TopBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBarViewController.swift; sourceTree = "<group>"; };
+		471F7AC52328FF75007FAF1D /* TopBarViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopBarViewController.xib; sourceTree = "<group>"; };
 		473DD82222F9CCAD0002524F /* What'sThis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "What'sThis.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		473DD82522F9CCAD0002524F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		473DD82722F9CCAD0002524F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -253,6 +257,8 @@
 				473DD82722F9CCAD0002524F /* ViewController.swift */,
 				4782B440230C019500ED329D /* GestureCollectionViewCell.swift */,
 				475F21DF2326A2510078D0F2 /* HeaderCollectionReusableView.swift */,
+				471F7AC42328FF75007FAF1D /* TopBarViewController.swift */,
+				471F7AC52328FF75007FAF1D /* TopBarViewController.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -511,6 +517,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				471F7AC72328FF75007FAF1D /* TopBarViewController.xib in Resources */,
 				47FAA13723190CD5003C041A /* gestureDetails.json in Resources */,
 				473DD83322F9CCB00002524F /* LaunchScreen.storyboard in Resources */,
 				473DD82B22F9CCAD0002524F /* Main.storyboard in Resources */,
@@ -586,6 +593,7 @@
 				47900D8C230FF73900A316DE /* main.swift in Sources */,
 				47FAA12C2318082E003C041A /* GestureDetailsWireFrame.swift in Sources */,
 				47FAA1262317DFAC003C041A /* GestureDetails.swift in Sources */,
+				471F7AC62328FF75007FAF1D /* TopBarViewController.swift in Sources */,
 				4782B436230AE07800ED329D /* Gestures.swift in Sources */,
 				47FAA135231812A8003C041A /* GestureDetailsInterector.swift in Sources */,
 				47FAA13B23193624003C041A /* Result.swift in Sources */,

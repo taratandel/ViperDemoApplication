@@ -12,15 +12,20 @@ class ViewController: BaseViewController, GestureListViewProtocol {
 
     @IBOutlet weak var gesturesCollectionView: UICollectionView!
     
-    var presenter: GestureListPresenterProtocol!
+    @IBOutlet weak var stackView: UIStackView!
     
+    var presenter: GestureListPresenterProtocol!
+        
     private let itemsPerRow = 3
     private let sectionInsets = UIEdgeInsets(top: 50.0,
                                              left: 20.0,
                                              bottom: 50.0,
                                              right: 20.0)
 
-    
+    lazy var topBarView: SearchBarViewController = {
+        return SearchBarViewController(for: self)
+    }()
+
     var largePhotoIndexPath: IndexPath? {
         didSet {
             var indexPaths: [IndexPath] = []
@@ -45,13 +50,7 @@ class ViewController: BaseViewController, GestureListViewProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         showIndicatorView(with: "Wait :/")
-        (gesturesCollectionView.collectionViewLayout as! UICollectionViewFlowLayout).estimatedItemSize = UICollectionViewFlowLayout.automaticSize
-        (gesturesCollectionView.collectionViewLayout as! UICollectionViewFlowLayout).sectionInsetReference = .fromLayoutMargins
-        
-        gesturesCollectionView.contentInsetAdjustmentBehavior = .always
-        
-        gesturesCollectionView?.delegate = self
-        gesturesCollectionView?.dataSource = self
+        setupCollectionView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -62,11 +61,23 @@ class ViewController: BaseViewController, GestureListViewProtocol {
         removeIndicator()
         gesturesCollectionView?.reloadData()
         gesturesCollectionView.layoutIfNeeded()
+        navigationItem.searchController = topBarView.searchController
+        definesPresentationContext = true
     }
     
     func fetchFailed(title: String, message: String, actions: [UIAlertAction]) {
         removeIndicator()
         showAlert(title: title, message: message, actions: actions)
+    }
+    
+    func setupCollectionView() {
+        (gesturesCollectionView.collectionViewLayout as! UICollectionViewFlowLayout).estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        (gesturesCollectionView.collectionViewLayout as! UICollectionViewFlowLayout).sectionInsetReference = .fromLayoutMargins
+        
+        gesturesCollectionView.contentInsetAdjustmentBehavior = .always
+        
+        gesturesCollectionView?.delegate = self
+        gesturesCollectionView?.dataSource = self
     }
 }
 
@@ -89,20 +100,22 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let id = presenter.getGesturesForHeader(at: indexPath)?.id else {
-            return
+        if largePhotoIndexPath != indexPath {
+            guard let id = presenter.getGesturesForHeader(at: indexPath)?.id else {
+                return
+            }
+            presenter?.didSelectGesture(id: id)
         }
-        presenter?.didSelectGesture(id: id)
     }
     
     func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         if largePhotoIndexPath == indexPath {
             largePhotoIndexPath = nil
-            return true
         } else {
             largePhotoIndexPath = indexPath
-            return false
         }
+        
+        return true
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -144,4 +157,9 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
         return sectionInsets.left
     }
 
+}
+extension ViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        print("p")
+    }
 }

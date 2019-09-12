@@ -68,6 +68,8 @@ extension GestureDetailsPresentor: GestureDetailsOutputPresenterProtocol {
         } else if let id = id {
             let actions = [UIAlertAction(title: "Retry", style: .cancel, handler: {[weak self] (action) in
                 self?.detailsViewDidLoad(id: id)
+            }), UIAlertAction(title: "Cancel", style: .destructive, handler: {[weak self] (action) in
+                self?.openMainView()
             })]
             interface?.fetchFailed(title: "Oops", message: error.localizedDescription, actions: actions)
         } else {
