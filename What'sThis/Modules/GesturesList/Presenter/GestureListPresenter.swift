@@ -14,6 +14,7 @@ class GestureListPresenter: GestureListPresenterProtocol {
     weak var view: GestureListViewProtocol?
     private var interector: GestureListInputInterectorProtocl?
     
+    private var list: [String: [Gestures]]?
     init(wireFrame: GestureListWireFramProtocol, interector: GestureListInputInterectorProtocl, client: FetchRemoteData) {
         self.wireFrame = wireFrame
         self.interector = interector
@@ -30,9 +31,17 @@ class GestureListPresenter: GestureListPresenterProtocol {
 }
 
 extension GestureListPresenter: GestureListOutputPresenterProtocol {
+    func filteredResults(returnedResult: [String : [Searchable]]) {
+        guard let filteredGestures: [String: [Gestures]] = returnedResult as? [String : [Gestures]] else {return}
+        // needs more thinking does not worth the effort the array is big 
+            list = filteredGestures
+            view?.reloadData(listOfGestures: filteredGestures, listOfHeaders: Array(filteredGestures.keys))
+    }
+    
     
     func fetchIsComplete() {
-        guard let listOfGesture = interector?.gestures else {
+        list = interector?.gestures
+        guard let listOfGesture = list else {
             let actions = [UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) in
                 print("Cancel tapped")
             })]
@@ -40,10 +49,7 @@ extension GestureListPresenter: GestureListOutputPresenterProtocol {
             return
         }
         
-        var arrayOfHeaders = [String]()
-        for item in listOfGesture {
-            arrayOfHeaders.append(item.key)
-        }
+        let arrayOfHeaders = Array(listOfGesture.keys)
         view?.reloadData(listOfGestures: listOfGesture, listOfHeaders: arrayOfHeaders)
     }
     
@@ -81,19 +87,19 @@ extension GestureListPresenter: GestureListOutputPresenterProtocol {
         guard let headerTitle = getTheTitleHeader(at: indexPath.section) else {
             return nil
         }
-        return self.interector?.gestures?[headerTitle]?[indexPath.row]
+        return list?[headerTitle]?[indexPath.row]
     }
     
     func getTheNumberOfItemsInSection(_ section: Int) -> Int? {
         guard let headerTitle = getTheTitleHeader(at: section) else {
             return nil
         }
-        return self.interector?.gestures?[headerTitle]?.count
+        return list?[headerTitle]?.count
     }
     
     func getTheTitleHeader(at section: Int) -> String? {
         var headerItems: [String] = []
-        guard let gestures = self.interector?.gestures else {
+        guard let gestures = list else {
             return nil
         }
         for item in gestures {
@@ -104,6 +110,10 @@ extension GestureListPresenter: GestureListOutputPresenterProtocol {
     }
     
     func getTheNumberOfSections() -> Int? {
-        return self.interector?.gestures?.count
+        return list?.count
+    }
+    
+    func shouldFilter(with text: String, scope: SearchTypes)  {
+        interector?.filterContentForText(text, scope: scope)
     }
 }

@@ -33,14 +33,4 @@ class SearchBarViewController {
     func searchBarIsEmpty() -> Bool {
         return searchController.searchBar.text?.isEmpty ?? true
     }
-    
-    func filterContentForText(_ searchText: String, in objectToSearch: [String:String], scope: String = "All") {
-        let filteredObjects = objectToSearch.filter({( filteredObject : [String:String]) -> Bool in
-            return objectToSearch.
-        })
-    }
-}
-
-struct searchObjects {
-    
 }

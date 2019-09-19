@@ -160,6 +160,8 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
 }
 extension ViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        print("p")
+        if !topBarView.searchBarIsEmpty() {
+            presenter.shouldFilter(with: topBarView.searchController.searchBar.text!, scope: .both)
+        }
     }
 }

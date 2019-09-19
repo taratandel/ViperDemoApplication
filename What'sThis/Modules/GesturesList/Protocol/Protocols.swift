@@ -28,6 +28,7 @@ protocol GestureListPresenterProtocol: class {
     func getTheNumberOfItemsInSection(_ section: Int) -> Int?
     func getTheTitleHeader(at section: Int) -> String?
     func getTheNumberOfSections() -> Int?
+    func shouldFilter(with text: String, scope: SearchTypes)
 }
 
 //Presenter -> Interector
@@ -37,12 +38,15 @@ protocol GestureListInputInterectorProtocl: class {
     var gestures: [String:[Gestures]]? {get set}
     
     func fetchGestureData()
+    func filterContentForText(_ searchText: String, scope: SearchTypes)
 }
 
 //Interector -> Presenter
 protocol GestureListOutputPresenterProtocol: class {
     func fetchIsComplete()
     func fetchFailed(error: Error, message: String?)
+    
+    func filteredResults(returnedResult: [String: [Searchable]])
     
 }
 

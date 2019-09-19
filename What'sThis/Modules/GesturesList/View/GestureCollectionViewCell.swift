@@ -50,9 +50,3 @@ class GestureCollectionViewCell: UICollectionViewCell {
     }
 
 }
-//extension GestureCollectionViewCell: UIGestureRecognizerDelegate {
-//
-//    @objc func changeTheBorderColor() {
-//        willSelect = true
-//    }
-//}
