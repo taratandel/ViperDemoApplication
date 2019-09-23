@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
+        Appearances.setGlobalAppearance()
         window = UIWindow()
         let initialStoryBoard = UIStoryboard(name: "Main", bundle: nil)
         let vc = initialStoryBoard.instantiateViewController(withIdentifier: "ViewController") as! ViewController

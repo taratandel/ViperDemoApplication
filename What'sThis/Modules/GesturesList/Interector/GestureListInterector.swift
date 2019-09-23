@@ -24,27 +24,30 @@ class GestureListInterector: GestureListInputInterectorProtocl {
     func filterContentForText(_ searchText: String, scope: SearchTypes) {
         var returnedResult = [String: [Gestures]]()
         guard let objectToSearch = gestures else { return }
+        
+        let searchText = searchText.lowercased()
+        
         switch scope {
         case .all:
             returnedResult = objectToSearch.filter {
-                let result =  $0.key.contains(searchText) || $0.value.map{$0.name}.contains(searchText)
+                let result =  $0.key.lowercased().contains(searchText) || $0.value.map{$0.name.lowercased()}.contains(searchText)
                 return result
             }
         case .both:
             let returnedkeys = objectToSearch.filter {
-                let result = ($0.key.contains(searchText))
+                let result = ($0.key.lowercased().contains(searchText))
                 return result
                 }
             for (key, array) in returnedkeys {
-                returnedResult[key] = array.filter { $0.name.contains(searchText) }
+                returnedResult[key] = array.filter { $0.name.lowercased().contains(searchText) }
             }
         case .values:
             for (key, array) in objectToSearch {
-                returnedResult[key] = array.filter { $0.name.contains(searchText) }
+                returnedResult[key] = array.filter { $0.name.lowercased().contains(searchText) }
             }
         case .key:
             returnedResult = objectToSearch.filter {
-                let result = $0.key.contains(searchText.lowercased())
+                let result = $0.key.lowercased().contains(searchText)
                 return result
             }
         }

@@ -1,2 +1,3 @@
 github "Alamofire/Alamofire"
 github "SDWebImage/SDWebImage"
+github "ElaWorkshop/TagListView" ~> 0.2

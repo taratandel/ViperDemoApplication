@@ -17,14 +17,13 @@ class ViewController: BaseViewController, GestureListViewProtocol {
     var presenter: GestureListPresenterProtocol!
         
     private let itemsPerRow = 3
-    private let sectionInsets = UIEdgeInsets(top: 50.0,
-                                             left: 20.0,
-                                             bottom: 50.0,
-                                             right: 20.0)
+    private let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
 
     lazy var topBarView: SearchBarViewController = {
         return SearchBarViewController(for: self)
     }()
+    
+    var taglistVC = TopBarViewController.init(nibName: nil, bundle: nil)
 
     var largePhotoIndexPath: IndexPath? {
         didSet {
@@ -53,6 +52,10 @@ class ViewController: BaseViewController, GestureListViewProtocol {
         setupCollectionView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.navigationController?.navigationBar.shouldRemoveShadow(true)
+    }
     override func viewDidAppear(_ animated: Bool) {
         presenter?.mainViewDidLoad()
     }
@@ -63,6 +66,10 @@ class ViewController: BaseViewController, GestureListViewProtocol {
         gesturesCollectionView.layoutIfNeeded()
         navigationItem.searchController = topBarView.searchController
         definesPresentationContext = true
+        presenter.shouldLoadTagList(tagList: &taglistVC)
+        
+        stackView.insertArrangedSubview(taglistVC.view, at: 0)
+
     }
     
     func fetchFailed(title: String, message: String, actions: [UIAlertAction]) {
@@ -78,6 +85,7 @@ class ViewController: BaseViewController, GestureListViewProtocol {
         
         gesturesCollectionView?.delegate = self
         gesturesCollectionView?.dataSource = self
+        
     }
 }
 
@@ -142,6 +150,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
             size.width -= (sectionInsets.left + sectionInsets.right)
             return size
         }
+
         let paddingSpace = sectionInsets.left * CGFloat(itemsPerRow + 1)
         let availableWidth = view.frame.width - paddingSpace
         let widthPerItem = availableWidth / CGFloat(itemsPerRow)
@@ -160,8 +169,16 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
 }
 extension ViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        if !topBarView.searchBarIsEmpty() {
+        if shouldSearch() {
+            showIndicatorView(with: "loading your search just wait :*")
             presenter.shouldFilter(with: topBarView.searchController.searchBar.text!, scope: .both)
+        } else {
+            presenter.retrieveTheList()
+            gesturesCollectionView.reloadData()
         }
+    }
+    
+    func shouldSearch() -> Bool {
+        return !topBarView.searchBarIsEmpty() && topBarView.searchController.isActive
     }
 }

@@ -29,6 +29,8 @@ protocol GestureListPresenterProtocol: class {
     func getTheTitleHeader(at section: Int) -> String?
     func getTheNumberOfSections() -> Int?
     func shouldFilter(with text: String, scope: SearchTypes)
+    func retrieveTheList()
+    func shouldLoadTagList(tagList: inout TopBarViewController)
 }
 
 //Presenter -> Interector

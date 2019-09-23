@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		471F7AC62328FF75007FAF1D /* TopBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471F7AC42328FF75007FAF1D /* TopBarViewController.swift */; };
+		471F7AC62328FF75007FAF1D /* SearchBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471F7AC42328FF75007FAF1D /* SearchBarViewController.swift */; };
 		471F7AC72328FF75007FAF1D /* TopBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 471F7AC52328FF75007FAF1D /* TopBarViewController.xib */; };
 		473DD82622F9CCAD0002524F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473DD82522F9CCAD0002524F /* AppDelegate.swift */; };
 		473DD82822F9CCAD0002524F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473DD82722F9CCAD0002524F /* ViewController.swift */; };
@@ -21,7 +21,7 @@
 		474FBEC62313ECFF00375421 /* MockClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474FBEC52313ECFF00375421 /* MockClasses.swift */; };
 		475F21C5231FA4B10078D0F2 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 475F21C4231FA4B10078D0F2 /* Alamofire.framework */; };
 		475F21C9231FA5860078D0F2 /* Alamofire.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 475F21C8231FA5860078D0F2 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		475F21D5232122AD0078D0F2 /* RequestProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475F21D4232122AD0078D0F2 /* RequestProtocols.swift */; };
+		475F21D5232122AD0078D0F2 /* CommonProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475F21D4232122AD0078D0F2 /* CommonProtocols.swift */; };
 		475F21D9232269670078D0F2 /* IndicatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475F21D7232269670078D0F2 /* IndicatorViewController.swift */; };
 		475F21DA232269670078D0F2 /* IndicatorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 475F21D8232269670078D0F2 /* IndicatorViewController.xib */; };
 		475F21DE2322874D0078D0F2 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475F21DD2322874D0078D0F2 /* BaseViewController.swift */; };
@@ -39,6 +39,11 @@
 		47900D6C230C3F4300A316DE /* TopLevelHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47900D6B230C3F4300A316DE /* TopLevelHelper.swift */; };
 		47900D8A230EE96D00A316DE /* EntityTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47900D89230EE96D00A316DE /* EntityTest.swift */; };
 		47900D8C230FF73900A316DE /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47900D8B230FF73900A316DE /* main.swift */; };
+		47C3A1AA2334CF4700110D37 /* TopBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C3A1A92334CF4700110D37 /* TopBarViewController.swift */; };
+		47C3A1AE2334FBAE00110D37 /* Comic Sans MS.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 47C3A1AC2334FBAE00110D37 /* Comic Sans MS.ttf */; };
+		47C3A1AF2334FBAE00110D37 /* Comic Sans MS Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 47C3A1AD2334FBAE00110D37 /* Comic Sans MS Bold.ttf */; };
+		47C3A1FF2338BD1A00110D37 /* TagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C3A1FD2338BD1A00110D37 /* TagCollectionViewCell.swift */; };
+		47C3A2002338BD1A00110D37 /* TagCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47C3A1FE2338BD1A00110D37 /* TagCollectionViewCell.xib */; };
 		47FAA1132316BFB0003C041A /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FAA1122316BFB0003C041A /* UIViewController+Extensions.swift */; };
 		47FAA1152316BFC8003C041A /* Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FAA1142316BFC7003C041A /* Requests.swift */; };
 		47FAA1172316BFE0003C041A /* What_sThisTestInterector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FAA1162316BFDF003C041A /* What_sThisTestInterector.swift */; };
@@ -88,7 +93,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		471F7AC42328FF75007FAF1D /* TopBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBarViewController.swift; sourceTree = "<group>"; };
+		471F7AC42328FF75007FAF1D /* SearchBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarViewController.swift; sourceTree = "<group>"; };
 		471F7AC52328FF75007FAF1D /* TopBarViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopBarViewController.xib; sourceTree = "<group>"; };
 		473DD82222F9CCAD0002524F /* What'sThis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "What'sThis.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		473DD82522F9CCAD0002524F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -108,7 +113,7 @@
 		474FBEC52313ECFF00375421 /* MockClasses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockClasses.swift; sourceTree = "<group>"; };
 		475F21C4231FA4B10078D0F2 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		475F21C8231FA5860078D0F2 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
-		475F21D4232122AD0078D0F2 /* RequestProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestProtocols.swift; sourceTree = "<group>"; };
+		475F21D4232122AD0078D0F2 /* CommonProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonProtocols.swift; sourceTree = "<group>"; };
 		475F21D7232269670078D0F2 /* IndicatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorViewController.swift; sourceTree = "<group>"; };
 		475F21D8232269670078D0F2 /* IndicatorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IndicatorViewController.xib; sourceTree = "<group>"; };
 		475F21DD2322874D0078D0F2 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -125,6 +130,11 @@
 		47900D6B230C3F4300A316DE /* TopLevelHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopLevelHelper.swift; sourceTree = "<group>"; };
 		47900D89230EE96D00A316DE /* EntityTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityTest.swift; sourceTree = "<group>"; };
 		47900D8B230FF73900A316DE /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		47C3A1A92334CF4700110D37 /* TopBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBarViewController.swift; sourceTree = "<group>"; };
+		47C3A1AC2334FBAE00110D37 /* Comic Sans MS.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comic Sans MS.ttf"; sourceTree = "<group>"; };
+		47C3A1AD2334FBAE00110D37 /* Comic Sans MS Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comic Sans MS Bold.ttf"; sourceTree = "<group>"; };
+		47C3A1FD2338BD1A00110D37 /* TagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCollectionViewCell.swift; sourceTree = "<group>"; };
+		47C3A1FE2338BD1A00110D37 /* TagCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TagCollectionViewCell.xib; sourceTree = "<group>"; };
 		47FAA1122316BFB0003C041A /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		47FAA1142316BFC7003C041A /* Requests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Requests.swift; sourceTree = "<group>"; };
 		47FAA1162316BFDF003C041A /* What_sThisTestInterector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = What_sThisTestInterector.swift; sourceTree = "<group>"; };
@@ -195,6 +205,7 @@
 		473DD82422F9CCAD0002524F /* What'sThis */ = {
 			isa = PBXGroup;
 			children = (
+				47C3A1AB2334FB8E00110D37 /* Fonts */,
 				47FAA1182316C077003C041A /* Assets.xcassets */,
 				4782B439230AE19100ED329D /* Commons */,
 				4782B42E230ADCF200ED329D /* Modules */,
@@ -257,8 +268,11 @@
 				473DD82722F9CCAD0002524F /* ViewController.swift */,
 				4782B440230C019500ED329D /* GestureCollectionViewCell.swift */,
 				475F21DF2326A2510078D0F2 /* HeaderCollectionReusableView.swift */,
-				471F7AC42328FF75007FAF1D /* TopBarViewController.swift */,
+				471F7AC42328FF75007FAF1D /* SearchBarViewController.swift */,
 				471F7AC52328FF75007FAF1D /* TopBarViewController.xib */,
+				47C3A1A92334CF4700110D37 /* TopBarViewController.swift */,
+				47C3A1FD2338BD1A00110D37 /* TagCollectionViewCell.swift */,
+				47C3A1FE2338BD1A00110D37 /* TagCollectionViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -321,7 +335,7 @@
 				4782B43A230AE1A000ED329D /* Constants.swift */,
 				47FAA128231802FD003C041A /* UIApplication+Extensions.swift */,
 				47FAA13A23193624003C041A /* Result.swift */,
-				475F21D4232122AD0078D0F2 /* RequestProtocols.swift */,
+				475F21D4232122AD0078D0F2 /* CommonProtocols.swift */,
 				475F21DD2322874D0078D0F2 /* BaseViewController.swift */,
 			);
 			path = Commons;
@@ -334,6 +348,15 @@
 				474FBEC12313E32500375421 /* FakeImage2.png */,
 			);
 			path = fakeImages;
+			sourceTree = "<group>";
+		};
+		47C3A1AB2334FB8E00110D37 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				47C3A1AD2334FBAE00110D37 /* Comic Sans MS Bold.ttf */,
+				47C3A1AC2334FBAE00110D37 /* Comic Sans MS.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		47FAA11C2317D959003C041A /* GesturesList */ = {
@@ -520,9 +543,12 @@
 				471F7AC72328FF75007FAF1D /* TopBarViewController.xib in Resources */,
 				47FAA13723190CD5003C041A /* gestureDetails.json in Resources */,
 				473DD83322F9CCB00002524F /* LaunchScreen.storyboard in Resources */,
+				47C3A1AF2334FBAE00110D37 /* Comic Sans MS Bold.ttf in Resources */,
 				473DD82B22F9CCAD0002524F /* Main.storyboard in Resources */,
+				47C3A2002338BD1A00110D37 /* TagCollectionViewCell.xib in Resources */,
 				47900D6A230C213700A316DE /* gestures.json in Resources */,
 				475F21DA232269670078D0F2 /* IndicatorViewController.xib in Resources */,
+				47C3A1AE2334FBAE00110D37 /* Comic Sans MS.ttf in Resources */,
 				47FAA1192316C077003C041A /* Assets.xcassets in Resources */,
 				47FAA1242317DCE0003C041A /* GestureDetailsViewController.xib in Resources */,
 			);
@@ -578,8 +604,9 @@
 				473DD82622F9CCAD0002524F /* AppDelegate.swift in Sources */,
 				47FAA12F23180FF1003C041A /* GestureDetailsProtocols.swift in Sources */,
 				4782B434230AE06500ED329D /* GestureListInterector.swift in Sources */,
+				47C3A1AA2334CF4700110D37 /* TopBarViewController.swift in Sources */,
 				475F21DE2322874D0078D0F2 /* BaseViewController.swift in Sources */,
-				475F21D5232122AD0078D0F2 /* RequestProtocols.swift in Sources */,
+				475F21D5232122AD0078D0F2 /* CommonProtocols.swift in Sources */,
 				47FAA1152316BFC8003C041A /* Requests.swift in Sources */,
 				475F21E02326A2510078D0F2 /* HeaderCollectionReusableView.swift in Sources */,
 				47FAA1132316BFB0003C041A /* UIViewController+Extensions.swift in Sources */,
@@ -589,11 +616,12 @@
 				4782B432230AE04C00ED329D /* GestureListWireFrame.swift in Sources */,
 				473DD82E22F9CCAD0002524F /* What_sThis.xcdatamodeld in Sources */,
 				4782B441230C019500ED329D /* GestureCollectionViewCell.swift in Sources */,
+				47C3A1FF2338BD1A00110D37 /* TagCollectionViewCell.swift in Sources */,
 				47FAA1232317DCE0003C041A /* GestureDetailsViewController.swift in Sources */,
 				47900D8C230FF73900A316DE /* main.swift in Sources */,
 				47FAA12C2318082E003C041A /* GestureDetailsWireFrame.swift in Sources */,
 				47FAA1262317DFAC003C041A /* GestureDetails.swift in Sources */,
-				471F7AC62328FF75007FAF1D /* TopBarViewController.swift in Sources */,
+				471F7AC62328FF75007FAF1D /* SearchBarViewController.swift in Sources */,
 				4782B436230AE07800ED329D /* Gestures.swift in Sources */,
 				47FAA135231812A8003C041A /* GestureDetailsInterector.swift in Sources */,
 				47FAA13B23193624003C041A /* Result.swift in Sources */,

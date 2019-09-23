@@ -28,12 +28,25 @@ class GestureListPresenter: GestureListPresenterProtocol {
     func didSelectGesture(id: String) {
         wireFrame?.presentDetailsView(for: id)
     }
+    
+    func shouldLoadTagList(tagList: inout TopBarViewController) {
+        tagList.delegate = self
+        let scopes : [String]? = list?.map {
+            $0.key
+        }
+        
+        guard let tagListScopes = scopes else {
+            return
+        }
+        
+        tagList.scopes = tagListScopes
+    }
 }
 
 extension GestureListPresenter: GestureListOutputPresenterProtocol {
     func filteredResults(returnedResult: [String : [Searchable]]) {
         guard let filteredGestures: [String: [Gestures]] = returnedResult as? [String : [Gestures]] else {return}
-        // needs more thinking does not worth the effort the array is big 
+        // needs more thinking does not worth the effort if the array is big
             list = filteredGestures
             view?.reloadData(listOfGestures: filteredGestures, listOfHeaders: Array(filteredGestures.keys))
     }
@@ -98,14 +111,11 @@ extension GestureListPresenter: GestureListOutputPresenterProtocol {
     }
     
     func getTheTitleHeader(at section: Int) -> String? {
-        var headerItems: [String] = []
-        guard let gestures = list else {
-            return nil
+        let items = list?.map {
+            $0.key
         }
-        for item in gestures {
-            headerItems.append(item.key)
-        }
-        
+
+        guard let headerItems = items else { return nil }
         return headerItems[section]
     }
     
@@ -115,5 +125,15 @@ extension GestureListPresenter: GestureListOutputPresenterProtocol {
     
     func shouldFilter(with text: String, scope: SearchTypes)  {
         interector?.filterContentForText(text, scope: scope)
+    }
+    
+    func retrieveTheList() {
+        list = interector?.gestures
+    }
+}
+
+extension GestureListPresenter: TopBarViewControllerProtocol {
+    func tagDidSelect(scope: String, index: Int) {
+        
     }
 }

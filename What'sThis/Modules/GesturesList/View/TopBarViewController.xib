@@ -13,64 +13,43 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TopBarViewController" customModule="What_sThis" customModuleProvider="target">
             <connections>
                 <outlet property="searchDisplayController" destination="dgE-ZV-Kir" id="A0i-mq-x0E"/>
-                <outlet property="seatchBar" destination="EDg-3o-GEK" id="kVc-mT-qHz"/>
-                <outlet property="shareButton" destination="jGr-Y4-WjX" id="YwQ-tP-8ZF"/>
+                <outlet property="topBarCollectionView" destination="GXw-v4-MXk" id="Gpb-rb-iZl"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
-            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+        <view clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="620" height="48"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="STd-SC-gu2">
-                    <rect key="frame" x="0.0" y="0.0" width="322.5" height="56"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="EDg-3o-GEK">
-                    <rect key="frame" x="0.0" y="0.0" width="322.5" height="56"/>
-                    <textInputTraits key="textInputTraits"/>
-                    <connections>
-                        <outlet property="delegate" destination="-1" id="v18-Yc-ryf"/>
-                    </connections>
-                </searchBar>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jGr-Y4-WjX">
-                    <rect key="frame" x="338.5" y="12" width="32.5" height="32"/>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="GXw-v4-MXk">
+                    <rect key="frame" x="8" y="8" width="604" height="32"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="jGr-Y4-WjX" secondAttribute="height" multiplier="1:1" id="2As-D0-OJn"/>
-                        <constraint firstAttribute="width" secondItem="jGr-Y4-WjX" secondAttribute="height" multiplier="1:1" id="ahb-1O-0wd"/>
+                        <constraint firstAttribute="height" constant="32" id="h7H-xF-dUD"/>
                     </constraints>
-                    <state key="normal" title="Button"/>
-                </button>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Zzk-BQ-97X">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="jGr-Y4-WjX" firstAttribute="leading" secondItem="EDg-3o-GEK" secondAttribute="trailing" constant="16" id="6aV-aA-Zcv"/>
-                <constraint firstItem="EDg-3o-GEK" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="6cU-Rz-3ws"/>
-                <constraint firstItem="STd-SC-gu2" firstAttribute="centerY" secondItem="EDg-3o-GEK" secondAttribute="centerY" id="D4e-mt-c8r"/>
-                <constraint firstItem="EDg-3o-GEK" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="HCq-pQ-490"/>
-                <constraint firstItem="jGr-Y4-WjX" firstAttribute="top" relation="greaterThanOrEqual" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="4" id="Kva-M1-cI5"/>
-                <constraint firstItem="STd-SC-gu2" firstAttribute="bottom" secondItem="EDg-3o-GEK" secondAttribute="bottom" id="LMd-K6-TtT"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="jGr-Y4-WjX" secondAttribute="trailing" constant="4" id="Sae-z2-sGn"/>
-                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="jGr-Y4-WjX" secondAttribute="bottom" constant="4" id="dVw-2r-T7a"/>
-                <constraint firstItem="STd-SC-gu2" firstAttribute="centerX" secondItem="EDg-3o-GEK" secondAttribute="centerX" id="dZU-mJ-Xs4"/>
-                <constraint firstAttribute="bottom" secondItem="EDg-3o-GEK" secondAttribute="bottom" id="gQU-dG-zZ3"/>
-                <constraint firstItem="STd-SC-gu2" firstAttribute="top" secondItem="EDg-3o-GEK" secondAttribute="top" id="hYe-MA-cxh"/>
-                <constraint firstItem="STd-SC-gu2" firstAttribute="height" secondItem="EDg-3o-GEK" secondAttribute="height" id="kwa-Vx-nA2"/>
-                <constraint firstItem="jGr-Y4-WjX" firstAttribute="width" secondItem="EDg-3o-GEK" secondAttribute="width" multiplier="1:10" id="q3I-ob-CzE"/>
-                <constraint firstItem="jGr-Y4-WjX" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="xSI-OC-QiA"/>
-                <constraint firstItem="STd-SC-gu2" firstAttribute="width" secondItem="EDg-3o-GEK" secondAttribute="width" id="zlg-eG-mYL"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="GXw-v4-MXk" secondAttribute="trailing" constant="8" id="57V-Wg-Z74"/>
+                <constraint firstItem="GXw-v4-MXk" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="8" id="OWf-v9-Od5"/>
+                <constraint firstItem="GXw-v4-MXk" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="8" id="SnA-1O-lPm"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="GXw-v4-MXk" secondAttribute="bottom" constant="8" id="mpL-o6-KzI"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="138.40000000000001" y="154.72263868065968"/>
+            <point key="canvasLocation" x="137.59999999999999" y="154.72263868065968"/>
         </view>
         <searchDisplayController id="dgE-ZV-Kir">
             <connections>
                 <outlet property="delegate" destination="-1" id="ar7-5h-VtA"/>
-                <outlet property="searchBar" destination="EDg-3o-GEK" id="iLh-hU-Fpl"/>
                 <outlet property="searchContentsController" destination="-1" id="ylJ-g1-ZzI"/>
                 <outlet property="searchResultsDataSource" destination="-1" id="Z7B-7S-s9I"/>
                 <outlet property="searchResultsDelegate" destination="-1" id="ZJX-pg-qSd"/>
