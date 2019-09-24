@@ -18,7 +18,7 @@ class TopBarViewController: UIViewController {
     var scopes: [String]?
     private let sectionInsets = UIEdgeInsets(top: 4.0, left: 4.0, bottom: 4.0, right: 4.0)
 
-    weak var delegate: TopBarViewControllerProtocol?
+    weak var delegate: TopBarPresenterProtcol?
     
     // MARK: - Functions
     override func viewDidLoad() {
@@ -66,8 +66,13 @@ extension TopBarViewController: UICollectionViewDataSource {
 }
  // MARK: - TagColectionViewCellProtocol
 extension TopBarViewController: TagCollectionViewCellProtocol {
-    func buttonClicked() {
-        print("clicked")
+    func buttonClicked(at index: Int, shouldSelect: Bool) {
+        if scopes?.count ?? -1 > index && shouldSelect {
+            guard let headerTitle = scopes?[index] else { return }
+            self.delegate?.tagDidSelectedWith(headerTitle)
+        } else {
+            self.delegate?.tagDidSelected()
+        }
     }
 }
 // MARK: - UICollectionViewDelegateFlowLayout

@@ -13,7 +13,7 @@ class GestureListPresenter: GestureListPresenterProtocol {
     private var wireFrame: GestureListWireFramProtocol?
     weak var view: GestureListViewProtocol?
     private var interector: GestureListInputInterectorProtocl?
-    
+    private var tagSelected: Bool = false
     private var list: [String: [Gestures]]?
     init(wireFrame: GestureListWireFramProtocol, interector: GestureListInputInterectorProtocl, client: FetchRemoteData) {
         self.wireFrame = wireFrame
@@ -30,6 +30,7 @@ class GestureListPresenter: GestureListPresenterProtocol {
     }
     
     func shouldLoadTagList(tagList: inout TopBarViewController) {
+        if tagSelected { return }
         tagList.delegate = self
         let scopes : [String]? = list?.map {
             $0.key
@@ -47,8 +48,9 @@ extension GestureListPresenter: GestureListOutputPresenterProtocol {
     func filteredResults(returnedResult: [String : [Searchable]]) {
         guard let filteredGestures: [String: [Gestures]] = returnedResult as? [String : [Gestures]] else {return}
         // needs more thinking does not worth the effort if the array is big
-            list = filteredGestures
-            view?.reloadData(listOfGestures: filteredGestures, listOfHeaders: Array(filteredGestures.keys))
+        if tagSelected {}
+        list = filteredGestures
+        view?.reloadData(listOfGestures: filteredGestures, listOfHeaders: Array(filteredGestures.keys))
     }
     
     
@@ -129,11 +131,22 @@ extension GestureListPresenter: GestureListOutputPresenterProtocol {
     
     func retrieveTheList() {
         list = interector?.gestures
+        guard let list = list else {
+            return
+        }
+        view?.reloadData(listOfGestures: list, listOfHeaders: Array(list.keys))
     }
 }
 
-extension GestureListPresenter: TopBarViewControllerProtocol {
-    func tagDidSelect(scope: String, index: Int) {
-        
+extension GestureListPresenter: TopBarPresenterProtcol {
+    func tagDidSelectedWith(_ header: String) {
+        tagSelected = true
+        self.shouldFilter(with: header, scope: .key)
+    }
+    
+    func tagDidSelected() {
+        tagSelected = false
+        self.retrieveTheList()
     }
 }
+

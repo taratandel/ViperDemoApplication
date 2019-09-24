@@ -8,21 +8,39 @@
 
 import UIKit
 protocol TagCollectionViewCellProtocol: class {
-    func buttonClicked()
+    func buttonClicked(at index: Int, shouldSelect: Bool)
 }
 class TagCollectionViewCell: UICollectionViewCell {
+    
+    // MARK: - Delegates
     weak var delegate: TagCollectionViewCellProtocol?
     
+    // MARK: - Properties
     var details: String = ""
     var index: Int = -1
     
-    var borderColor: UIColor? = .black
+    var borderColor: UIColor? = .red
     var cellBackgroundColor: UIColor? = .white
     var textColor: UIColor? = .red
     
+    private var isSelectedBefore: Bool = false
+    
+    override var isSelected: Bool {
+        didSet {
+            if isSelected && index != -1 {
+                isSelectedBefore = !isSelectedBefore
+                self.cellBackgroundView.backgroundColor = isSelectedBefore ? .red : .white
+                self.tagDetailLabel.textColor = isSelectedBefore ? .white : .red
+                delegate?.buttonClicked(at: index, shouldSelect: isSelectedBefore)
+            }
+        }
+    }
+    
     // MARK: - @IBOutlets
     @IBOutlet weak var tagDetailLabel: UILabel!
-
+    @IBOutlet weak var cellBackgroundView: UIView!
+    
+    // MARK: - Functions
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -49,6 +67,7 @@ class TagCollectionViewCell: UICollectionViewCell {
         self.tagDetailLabel.text = details
         self.tagDetailLabel.font = UIFont.defaultFont
         self.tagDetailLabel.textColor = textColor
+        self.tagDetailLabel.backgroundColor = UIColor.clear
     }
     
     override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
@@ -59,9 +78,5 @@ class TagCollectionViewCell: UICollectionViewCell {
         
         att.frame.size.width = newlayoutAttributes.frame.width
         return att
-    }
-    
-    override func select(_ sender: Any?) {
-        delegate?.buttonClicked()
     }
 }

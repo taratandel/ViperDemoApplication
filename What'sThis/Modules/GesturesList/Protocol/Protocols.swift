@@ -9,14 +9,14 @@
 import UIKit
 
 
-//Presenter -> View
+// MARK: - Presenter -> View
 protocol GestureListViewProtocol: class {
     func reloadData(listOfGestures: [String: [Gestures]], listOfHeaders: [String])
     func fetchFailed(title: String, message: String, actions: [UIAlertAction])
 
 }
 
-//View -> Presenter
+// MARK: - View -> Presenter
 protocol GestureListPresenterProtocol: class {
     
     var view: GestureListViewProtocol? {set get}
@@ -32,8 +32,13 @@ protocol GestureListPresenterProtocol: class {
     func retrieveTheList()
     func shouldLoadTagList(tagList: inout TopBarViewController)
 }
+// MARK: - TopBarView -> Presenter
+protocol TopBarPresenterProtcol: class {
+    func tagDidSelectedWith(_ header: String)
+    func tagDidSelected()
+}
 
-//Presenter -> Interector
+// MARK: - Presenter -> Interector
 protocol GestureListInputInterectorProtocl: class {
     var presenter: GestureListOutputPresenterProtocol? {set get}
     var client: GetListDataProtocol? {get set}
@@ -43,7 +48,7 @@ protocol GestureListInputInterectorProtocl: class {
     func filterContentForText(_ searchText: String, scope: SearchTypes)
 }
 
-//Interector -> Presenter
+// MARK: - Interector -> Presenter
 protocol GestureListOutputPresenterProtocol: class {
     func fetchIsComplete()
     func fetchFailed(error: Error, message: String?)
@@ -52,13 +57,13 @@ protocol GestureListOutputPresenterProtocol: class {
     
 }
 
-//Presenter -> WireFrame
+// MARK: - Presenter -> WireFrame
 protocol GestureListWireFramProtocol: class {
     static func creatTheView(_ viewRef: ViewController)
     func presentDetailsView(for id: String)
 }
 
-// list services
+// MARK: - list services
 protocol GetListDataProtocol: class {
     func getTheListData()
 }

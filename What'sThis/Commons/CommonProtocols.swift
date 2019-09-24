@@ -12,7 +12,3 @@ import Alamofire
 protocol RequestServices: class {
     func requestIsComplete(_ response: DataResponse<Any>)
 }
-
-protocol TopBarViewControllerProtocol: class {
-    func tagDidSelect(scope: String, index: Int)
-}

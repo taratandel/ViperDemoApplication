@@ -182,7 +182,6 @@ extension ViewController: UISearchResultsUpdating {
             presenter.shouldFilter(with: topBarView.searchController.searchBar.text!, scope: .both)
         } else {
             presenter.retrieveTheList()
-            gesturesCollectionView.reloadData()
         }
     }
     

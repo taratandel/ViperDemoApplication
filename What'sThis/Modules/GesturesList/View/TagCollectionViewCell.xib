@@ -24,6 +24,7 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TZB-h8-RgY">
                                 <rect key="frame" x="4" y="6.5" width="52" height="20.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -47,6 +48,7 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="60" height="33"/>
             <connections>
+                <outlet property="cellBackgroundView" destination="nKj-fM-PJu" id="zL8-8V-AAW"/>
                 <outlet property="tagDetailLabel" destination="TZB-h8-RgY" id="6ll-ys-rdr"/>
             </connections>
             <point key="canvasLocation" x="156.80000000000001" y="56.221889055472268"/>
