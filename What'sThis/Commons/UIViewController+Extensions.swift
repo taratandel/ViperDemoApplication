@@ -35,11 +35,15 @@ extension Dictionary where Key: Comparable, Value: Equatable {
 
 extension UIFont {
     convenience init(isBold: Bool, withSize size: CGFloat) {
-        self.init(name: isBold ? "Comic Sans MS Bold" : "Comic Sans MS", size: size)!
+        self.init(name: isBold ? "ComicSansMS-Bold" : "Comic Sans MS", size: size)!
     }
     
     static var defaultFont: UIFont {
         return UIFont(isBold: false, withSize: 15)
+    }
+    
+    static var boldFont: UIFont {
+        return UIFont(isBold: true, withSize: 15)
     }
 }
 
@@ -51,5 +55,11 @@ extension UINavigationBar {
         } else {
             self.setValue(false, forKey: "hidesShadow")
         }
+    }
+}
+
+extension UIColor {
+    static var lightBlue: UIColor {
+        return UIColor(red: 158/256, green: 224/256, blue: 255/256, alpha: 1)
     }
 }
