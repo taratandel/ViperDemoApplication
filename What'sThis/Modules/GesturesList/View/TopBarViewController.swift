@@ -12,47 +12,43 @@ import UIKit
 
 class TopBarViewController: UIViewController {
     // MARK: - IBOutlets
-    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var topBarCollectionView: UICollectionView!
     
     // MARK: - Properties
     var scopes: [String]?
-    private let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
+    private let sectionInsets = UIEdgeInsets(top: 4.0, left: 4.0, bottom: 4.0, right: 4.0)
 
     weak var delegate: TopBarViewControllerProtocol?
     
+    // MARK: - Functions
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.topBarCollectionView.delegate = self
-        self.topBarCollectionView.dataSource = self
-    
-        
         setupUI()
     }
     
     func setupUI() {
-       let nibName = UINib(nibName: "TagCollectionViewCell", bundle: nil)
-        topBarCollectionView.register(nibName, forCellWithReuseIdentifier: "TagCollectionViewCell")
-        let layout = UICollectionViewFlowLayout()
-        layout.estimatedItemSize = CGSize(width: 110, height: 32.0)
-        self.topBarCollectionView.collectionViewLayout = layout
-        self.topBarCollectionView.register(TagCollectionViewCell.self, forCellWithReuseIdentifier: "TagCollectionViewCell")
-        topBarCollectionView.reloadData()
-        topBarCollectionView.layoutIfNeeded()
-    }
-
-    func scrollToTop() {
-        scrollView.setContentOffset(.zero, animated: true)
+        let nib = UINib(nibName: "TagCollectionViewCell", bundle: nil)
+        topBarCollectionView.register(nib, forCellWithReuseIdentifier: "TagCell")
+        
+        let collectionViewFlowLayout = UICollectionViewFlowLayout()
+        collectionViewFlowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        collectionViewFlowLayout.scrollDirection = .horizontal
+        
+        topBarCollectionView.collectionViewLayout = collectionViewFlowLayout
+        topBarCollectionView.contentInsetAdjustmentBehavior = .always
+        topBarCollectionView.collectionViewLayout.invalidateLayout()
+        self.topBarCollectionView.delegate = self
+        self.topBarCollectionView.dataSource = self
+        
     }
 }
 
+// MARK: - UICollectionViewDelegate
 extension TopBarViewController: UICollectionViewDelegate {
-    
 }
-
+// MARK: - UICollectionViewDataSource
 extension TopBarViewController: UICollectionViewDataSource {
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -63,27 +59,27 @@ extension TopBarViewController: UICollectionViewDataSource {
         guard let scopes = self.scopes else {
             return UICollectionViewCell()
         }
-        let cell = topBarCollectionView.dequeueReusableCell(withReuseIdentifier: "TagCollectionViewCell", for: indexPath) as! TagCollectionViewCell
+        let cell = topBarCollectionView.dequeueReusableCell(withReuseIdentifier: "TagCell", for: indexPath) as! TagCollectionViewCell
         cell.setup(delegate: self, details: scopes[indexPath.row], index: indexPath.row)
         return cell
     }
 }
-
+ // MARK: - TagColectionViewCellProtocol
 extension TopBarViewController: TagCollectionViewCellProtocol {
     func buttonClicked() {
         print("clicked")
     }
 }
-
+// MARK: - UICollectionViewDelegateFlowLayout
 extension TopBarViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 110.0, height: 32.0)
+        return CGSize(width: 200, height: 28.0)
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return sectionInsets
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return sectionInsets.left
     }

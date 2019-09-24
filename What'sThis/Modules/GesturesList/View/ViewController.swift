@@ -9,21 +9,15 @@
 import UIKit
 
 class ViewController: BaseViewController, GestureListViewProtocol {
-
+    // MARK: - @IBOutlet
     @IBOutlet weak var gesturesCollectionView: UICollectionView!
-    
     @IBOutlet weak var stackView: UIStackView!
     
+    // MARK: - Properties
     var presenter: GestureListPresenterProtocol!
         
     private let itemsPerRow = 3
     private let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
-
-    lazy var topBarView: SearchBarViewController = {
-        return SearchBarViewController(for: self)
-    }()
-    
-    var taglistVC = TopBarViewController.init(nibName: nil, bundle: nil)
 
     var largePhotoIndexPath: IndexPath? {
         didSet {
@@ -45,7 +39,17 @@ class ViewController: BaseViewController, GestureListViewProtocol {
             })
         }
     }
+    
+    // MARK: - ChildViewControllers
+    lazy var topBarView: SearchBarViewController = {
+        return SearchBarViewController(for: self)
+    }()
+    
+    lazy var taglistVC: TopBarViewController = {
+        return TopBarViewController.init(nibName: nil, bundle: nil)
+    }()
 
+    // MARK: - Functions
     override func viewDidLoad() {
         super.viewDidLoad()
         showIndicatorView(with: "Wait :/")
@@ -56,6 +60,7 @@ class ViewController: BaseViewController, GestureListViewProtocol {
         super.viewWillAppear(true)
         self.navigationController?.navigationBar.shouldRemoveShadow(true)
     }
+
     override func viewDidAppear(_ animated: Bool) {
         presenter?.mainViewDidLoad()
     }
@@ -64,12 +69,12 @@ class ViewController: BaseViewController, GestureListViewProtocol {
         removeIndicator()
         gesturesCollectionView?.reloadData()
         gesturesCollectionView.layoutIfNeeded()
+
         navigationItem.searchController = topBarView.searchController
         definesPresentationContext = true
-        presenter.shouldLoadTagList(tagList: &taglistVC)
-        
-        stackView.insertArrangedSubview(taglistVC.view, at: 0)
 
+        presenter.shouldLoadTagList(tagList: &taglistVC)
+        stackView.insertArrangedSubview(taglistVC.view, at: 0)
     }
     
     func fetchFailed(title: String, message: String, actions: [UIAlertAction]) {
@@ -80,15 +85,15 @@ class ViewController: BaseViewController, GestureListViewProtocol {
     func setupCollectionView() {
         (gesturesCollectionView.collectionViewLayout as! UICollectionViewFlowLayout).estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         (gesturesCollectionView.collectionViewLayout as! UICollectionViewFlowLayout).sectionInsetReference = .fromLayoutMargins
-        
+
         gesturesCollectionView.contentInsetAdjustmentBehavior = .always
         
         gesturesCollectionView?.delegate = self
         gesturesCollectionView?.dataSource = self
-        
     }
 }
 
+// MARK: - UICollectionViewDelegate
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return presenter.getTheNumberOfItemsInSection(section) ?? 0
@@ -142,6 +147,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     }
 }
 
+// MARK: - UICollectionViewDelegateFlowLayout
 extension ViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath == largePhotoIndexPath {
@@ -167,6 +173,8 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
     }
 
 }
+
+//MARK: - UISearchResultUpdating
 extension ViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         if shouldSearch() {

@@ -20,32 +20,18 @@ class TagCollectionViewCell: UICollectionViewCell {
     var cellBackgroundColor: UIColor? = .white
     var textColor: UIColor? = .red
     
-    @IBOutlet weak var tagButton: UIButton!
+    // MARK: - @IBOutlets
+    @IBOutlet weak var tagDetailLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
     }
     
-//    init(delegate: TagCollectionViewCellProtocol, details: String, index: Int) {
-//        self.delegate = delegate
-//        self.details = details
-//        self.index = index
-//        super.init
-//    }
-//
-//    convenience init(with borderColor: UIColor, cellBackgroundColor: UIColor, textColor: UIColor, delegate: TagCollectionViewCellProtocol, details: String, index: Int) {
-//        self.init(delegate: delegate, details: details, index: index)
-//    }
-//
-//    required init?(coder aDecoder: NSCoder) {
-//        return nil
-//    }
-    
     func setup(delegate: TagCollectionViewCellProtocol, details: String, index: Int) {
-        self.backgroundColor = backgroundColor
-        self.tagButton.setTitleColor(textColor, for: .normal)
-        self.layer.borderColor = borderColor?.cgColor
-        self.tagButton.setTitle(details, for: .normal)
+        self.delegate = delegate
+        self.details = details
+        self.index = index
+        setupUI()
     }
     
     func setup( with borderColor: UIColor, cellBackgroundColor: UIColor, textColor: UIColor, delegate: TagCollectionViewCellProtocol, details: String, index: Int) {
@@ -55,15 +41,27 @@ class TagCollectionViewCell: UICollectionViewCell {
         
         self.setup(delegate: delegate, details: details, index: index)
     }
-
-    @IBAction func tagButtonAction(_ sender: Any) {
-        delegate?.buttonClicked()
+    
+    private func setupUI() {
+        self.backgroundColor = backgroundColor
+        self.layer.borderColor = borderColor?.cgColor
+        self.layer.borderWidth = 1
+        self.tagDetailLabel.text = details
+        self.tagDetailLabel.font = UIFont.defaultFont
+        self.tagDetailLabel.textColor = textColor
     }
     
     override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
+        setNeedsLayout()
         layoutIfNeeded()
-        let layoutAttributes = super.preferredLayoutAttributesFitting(layoutAttributes)
-        layoutAttributes.bounds.size = systemLayoutSizeFitting(UIView.layoutFittingCompressedSize, withHorizontalFittingPriority: .required, verticalFittingPriority: .defaultLow)
-        return layoutAttributes
+        let newlayoutAttributes = super.preferredLayoutAttributesFitting(layoutAttributes)
+        let att = layoutAttributes
+        
+        att.frame.size.width = newlayoutAttributes.frame.width
+        return att
+    }
+    
+    override func select(_ sender: Any?) {
+        delegate?.buttonClicked()
     }
 }
