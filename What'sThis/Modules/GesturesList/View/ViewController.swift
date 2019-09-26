@@ -44,7 +44,7 @@ class ViewController: BaseViewController, GestureListViewProtocol {
     lazy var topBarView: SearchBarViewController = {
         return SearchBarViewController(for: self)
     }()
-    
+    // this view shouldn't create topbar I think it's the wireframe job not sure though
     lazy var taglistVC: TopBarViewController = {
         return TopBarViewController.init(nibName: nil, bundle: nil)
     }()
@@ -65,16 +65,22 @@ class ViewController: BaseViewController, GestureListViewProtocol {
         presenter?.mainViewDidLoad()
     }
     
-    func reloadData(listOfGestures: [String: [Gestures]], listOfHeaders: [String]) {
+    func reloadData() {
         removeIndicator()
         gesturesCollectionView?.reloadData()
         gesturesCollectionView.layoutIfNeeded()
-
         navigationItem.searchController = topBarView.searchController
         definesPresentationContext = true
 
         presenter.shouldLoadTagList(tagList: &taglistVC)
         stackView.insertArrangedSubview(taglistVC.view, at: 0)
+    }
+    
+    func reloadFilteredData() {
+        removeIndicator()
+        gesturesCollectionView?.reloadData()
+        gesturesCollectionView.layoutIfNeeded()
+        presenter.shouldLoadTagList(tagList: &taglistVC)
     }
     
     func fetchFailed(title: String, message: String, actions: [UIAlertAction]) {
@@ -179,13 +185,13 @@ extension ViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         if shouldSearch() {
             showIndicatorView(with: "loading your search just wait :*")
-            presenter.shouldFilter(with: topBarView.searchController.searchBar.text!, scope: .both)
+            presenter.shouldFilter(with: topBarView.searchController.searchBar.text!)
         } else {
             presenter.retrieveTheList()
         }
     }
-    
-    func shouldSearch() -> Bool {
+    // this function shouldn't be here try to find a better place for it
+    private func shouldSearch() -> Bool {
         return !topBarView.searchBarIsEmpty() && topBarView.searchController.isActive
     }
 }

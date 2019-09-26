@@ -11,8 +11,10 @@ import UIKit
 
 // MARK: - Presenter -> View
 protocol GestureListViewProtocol: class {
-    func reloadData(listOfGestures: [String: [Gestures]], listOfHeaders: [String])
+    func reloadData()
     func fetchFailed(title: String, message: String, actions: [UIAlertAction])
+    
+    func reloadFilteredData()
 
 }
 
@@ -28,7 +30,7 @@ protocol GestureListPresenterProtocol: class {
     func getTheNumberOfItemsInSection(_ section: Int) -> Int?
     func getTheTitleHeader(at section: Int) -> String?
     func getTheNumberOfSections() -> Int?
-    func shouldFilter(with text: String, scope: SearchTypes)
+    func shouldFilter(with text: String)
     func retrieveTheList()
     func shouldLoadTagList(tagList: inout TopBarViewController)
 }

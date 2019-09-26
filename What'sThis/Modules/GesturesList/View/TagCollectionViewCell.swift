@@ -29,8 +29,7 @@ class TagCollectionViewCell: UICollectionViewCell {
         didSet {
             if isSelected && index != -1 {
                 isSelectedBefore = !isSelectedBefore
-                self.cellBackgroundView.backgroundColor = isSelectedBefore ? .red : .white
-                self.tagDetailLabel.textColor = isSelectedBefore ? .white : .red
+                setupUI()
                 delegate?.buttonClicked(at: index, shouldSelect: isSelectedBefore)
             }
         }
@@ -68,6 +67,9 @@ class TagCollectionViewCell: UICollectionViewCell {
         self.tagDetailLabel.font = UIFont.defaultFont
         self.tagDetailLabel.textColor = textColor
         self.tagDetailLabel.backgroundColor = UIColor.clear
+        self.cellBackgroundView.backgroundColor = isSelectedBefore ? .red : .white
+        self.tagDetailLabel.textColor = isSelectedBefore ? .white : .red
+
     }
     
     override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {

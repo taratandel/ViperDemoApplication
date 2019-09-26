@@ -17,6 +17,8 @@ class TopBarViewController: UIViewController {
     // MARK: - Properties
     var scopes: [String]?
     private let sectionInsets = UIEdgeInsets(top: 4.0, left: 4.0, bottom: 4.0, right: 4.0)
+    
+    private var selectedIndex: Int?
 
     weak var delegate: TopBarPresenterProtcol?
     
@@ -69,8 +71,13 @@ extension TopBarViewController: TagCollectionViewCellProtocol {
     func buttonClicked(at index: Int, shouldSelect: Bool) {
         if scopes?.count ?? -1 > index && shouldSelect {
             guard let headerTitle = scopes?[index] else { return }
+            if selectedIndex != index, let selectedIndex = selectedIndex {
+                topBarCollectionView.reloadItems(at: [IndexPath(item: selectedIndex, section: 0)])
+            }
+            selectedIndex = index
             self.delegate?.tagDidSelectedWith(headerTitle)
         } else {
+            selectedIndex = nil
             self.delegate?.tagDidSelected()
         }
     }

@@ -34,7 +34,7 @@ enum SearchTypes {
     case values
 }
 
-struct scope {
+struct Scope {
     var textTodisplay: String
     var id: String
 }

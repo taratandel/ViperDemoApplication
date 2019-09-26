@@ -15,7 +15,7 @@ class GestureListInterector: GestureListInputInterectorProtocl {
     
     var client: GetListDataProtocol?
     var gestures: [String:[Gestures]]?
-    
+    private var resultGestures: [String:[Gestures]]?
     func fetchGestureData() {
         client?.getTheListData()
         
@@ -28,6 +28,7 @@ class GestureListInterector: GestureListInputInterectorProtocl {
         let searchText = searchText.lowercased()
         
         switch scope {
+            // search without selecting any case scenario 1
         case .all:
             returnedResult = objectToSearch.filter {
                 let result =  $0.key.lowercased().contains(searchText) || $0.value.map{$0.name.lowercased()}.contains(searchText)
@@ -45,6 +46,7 @@ class GestureListInterector: GestureListInputInterectorProtocl {
             for (key, array) in objectToSearch {
                 returnedResult[key] = array.filter { $0.name.lowercased().contains(searchText) }
             }
+            // search just the key in the case the tags are selected
         case .key:
             returnedResult = objectToSearch.filter {
                 let result = $0.key.lowercased().contains(searchText)
@@ -52,6 +54,10 @@ class GestureListInterector: GestureListInputInterectorProtocl {
             }
         }
         presenter?.filteredResults(returnedResult: returnedResult)
+    }
+    
+    private func manageSearchResults() {
+        
     }
 }
 
