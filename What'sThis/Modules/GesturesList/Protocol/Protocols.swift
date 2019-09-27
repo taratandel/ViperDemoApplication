@@ -15,6 +15,7 @@ protocol GestureListViewProtocol: class {
     func fetchFailed(title: String, message: String, actions: [UIAlertAction])
     
     func reloadFilteredData()
+    func reloadSearchBar()
 
 }
 
@@ -47,7 +48,8 @@ protocol GestureListInputInterectorProtocl: class {
     var gestures: [String:[Gestures]]? {get set}
     
     func fetchGestureData()
-    func filterContentForText(_ searchText: String, scope: SearchTypes)
+    func filterContentForText(_ searchText: String, scope: SearchTypes, in searchDictionary: [String: [Gestures]]?)
+    func retrieveSelectedTag()
 }
 
 // MARK: - Interector -> Presenter
@@ -55,7 +57,7 @@ protocol GestureListOutputPresenterProtocol: class {
     func fetchIsComplete()
     func fetchFailed(error: Error, message: String?)
     
-    func filteredResults(returnedResult: [String: [Searchable]])
+    func filteredResults(returnedResult: [String: [Gestures]])
     
 }
 

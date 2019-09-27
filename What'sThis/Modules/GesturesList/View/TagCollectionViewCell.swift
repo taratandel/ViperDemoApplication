@@ -27,9 +27,10 @@ class TagCollectionViewCell: UICollectionViewCell {
     
     override var isSelected: Bool {
         didSet {
-            if isSelected && index != -1 {
+            if index != -1 && !oldValue {
                 isSelectedBefore = !isSelectedBefore
                 setupUI()
+                if !isSelected {return}
                 delegate?.buttonClicked(at: index, shouldSelect: isSelectedBefore)
             }
         }

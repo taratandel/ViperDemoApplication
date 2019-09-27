@@ -21,9 +21,15 @@ class GestureListInterector: GestureListInputInterectorProtocl {
         
     }
     
-    func filterContentForText(_ searchText: String, scope: SearchTypes) {
+    func filterContentForText(_ searchText: String, scope: SearchTypes, in searchDictionary: [String: [Gestures]]?) {
         var returnedResult = [String: [Gestures]]()
-        guard let objectToSearch = gestures else { return }
+        let objectToSearch: [String:[Gestures]]
+        if searchDictionary != nil {
+            resultGestures = resultGestures == nil ? searchDictionary! : resultGestures
+            objectToSearch = resultGestures!
+        } else if gestures != nil {
+            objectToSearch = gestures!
+        } else { return }
         
         let searchText = searchText.lowercased()
         
@@ -56,8 +62,9 @@ class GestureListInterector: GestureListInputInterectorProtocl {
         presenter?.filteredResults(returnedResult: returnedResult)
     }
     
-    private func manageSearchResults() {
-        
+    func retrieveSelectedTag() {
+        guard let resultGestures = self.resultGestures else  { return }
+        presenter?.filteredResults(returnedResult: resultGestures)
     }
 }
 

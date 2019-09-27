@@ -47,6 +47,11 @@ class TopBarViewController: UIViewController {
 
 // MARK: - UICollectionViewDelegate
 extension TopBarViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.row != selectedIndex {
+            
+        }
+    }
 }
 // MARK: - UICollectionViewDataSource
 extension TopBarViewController: UICollectionViewDataSource {
@@ -71,9 +76,9 @@ extension TopBarViewController: TagCollectionViewCellProtocol {
     func buttonClicked(at index: Int, shouldSelect: Bool) {
         if scopes?.count ?? -1 > index && shouldSelect {
             guard let headerTitle = scopes?[index] else { return }
-            if selectedIndex != index, let selectedIndex = selectedIndex {
-                topBarCollectionView.reloadItems(at: [IndexPath(item: selectedIndex, section: 0)])
-            }
+//            if selectedIndex != index, let selectedIndex = selectedIndex {
+//                topBarCollectionView.cellForItem(at: IndexPath(item: selectedIndex, section: 0))?.isSelected = false
+//            }
             selectedIndex = index
             self.delegate?.tagDidSelectedWith(headerTitle)
         } else {

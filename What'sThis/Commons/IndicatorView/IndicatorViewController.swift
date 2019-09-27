@@ -13,7 +13,7 @@ class IndicatorViewController: UIViewController {
     @IBOutlet weak var indicatorLabel: UILabel!
     @IBOutlet weak var indicator: UIActivityIndicatorView!
     
-    private var indicatorLabelText: String
+    private var indicatorLabelText: String?
     override func viewDidLoad() {
         super.viewDidLoad()
         indicator.startAnimating()
@@ -28,5 +28,8 @@ class IndicatorViewController: UIViewController {
     
     required init?(coder aDecoder: NSCoder) {
         return nil
+    }
+    deinit {
+        self.indicatorLabelText = nil
     }
 }

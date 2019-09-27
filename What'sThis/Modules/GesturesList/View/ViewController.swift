@@ -80,12 +80,15 @@ class ViewController: BaseViewController, GestureListViewProtocol {
         removeIndicator()
         gesturesCollectionView?.reloadData()
         gesturesCollectionView.layoutIfNeeded()
-        presenter.shouldLoadTagList(tagList: &taglistVC)
     }
     
     func fetchFailed(title: String, message: String, actions: [UIAlertAction]) {
         removeIndicator()
         showAlert(title: title, message: message, actions: actions)
+    }
+    
+    func reloadSearchBar() {
+        self.topBarView.deactiveSearchBar()
     }
     
     func setupCollectionView() {
@@ -97,6 +100,7 @@ class ViewController: BaseViewController, GestureListViewProtocol {
         gesturesCollectionView?.delegate = self
         gesturesCollectionView?.dataSource = self
     }
+    
 }
 
 // MARK: - UICollectionViewDelegate

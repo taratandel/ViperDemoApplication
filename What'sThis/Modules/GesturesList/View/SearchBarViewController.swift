@@ -9,8 +9,8 @@
 import UIKit
 
 class SearchBarViewController {
-    var viewForSearch: UISearchResultsUpdating
-    var viewForSearchResult: UIViewController?
+    weak var viewForSearch: UISearchResultsUpdating?
+    weak var viewForSearchResult: UIViewController?
     
     lazy var searchController: UISearchController = {
         UISearchController(searchResultsController: viewForSearchResult)
@@ -31,5 +31,11 @@ class SearchBarViewController {
     
     func searchBarIsEmpty() -> Bool {
         return searchController.searchBar.text?.isEmpty ?? true
+    }
+    
+    func deactiveSearchBar() {
+        searchController.searchBar.text = nil
+        searchController.searchBar.placeholder = "search here"
+        searchController.isActive = false
     }
 }

@@ -17,6 +17,7 @@ class GestureListPresenter: GestureListPresenterProtocol {
     
     // MARK: - Properties
     private var list: [String: [Gestures]]?
+    private var tagList: [String: [Gestures]]?
     private var tagSelected: Bool = false
 
     // MARK: - Initialization
@@ -78,31 +79,34 @@ class GestureListPresenter: GestureListPresenterProtocol {
     
     func shouldFilter(with text: String) {
         //check the situation of the tag list
-        let scope : SearchTypes = .all
-        interector?.filterContentForText(text, scope: scope)
+        if tagSelected {
+            interector?.filterContentForText(text, scope: .values, in: list)
+        } else {
+            interector?.filterContentForText(text, scope: .all, in: nil)
+        }
     }
     
     func retrieveTheList() {
+        if tagSelected {
+            interector?.retrieveSelectedTag()
+            return
+        }
         list = interector?.gestures
         guard  list != nil else {
             return
         }
         
-        // should create a new function
         view?.reloadFilteredData()
     }
 }
 
 // MARK: - GestureListOutputPresenterProtocol
 extension GestureListPresenter: GestureListOutputPresenterProtocol {
-    func filteredResults(returnedResult: [String : [Searchable]]) {
-        guard let filteredGestures: [String: [Gestures]] = returnedResult as? [String : [Gestures]] else {return}
-        // needs more thinking does not worth the effort if the array is big
-        list = filteredGestures
+    func filteredResults(returnedResult: [String : [Gestures]]) {
+        list = returnedResult
         guard list != nil else {
             return
         }
-        
         view?.reloadFilteredData()
     }
     
@@ -155,12 +159,14 @@ extension GestureListPresenter: GestureListOutputPresenterProtocol {
 extension GestureListPresenter: TopBarPresenterProtcol {
     func tagDidSelectedWith(_ header: String) {
         tagSelected = true
-        interector?.filterContentForText(header, scope: .key)
+        interector?.filterContentForText(header, scope: .key, in: nil)
+        view?.reloadSearchBar()
     }
     
     func tagDidSelected() {
         tagSelected = false
         self.retrieveTheList()
+        view?.reloadSearchBar()
     }
 }
 
