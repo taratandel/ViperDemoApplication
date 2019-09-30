@@ -17,9 +17,8 @@ class TopBarViewController: UIViewController {
     // MARK: - Properties
     var scopes: [String]?
     private let sectionInsets = UIEdgeInsets(top: 4.0, left: 4.0, bottom: 4.0, right: 4.0)
+    private var selectedIndexPath: IndexPath? = nil
     
-    private var selectedIndex: Int?
-
     weak var delegate: TopBarPresenterProtcol?
     
     // MARK: - Functions
@@ -48,9 +47,16 @@ class TopBarViewController: UIViewController {
 // MARK: - UICollectionViewDelegate
 extension TopBarViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if indexPath.row != selectedIndex {
-            
-        }
+        selectedIndexPath = selectedIndexPath != nil ? nil : indexPath
+
+        guard let cell = topBarCollectionView.cellForItem(at: indexPath) as? TagCollectionViewCell else { return }
+        cell.tapped(shouldSelect: selectedIndexPath != nil)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        guard let cell = topBarCollectionView.cellForItem(at: indexPath) as? TagCollectionViewCell else { return }
+        cell.tapped(shouldSelect: false, with: selectedIndexPath?.row )
+        selectedIndexPath = nil
     }
 }
 // MARK: - UICollectionViewDataSource
@@ -76,13 +82,8 @@ extension TopBarViewController: TagCollectionViewCellProtocol {
     func buttonClicked(at index: Int, shouldSelect: Bool) {
         if scopes?.count ?? -1 > index && shouldSelect {
             guard let headerTitle = scopes?[index] else { return }
-//            if selectedIndex != index, let selectedIndex = selectedIndex {
-//                topBarCollectionView.cellForItem(at: IndexPath(item: selectedIndex, section: 0))?.isSelected = false
-//            }
-            selectedIndex = index
             self.delegate?.tagDidSelectedWith(headerTitle)
         } else {
-            selectedIndex = nil
             self.delegate?.tagDidSelected()
         }
     }

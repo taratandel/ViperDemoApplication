@@ -34,8 +34,10 @@ class SearchBarViewController {
     }
     
     func deactiveSearchBar() {
-        searchController.searchBar.text = nil
-        searchController.searchBar.placeholder = "search here"
-        searchController.isActive = false
+        if !searchBarIsEmpty() {
+            searchController.searchBar.text = nil
+            searchController.searchBar.placeholder = "search here"
+            searchController.isActive = false
+        }
     }
 }

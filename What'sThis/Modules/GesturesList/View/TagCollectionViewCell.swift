@@ -25,17 +25,6 @@ class TagCollectionViewCell: UICollectionViewCell {
     
     private var isSelectedBefore: Bool = false
     
-    override var isSelected: Bool {
-        didSet {
-            if index != -1 && !oldValue {
-                isSelectedBefore = !isSelectedBefore
-                setupUI()
-                if !isSelected {return}
-                delegate?.buttonClicked(at: index, shouldSelect: isSelectedBefore)
-            }
-        }
-    }
-    
     // MARK: - @IBOutlets
     @IBOutlet weak var tagDetailLabel: UILabel!
     @IBOutlet weak var cellBackgroundView: UIView!
@@ -45,6 +34,13 @@ class TagCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
     }
     
+    func tapped(shouldSelect: Bool, with deSelectedIndexPath: Int? = nil) {
+        isSelectedBefore = shouldSelect
+        setupUI()
+        if deSelectedIndexPath == index {return}
+        delegate?.buttonClicked(at: index, shouldSelect: isSelectedBefore)        
+    }
+
     func setup(delegate: TagCollectionViewCellProtocol, details: String, index: Int) {
         self.delegate = delegate
         self.details = details

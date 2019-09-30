@@ -59,6 +59,7 @@ class GestureListInterector: GestureListInputInterectorProtocl {
                 return result
             }
         }
+        resultGestures = searchDictionary == nil ? returnedResult : resultGestures
         presenter?.filteredResults(returnedResult: returnedResult)
     }
     
