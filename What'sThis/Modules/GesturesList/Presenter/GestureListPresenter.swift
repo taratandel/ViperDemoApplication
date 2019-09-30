@@ -169,6 +169,3 @@ extension GestureListPresenter: TopBarPresenterProtcol {
         view?.reloadSearchBar()
     }
 }
-
-
-
