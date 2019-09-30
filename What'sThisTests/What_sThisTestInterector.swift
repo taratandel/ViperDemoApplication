@@ -12,7 +12,7 @@ import XCTest
 class What_sThisTestInterector: XCTestCase {
 
     var interector: GestureListInterector!
-    var gestures: ArrayOfGestures!
+    var gestures: [String: [Gestures]]!
     
     override func setUp() {
         interector = GestureListInterector()

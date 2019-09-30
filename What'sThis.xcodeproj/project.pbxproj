@@ -14,7 +14,7 @@
 		473DD82B22F9CCAD0002524F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 473DD82922F9CCAD0002524F /* Main.storyboard */; };
 		473DD82E22F9CCAD0002524F /* What_sThis.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 473DD82C22F9CCAD0002524F /* What_sThis.xcdatamodeld */; };
 		473DD83322F9CCB00002524F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 473DD83122F9CCB00002524F /* LaunchScreen.storyboard */; };
-		473DD83E22F9CCB10002524F /* What_sThisTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473DD83D22F9CCB10002524F /* What_sThisTests.swift */; };
+		473DD83E22F9CCB10002524F /* What_sThisTestsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473DD83D22F9CCB10002524F /* What_sThisTestsPresenter.swift */; };
 		473DD84922F9CCB10002524F /* What_sThisUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473DD84822F9CCB10002524F /* What_sThisUITests.swift */; };
 		474FBEC32313E32600375421 /* FakeImage2.png in Resources */ = {isa = PBXBuildFile; fileRef = 474FBEC12313E32500375421 /* FakeImage2.png */; };
 		474FBEC42313E32600375421 /* FakeImage1.png in Resources */ = {isa = PBXBuildFile; fileRef = 474FBEC22313E32500375421 /* FakeImage1.png */; };
@@ -103,7 +103,7 @@
 		473DD83222F9CCB00002524F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		473DD83422F9CCB00002524F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		473DD83922F9CCB10002524F /* What'sThisTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "What'sThisTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		473DD83D22F9CCB10002524F /* What_sThisTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = What_sThisTests.swift; sourceTree = "<group>"; };
+		473DD83D22F9CCB10002524F /* What_sThisTestsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = What_sThisTestsPresenter.swift; sourceTree = "<group>"; };
 		473DD83F22F9CCB10002524F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		473DD84422F9CCB10002524F /* What'sThisUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "What'sThisUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		473DD84822F9CCB10002524F /* What_sThisUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = What_sThisUITests.swift; sourceTree = "<group>"; };
@@ -226,7 +226,7 @@
 			children = (
 				47FAA1162316BFDF003C041A /* What_sThisTestInterector.swift */,
 				47900D84230EA3DF00A316DE /* fakeImages */,
-				473DD83D22F9CCB10002524F /* What_sThisTests.swift */,
+				473DD83D22F9CCB10002524F /* What_sThisTestsPresenter.swift */,
 				473DD83F22F9CCB10002524F /* Info.plist */,
 				47900D6B230C3F4300A316DE /* TopLevelHelper.swift */,
 				47900D89230EE96D00A316DE /* EntityTest.swift */,
@@ -637,7 +637,7 @@
 				47FAA11B2317BC35003C041A /* What_ThisTestViewController.swift in Sources */,
 				474FBEC62313ECFF00375421 /* MockClasses.swift in Sources */,
 				47900D6C230C3F4300A316DE /* TopLevelHelper.swift in Sources */,
-				473DD83E22F9CCB10002524F /* What_sThisTests.swift in Sources */,
+				473DD83E22F9CCB10002524F /* What_sThisTestsPresenter.swift in Sources */,
 				47900D8A230EE96D00A316DE /* EntityTest.swift in Sources */,
 				47FAA1172316BFE0003C041A /* What_sThisTestInterector.swift in Sources */,
 			);

@@ -31,52 +31,56 @@ class MockWireFrame: GestureListWireFramProtocol {
 }
 
 class MockInterector: GestureListInputInterectorProtocl {
-    var gestures: [Gestures]?
-    var client: FetchRemoteData?
+    var client: GetListDataProtocol?
+    
+    var gestures: [String : [Gestures]]?
+    
+    func filterContentForText(_ searchText: String, scope: SearchTypes, in searchDictionary: [String : [Gestures]]?) {
+        
+    }
+    
+    func retrieveSelectedTag() {
+        
+    }
     
     var presenter: GestureListOutputPresenterProtocol?
     
     func fetchGestureData() {
-        let g1 = Gestures.init(name: "gest1", descr: "gest1 desc", imN: "g1")
-        let g2 = Gestures(name: "gest1", descr: "gest1 desc", imN: "g1")
-        gestures = [Gestures]()
-        gestures?.append(g1)
-        gestures?.append(g2)
+        let g1 = Gestures.init(name: "gest1", id: "1", thumbNailImageURL: "g1")
+        let g2 = Gestures(name: "gest1", id: "2", thumbNailImageURL: "g1")
+        gestures = ["c1": [g1, g2], "c2": [g2]]
         presenter?.fetchIsComplete()
     }
 }
 
 
 class MockOutputInterector: GestureListOutputPresenterProtocol {
-    var vc: ViewController!
     func fetchIsComplete() {
-        guard let vcUnwrapped = vc else {
-            return
-        }
-        vcUnwrapped.showAlert(title: "fakeTitle", message: "fake message", actions: [UIAlertAction(title: "cancel", style: .cancel, handler: {action in})])
+        
+    }
+    
+    func fetchFailed(error: Error, message: String?) {
+        
+    }
+    
+    func filteredResults(returnedResult: [String : [Gestures]]) {
+        
     }
 }
 
-class MockClient: FetchRemoteData {
+class MockClient: GetListDataProtocol {
     
-    override func prepareRequest(endPoint: String?, completionHandler: @escaping (ArrayOfGestures?, Error?) -> Void) {
-        let g1 = Gestures.init(name: "gest1", descr: "gest1 desc", imN: "g1")
-        let g2 = Gestures(name: "gest1", descr: "gest1 desc", imN: "g1")
-        var gestureL = [Gestures]()
-        gestureL.append(g1)
-        gestureL.append(g2)
-        completionHandler(ArrayOfGestures(data: gestureL), nil)
+    weak var requestProtocol: RequestServices?
+
+    func getTheListData() {
+        
     }
 }
 
 class MockVC: ViewController {
     var dataReloaded = false
     var fetchFailed = false
-    
-    override func reloadData(listOfGestures: [Gestures]) {
-        dataReloaded = true
-    }
-    
+        
     override func fetchFailed(title: String, message: String, actions: [UIAlertAction]) {
         fetchFailed = true
     }
