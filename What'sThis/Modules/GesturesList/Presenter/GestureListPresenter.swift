@@ -104,9 +104,6 @@ class GestureListPresenter: GestureListPresenterProtocol {
 extension GestureListPresenter: GestureListOutputPresenterProtocol {
     func filteredResults(returnedResult: [String : [Gestures]]) {
         list = returnedResult
-        guard list != nil else {
-            return
-        }
         view?.reloadFilteredData()
     }
     
@@ -127,16 +124,16 @@ extension GestureListPresenter: GestureListOutputPresenterProtocol {
     func fetchFailed(error: Error, message: String?) {
         if message != nil {
             switch error {
-            case MovieErrorType.badRequest:
+            case RequestErrorType.badRequest:
                 let actions = [UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) in
                 })]
                 view?.fetchFailed(title: "Request Error", message: message!, actions: actions)
-            case MovieErrorType.noInternet:
+            case RequestErrorType.noInternet:
                 let actions = [UIAlertAction(title: "Retry", style: .cancel, handler: { [weak self](action) in
                     self?.mainViewDidLoad()
                 })]
                 view?.fetchFailed(title: "NO Internet", message: message!, actions: actions)
-            case MovieErrorType.serverError:
+            case RequestErrorType.serverError:
                 let actions = [UIAlertAction(title: "Retry", style: .cancel, handler: { [weak self](action) in
                     self?.mainViewDidLoad()
                 })]

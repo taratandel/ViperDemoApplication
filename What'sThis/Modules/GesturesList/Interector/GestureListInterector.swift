@@ -80,11 +80,11 @@ extension GestureListInterector: RequestServices {
                     presenter?.fetchIsComplete()
                 }
                 else {
-                    presenter?.fetchFailed(error: MovieErrorType.serverError, message: parsedData.message)
+                    presenter?.fetchFailed(error: RequestErrorType.serverError, message: parsedData.message)
                 }
             }
             catch {
-                presenter?.fetchFailed(error: MovieErrorType.badRequest, message: nil)
+                presenter?.fetchFailed(error: RequestErrorType.badRequest, message: nil)
             }
         case .failure(let error):
             presenter?.fetchFailed(error: error, message: nil)

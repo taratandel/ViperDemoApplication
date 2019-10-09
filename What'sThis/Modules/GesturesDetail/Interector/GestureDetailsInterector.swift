@@ -30,11 +30,11 @@ extension GestureDetailsInterector: RequestServices {
                     gestureDetails = parsedData.data
                     presenter?.fetchIsComplete()
                 } else {
-                    presenter?.fetchFailed(error: MovieErrorType.serverError, errorMessage: parsedData.message)
+                    presenter?.fetchFailed(error: RequestErrorType.serverError, errorMessage: parsedData.message)
                 }
             }
             catch {
-                presenter?.fetchFailed(error: MovieErrorType.badRequest, errorMessage: nil)
+                presenter?.fetchFailed(error: RequestErrorType.badRequest, errorMessage: nil)
             }
         case .failure(let error):
             presenter?.fetchFailed(error: error, errorMessage: nil)

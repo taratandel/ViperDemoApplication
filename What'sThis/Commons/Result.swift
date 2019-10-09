@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum MovieErrorType: Error {
+public enum RequestErrorType: Error {
     case noInternet
     case badRequest
     case serverError
@@ -16,5 +16,5 @@ public enum MovieErrorType: Error {
 
 enum Result<T> {
     case success(T)
-    case failure(MovieErrorType)
+    case failure(RequestErrorType)
 }

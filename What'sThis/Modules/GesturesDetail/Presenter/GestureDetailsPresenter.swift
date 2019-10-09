@@ -46,16 +46,16 @@ extension GestureDetailsPresentor: GestureDetailsOutputPresenterProtocol {
     func fetchFailed(error: Error, errorMessage: String?) {
         if let message = errorMessage, let id = id{
             switch error {
-            case MovieErrorType.badRequest:
+            case RequestErrorType.badRequest:
                 let actions = [UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) in
                 })]
                 interface?.fetchFailed(title: "Request Error", message: message, actions: actions)
-            case MovieErrorType.noInternet:
+            case RequestErrorType.noInternet:
                 let actions = [UIAlertAction(title: "Retry", style: .cancel, handler: {[weak self] (action) in
                     self?.detailsViewDidLoad(id: id)
                 })]
                 interface?.fetchFailed(title: "NO Internet", message: message, actions: actions)
-            case MovieErrorType.serverError:
+            case RequestErrorType.serverError:
                 let actions = [UIAlertAction(title: "Retry", style: .cancel, handler: { [weak self](action) in
                     self?.detailsViewDidLoad(id: id)
                 })]
