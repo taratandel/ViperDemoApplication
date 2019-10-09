@@ -44,6 +44,7 @@
 		47C3A1AF2334FBAE00110D37 /* Comic Sans MS Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 47C3A1AD2334FBAE00110D37 /* Comic Sans MS Bold.ttf */; };
 		47C3A1FF2338BD1A00110D37 /* TagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C3A1FD2338BD1A00110D37 /* TagCollectionViewCell.swift */; };
 		47C3A2002338BD1A00110D37 /* TagCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47C3A1FE2338BD1A00110D37 /* TagCollectionViewCell.xib */; };
+		47EC3214234DDB5600D5BF80 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 475F21C4231FA4B10078D0F2 /* Alamofire.framework */; };
 		47FAA1132316BFB0003C041A /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FAA1122316BFB0003C041A /* UIViewController+Extensions.swift */; };
 		47FAA1152316BFC8003C041A /* Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FAA1142316BFC7003C041A /* Requests.swift */; };
 		47FAA1172316BFE0003C041A /* What_sThisTestInterector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FAA1162316BFDF003C041A /* What_sThisTestInterector.swift */; };
@@ -166,6 +167,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47EC3214234DDB5600D5BF80 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -463,6 +465,7 @@
 				473DD83522F9CCB10002524F /* Sources */,
 				473DD83622F9CCB10002524F /* Frameworks */,
 				473DD83722F9CCB10002524F /* Resources */,
+				47EC3215234DDB8A00D5BF80 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -591,6 +594,24 @@
 			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = "/usr/local/bin/carthage copy-frameworks";
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n";
+		};
+		47EC3215234DDB8A00D5BF80 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)//Carthage/Build/iOS/Alamofire.framework",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -855,6 +876,10 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KCCZ4PVUZS;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "What'sThisTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -877,6 +902,10 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KCCZ4PVUZS;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "What'sThisTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
