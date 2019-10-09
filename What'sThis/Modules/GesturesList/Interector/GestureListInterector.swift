@@ -13,12 +13,12 @@ import UIKit
 class GestureListInterector: GestureListInputInterectorProtocl {
     weak var presenter: GestureListOutputPresenterProtocol?
     
-    var client: GetListDataProtocol?
+    var client: GetDataProtocol?
     var gestures: [String:[Gestures]]?
     private var resultGestures: [String:[Gestures]]?
+
     func fetchGestureData() {
-        client?.getTheListData()
-        
+        client?.getTheListData(url: RequestType.list.path, method: .get, parameter: nil, header: nil)
     }
     
     func filterContentForText(_ searchText: String, scope: SearchTypes, in searchDictionary: [String: [Gestures]]?) {
@@ -70,24 +70,24 @@ class GestureListInterector: GestureListInputInterectorProtocl {
 }
 
 extension GestureListInterector: RequestServices {
-    func requestIsComplete(_ response: DataResponse<Any>) {
-        switch response.result {
-        case .success(_):
-            do {
-                let parsedData = try JSONDecoder().decode(Response.self, from: response.data ?? Data())
-                if parsedData.success {
-                    gestures = parsedData.data
-                    presenter?.fetchIsComplete()
-                }
-                else {
-                    presenter?.fetchFailed(error: RequestErrorType.serverError, message: parsedData.message)
-                }
+    func requestIsComplete(_ response: Data) {
+        do {
+            let parsedData = try JSONDecoder().decode(Response.self, from: response )
+            if parsedData.success {
+                gestures = parsedData.data
+                presenter?.fetchIsComplete()
             }
-            catch {
-                presenter?.fetchFailed(error: RequestErrorType.badRequest, message: nil)
+            else {
+                presenter?.fetchFailed(error: RequestErrorType.serverError, message: parsedData.message)
             }
-        case .failure(let error):
-            presenter?.fetchFailed(error: error, message: nil)
         }
+        catch {
+            presenter?.fetchFailed(error: RequestErrorType.badRequest, message: nil)
+        }
+
+    }
+    
+    func requestFaild(_ error: Error) {
+        presenter?.fetchFailed(error: error, message: nil)
     }
 }

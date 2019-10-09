@@ -41,20 +41,47 @@ class FetchRemoteData {
     }
 }
 
-extension FetchRemoteData: GetListDataProtocol {
-    func getTheListData() {
-        self.request(url: RequestType.list.path, method: .get, parameter: nil, header: nil) {
+extension FetchRemoteData: GetDataProtocol {
+    func getTheListData(url: String?, method: HTTPMethod, parameter: Parameters?, header: HTTPHeaders?) {
+        self.request(url: url, method: method, parameter: parameter, header: header) {
             response in
-            self.requestProtocol?.requestIsComplete(response)
+            switch response.result {
+            case .success(_):
+                guard let data = response.data else {
+                    self.requestProtocol?.requestFaild(RequestErrorType.badRequest)
+                    return
+                }
+                self.requestProtocol?.requestIsComplete(data)
+            case .failure(let error):
+                self.requestProtocol?.requestFaild(error)
+                
+            }
         }
     }
+    
+//    func getTheListData() {
+//        self.request(url: RequestType.list.path, method: .get, parameter: nil, header: nil) {
+//            response in
+//            switch response.result {
+//            case .success(_):
+//                guard let data = response.data else {
+//                    self.requestProtocol?.requestFaild(RequestErrorType.badRequest)
+//                    return
+//                }
+//                self.requestProtocol?.requestIsComplete(data)
+//            case .failure(let error):
+//                self.requestProtocol?.requestFaild(error)
+//                
+//            }
+//        }
+//    }
 }
 
-extension FetchRemoteData: GetDetailsDataProtocol {
-    func getDetails(id: String) {
-        self.request(url: RequestType.detail(gestureID: id).path, method: .get, parameter: nil, header: nil) {
-            response in
-            self.requestProtocol?.requestIsComplete(response)
-        }
-    }
-}
+//extension FetchRemoteData: GetDetailsDataProtocol {
+//    func getDetails(id: String) {
+//        self.request(url: RequestType.detail(gestureID: id).path, method: .get, parameter: nil, header: nil) {
+//            response in
+//            self.requestProtocol?.requestIsComplete(response)
+//        }
+//    }
+//}

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import Alamofire
 
 // MARK: - Presenter -> View
 protocol GestureListViewProtocol: class {
@@ -44,7 +44,7 @@ protocol TopBarPresenterProtcol: class {
 // MARK: - Presenter -> Interector
 protocol GestureListInputInterectorProtocl: class {
     var presenter: GestureListOutputPresenterProtocol? {set get}
-    var client: GetListDataProtocol? {get set}
+    var client: GetDataProtocol? {get set}
     var gestures: [String:[Gestures]]? {get set}
     
     func fetchGestureData()
@@ -68,6 +68,6 @@ protocol GestureListWireFramProtocol: class {
 }
 
 // MARK: - list services
-protocol GetListDataProtocol: class {
-    func getTheListData()
+protocol GetDataProtocol: class {
+    func getTheListData(url: String?, method: HTTPMethod,  parameter: Parameters?, header: HTTPHeaders?)
 }

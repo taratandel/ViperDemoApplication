@@ -21,7 +21,7 @@ class GestureListPresenter: GestureListPresenterProtocol {
     private var tagSelected: Bool = false
 
     // MARK: - Initialization
-    init(wireFrame: GestureListWireFramProtocol, interector: GestureListInputInterectorProtocl, client: GetListDataProtocol) {
+    init(wireFrame: GestureListWireFramProtocol, interector: GestureListInputInterectorProtocl, client: GetDataProtocol) {
         self.wireFrame = wireFrame
         self.interector = interector
         self.interector?.client = client

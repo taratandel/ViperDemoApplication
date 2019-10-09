@@ -10,5 +10,6 @@ import Foundation
 import Alamofire
 
 protocol RequestServices: class {
-    func requestIsComplete(_ response: DataResponse<Any>)
+    func requestIsComplete(_ response: Data)
+    func requestFaild(_ error: Error)
 }
