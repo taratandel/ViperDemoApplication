@@ -17,7 +17,7 @@ class MockWireFrame: GestureListWireFramProtocol {
     }
     
     static func creatTheView(_ viewRef: ViewController) {
-        let list = MockInterector()
+        let list = MockInterector(shouldGestureListBeEmpty: false)
         let wireFrame = MockWireFrame()
         let client = MockClient()
         let presenter = GestureListPresenter(wireFrame: wireFrame, interector: list, client: client)
@@ -25,31 +25,42 @@ class MockWireFrame: GestureListWireFramProtocol {
         viewRef.presenter = presenter
         
         list.presenter = presenter
-    }
-    
-    
+    }    
 }
 
 class MockInterector: GestureListInputInterectorProtocl {
     var client: GetListDataProtocol?
     
     var gestures: [String : [Gestures]]?
-    
+    var shouldGestureListBeEmpty: Bool = false
+    var dataFiltredForTag = false
+    weak var presenter: GestureListOutputPresenterProtocol?
+
     func filterContentForText(_ searchText: String, scope: SearchTypes, in searchDictionary: [String : [Gestures]]?) {
-        
+        self.fillGestures()
+        presenter?.filteredResults(returnedResult: gestures!)
     }
     
     func retrieveSelectedTag() {
         
     }
     
-    var presenter: GestureListOutputPresenterProtocol?
+    init(shouldGestureListBeEmpty: Bool) {
+        self.shouldGestureListBeEmpty = shouldGestureListBeEmpty
+    }
     
     func fetchGestureData() {
-        let g1 = Gestures.init(name: "gest1", id: "1", thumbNailImageURL: "g1")
-        let g2 = Gestures(name: "gest1", id: "2", thumbNailImageURL: "g1")
-        gestures = ["c1": [g1, g2], "c2": [g2]]
+        self.fillGestures()
+
         presenter?.fetchIsComplete()
+    }
+    
+    private func fillGestures() {
+        if !shouldGestureListBeEmpty {
+            let g1 = Gestures.init(name: "gest1", id: "1", thumbNailImageURL: "g1")
+            let g2 = Gestures(name: "gest1", id: "2", thumbNailImageURL: "g1")
+            gestures = ["c1": [g1, g2], "c2": [g2]]
+        }
     }
 }
 
@@ -77,11 +88,31 @@ class MockClient: GetListDataProtocol {
     }
 }
 
-class MockVC: ViewController {
+class MockVC: GestureListViewProtocol {
+
+    
     var dataReloaded = false
     var fetchFailed = false
+    var dataFiltered = false
+    var searchBarReloaded = false
+    var errorMessage = ""
+    
+    var presenter: GestureListPresenterProtocol!
         
-    override func fetchFailed(title: String, message: String, actions: [UIAlertAction]) {
+    func fetchFailed(title: String, message: String, actions: [UIAlertAction]) {
+        self.errorMessage = message
         fetchFailed = true
+    }
+    
+    func reloadData() {
+        dataReloaded = true
+    }
+    
+    func reloadFilteredData() {
+        dataFiltered = true
+    }
+    
+    func reloadSearchBar() {
+        searchBarReloaded = true
     }
 }
