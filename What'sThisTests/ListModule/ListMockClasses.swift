@@ -14,20 +14,27 @@ import Alamofire
 
 
 class MockWireFrame: GestureListWireFramProtocol {
-    func presentDetailsView(for id: String) {
+    static func creatTheView(_ viewRef: ViewController) {
         
     }
     
-    static func creatTheView(_ viewRef: ViewController) {
-        let list = MockInterector(shouldGestureListBeEmpty: false)
-        let wireFrame = MockWireFrame()
-        let client = MockClient()
-        let presenter = GestureListPresenter(wireFrame: wireFrame, interector: list, client: client)
-        presenter.view = viewRef
-        viewRef.presenter = presenter
-        
-        list.presenter = presenter
-    }    
+    var detailsViewPresented = false
+    
+    func presentDetailsView(with view: GestureDetailsViewProtocol) {
+        detailsViewPresented = true
+    }
+//
+//    static func creatTheView(_ viewRef: ViewController) {
+//        let list = MockInterector(shouldGestureListBeEmpty: false)
+//        let wireFrame = MockWireFrame()
+//        let client = MockClient()
+//        let presenter = MockPresenter()
+//
+//        presenter.view = viewRef
+//        viewRef.presenter = presenter
+//
+//        list.presenter = presenter
+//    }
 }
 
 class MockInterector: GestureListInputInterectorProtocl {
@@ -36,8 +43,14 @@ class MockInterector: GestureListInputInterectorProtocl {
     var gestures: [String : [Gestures]]?
     var shouldGestureListBeEmpty: Bool = false
     var dataFiltredForTag = false
+    var inited = false
+    
     weak var presenter: GestureListOutputPresenterProtocol?
-
+    
+    init() {
+        self.inited = true
+    }
+    
     func filterContentForText(_ searchText: String, scope: SearchTypes, in searchDictionary: [String : [Gestures]]?) {
         self.fillGestures()
         presenter?.filteredResults(returnedResult: gestures!)
@@ -72,6 +85,13 @@ class MockOutputInterector: GestureListOutputPresenterProtocol {
     var fetchFailedError:  Error?
     var dataFiltered = false
     var returnedResult: [String : [Gestures]]?
+    
+    var inited = false
+    
+    init() {
+        self.inited = true
+    }
+    
     func fetchIsComplete() {
         fetchCompleted = true
     }
@@ -92,6 +112,12 @@ class MockClient: GetDataProtocol {
     var fileName: String = ""
     var fileExtention: String = ""
     var errorType: Error?
+    
+    var inited = false
+    
+    init() {
+        self.inited = true
+    }
 
     func getTheListData(url: String?, method: HTTPMethod, parameter: Parameters?, header: HTTPHeaders?) {
         if (errorType != nil) {
@@ -130,7 +156,13 @@ class MockVC: GestureListViewProtocol {
     var errorMessage = ""
     
     var presenter: GestureListPresenterProtocol!
-        
+    
+    var inited = false
+    
+    init() {
+        self.inited = true
+    }
+    
     func fetchFailed(title: String, message: String, actions: [UIAlertAction]) {
         self.errorMessage = message
         fetchFailed = true
@@ -146,5 +178,50 @@ class MockVC: GestureListViewProtocol {
     
     func reloadSearchBar() {
         searchBarReloaded = true
+    }
+}
+
+class MockPresenter: GestureListPresenterProtocol {
+    weak var view: GestureListViewProtocol?
+
+    var mainViewDidLoadCalled = false
+    var id = ""
+    var stringFilter = ""
+    var tagRetrieved = false
+    
+    func mainViewDidLoad() {
+      self.mainViewDidLoadCalled = true
+    }
+    
+    func didSelectGesture(id: String) {
+        self.id = id
+    }
+    
+    func getGesturesForHeader(at indexPath: IndexPath) -> Gestures? {
+        return Gestures(name: "fakeName", id: "fakeId", thumbNailImageURL: "fakeThumbnail")
+    }
+    
+    func getTheNumberOfItemsInSection(_ section: Int) -> Int? {
+        return 2
+    }
+    
+    func getTheTitleHeader(at section: Int) -> String? {
+        return "fakeTitle"
+    }
+    
+    func getTheNumberOfSections() -> Int? {
+        return 1
+    }
+    
+    func shouldFilter(with text: String) {
+        self.stringFilter = text
+    }
+    
+    func retrieveTheList() {
+        self.tagRetrieved = true
+    }
+    
+    func shouldLoadTagList(tagList: inout TopBarViewController) {
+        tagList.scopes = ["first","second"]
     }
 }

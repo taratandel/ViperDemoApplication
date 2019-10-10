@@ -33,7 +33,8 @@ class GestureListPresenter: GestureListPresenterProtocol {
     }
     
     func didSelectGesture(id: String) {
-        wireFrame?.presentDetailsView(for: id)
+        let detailView = GestureDetailsViewController(id: id)
+        wireFrame?.presentDetailsView(with: detailView)
     }
     
     func shouldLoadTagList(tagList: inout TopBarViewController) {

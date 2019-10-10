@@ -24,10 +24,15 @@ class GestureListWireFrame: TopViewControllerGettable, GestureListWireFramProtoc
         list.presenter = presenter
     }
     
-    func presentDetailsView(for id: String) {
-        let detailView = GestureDetailsViewController(id: id)
-        GestureDetailsWireFrame.creatTheGestureDetailsView(detailView)
-        guard let listViewVC = topNavController else { return }
-        listViewVC.pushViewController(detailView, animated: true)
+    func presentDetailsView(with view: GestureDetailsViewProtocol) {
+        if let detailView = view as? GestureDetailsViewController {
+            GestureDetailsWireFrame.creatTheGestureDetailsView(detailView)
+            guard let listViewVC = topNavController else { return }
+            listViewVC.pushViewController(detailView, animated: !isRunningTests)
+        } else {
+            // show the error
+            return
+        }
+        
     }
 }
