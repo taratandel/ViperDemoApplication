@@ -37,8 +37,13 @@ class GestureListInterector: GestureListInputInterectorProtocl {
             // search without selecting any case scenario 1
         case .all:
             returnedResult = objectToSearch.filter {
-                let result =  $0.key.lowercased().contains(searchText) || $0.value.map{$0.name.lowercased()}.contains(searchText)
+                let result =  $0.key.lowercased().contains(searchText)
                 return result
+            }
+            if returnedResult.count == 0  {
+                for (key, array) in objectToSearch {
+                    returnedResult[key] = array.filter { $0.name.lowercased().contains(searchText) }
+                }
             }
         case .both:
             let returnedkeys = objectToSearch.filter {
@@ -60,6 +65,7 @@ class GestureListInterector: GestureListInputInterectorProtocl {
             }
         }
         resultGestures = searchDictionary == nil ? returnedResult : resultGestures
+        returnedResult = returnedResult.filter { $0.value.count != 0 }.mapValues { $0 }
         presenter?.filteredResults(returnedResult: returnedResult)
     }
     

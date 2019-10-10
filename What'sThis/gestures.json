@@ -2,66 +2,66 @@
     "success": true,
     "message": "request was successful",
     "data": {
-        "gestures": [
+        "category1": [
             {
-                "name":"g1g1g1g1g1g1g1g1g1g1g1g1g1g1g1g1g1g1g1g1g1g1g1g1g1g1g1g1",
+                "name":"category1Name1",
                 "thumbNailImageURL":"https://cdn4.iconfinder.com/data/icons/browser-ui-small-size-optimized-set/154/www-url-address-link-browser-512.png",
                 "largImage": "ge",
                 "id": "1"
             },
             {
-                "name":"g1",
+                "name":"name2",
                 "thumbNailImageURL":"https://image.shutterstock.com/z/stock-photo-macro-leaves-background-texture-blue-turquoise-pink-color-transparent-skeleton-leaves-bright-728448754.jpg",
                 "largImage": "ge",
                 "id": "2"
             },
             {
-                "name":"g1",
+                "name":"name3",
                 "thumbNailImageURL":"https://image.shutterstock.com/z/stock-photo-macro-leaves-background-texture-blue-turquoise-pink-color-transparent-skeleton-leaves-bright-728448754.jpg",
                 "largImage": "ge",
                 "id": "3"
             },
             {
-                "name":"g1",
+                "name":"name4",
                 "thumbNailImageURL":"https://image.shutterstock.com/z/stock-photo-macro-leaves-background-texture-blue-turquoise-pink-color-transparent-skeleton-leaves-bright-728448754.jpg",
                 "largImage": "ge",
                 "id": "3"
             },
             {
-                "name":"g1",
+                "name":"name5",
                 "thumbNailImageURL":"https://image.shutterstock.com/z/stock-photo-macro-leaves-background-texture-blue-turquoise-pink-color-transparent-skeleton-leaves-bright-728448754.jpg",
                 "largImage": "ge",
                 "id": "3"
             }
             
         ],
-        "festures2": [
+        "category2": [
             {
-                "name":"F1g1g1g1g1g1g1g1g1g1g1g1g1g1g1g1g1g1g1g1g1g1g1g1g1g1g1g1",
+                "name":"c2Name1",
                 "thumbNailImageURL":"https://image.shutterstock.com/z/stock-photo-macro-leaves-background-texture-blue-turquoise-pink-color-transparent-skeleton-leaves-bright-728448754.jpg",
                 "largImage": "ge",
                 "id": "1"
             },
             {
-                "name":"f1",
+                "name":"c2Name2",
                 "thumbNailImageURL":"https://image.shutterstock.com/z/stock-photo-macro-leaves-background-texture-blue-turquoise-pink-color-transparent-skeleton-leaves-bright-728448754.jpg",
                 "largImage": "ge",
                 "id": "2"
             },
             {
-                "name":"T1",
+                "name":"c2Name3",
                 "thumbNailImageURL":"https://image.shutterstock.com/z/stock-photo-macro-leaves-background-texture-blue-turquoise-pink-color-transparent-skeleton-leaves-bright-728448754.jpg",
                 "largImage": "ge",
                 "id": "3"
             },
             {
-                "name":"g1",
+                "name":"c2Name4",
                 "thumbNailImageURL":"https://image.shutterstock.com/z/stock-photo-macro-leaves-background-texture-blue-turquoise-pink-color-transparent-skeleton-leaves-bright-728448754.jpg",
                 "largImage": "ge",
                 "id": "3"
             },
             {
-                "name":"g1",
+                "name":"name1",
                 "thumbNailImageURL":"https://image.shutterstock.com/z/stock-photo-macro-leaves-background-texture-blue-turquoise-pink-color-transparent-skeleton-leaves-bright-728448754.jpg",
                 "largImage": "ge",
                 "id": "3"

@@ -8,6 +8,8 @@
 
 import Foundation
 import UIKit
+import Alamofire
+
 @testable import What_sThis
 
 
@@ -29,7 +31,7 @@ class MockWireFrame: GestureListWireFramProtocol {
 }
 
 class MockInterector: GestureListInputInterectorProtocl {
-    var client: GetListDataProtocol?
+    var client: GetDataProtocol?
     
     var gestures: [String : [Gestures]]?
     var shouldGestureListBeEmpty: Bool = false
@@ -66,31 +68,61 @@ class MockInterector: GestureListInputInterectorProtocl {
 
 
 class MockOutputInterector: GestureListOutputPresenterProtocol {
+    var fetchCompleted = false
+    var fetchFailedError:  Error?
+    var dataFiltered = false
+    var returnedResult: [String : [Gestures]]?
     func fetchIsComplete() {
-        
+        fetchCompleted = true
     }
     
     func fetchFailed(error: Error, message: String?) {
-        
+        fetchFailedError = error
     }
     
     func filteredResults(returnedResult: [String : [Gestures]]) {
-        
+        self.returnedResult = returnedResult
+        dataFiltered = true
     }
 }
 
-class MockClient: GetListDataProtocol {
-    
+class MockClient: GetDataProtocol {
     weak var requestProtocol: RequestServices?
+    var requestShouldFail = false
+    var fileName: String = ""
+    var fileExtention: String = ""
+    var errorType: Error?
 
-    func getTheListData() {
-        
+    func getTheListData(url: String?, method: HTTPMethod, parameter: Parameters?, header: HTTPHeaders?) {
+        if (errorType != nil) {
+            requestProtocol?.requestFaild(errorType!)
+        } else if let data = readFromFile() {
+            requestProtocol?.requestIsComplete(data)
+        } else {
+            requestProtocol?.requestIsComplete(Data())
+        }
+    }
+
+    func shouldRequest(for fileName: String, with fileExtention: String) {
+        self.fileName = fileName
+        self.fileExtention = fileExtention
+    }
+
+    private func readFromFile() -> Data? {
+        if let path = Bundle.main.path(forResource: fileName, ofType: fileExtention) {
+            do {
+                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+                return data
+            } catch  {
+                return nil
+            }
+        }
+        return nil
     }
 }
 
 class MockVC: GestureListViewProtocol {
 
-    
     var dataReloaded = false
     var fetchFailed = false
     var dataFiltered = false

@@ -56,13 +56,13 @@ class What_sThisTestsPresenter: XCTestCase {
     func testGetTheTitleHeader() {
         presenter.mainViewDidLoad()
         let gestureHeaders = presenter.getTheTitleHeader(at: 0)
-        XCTAssertTrue(gestureHeaders == "c1")
+        XCTAssertTrue(gestureHeaders == "c1", gestureHeaders ?? "nil")
     }
     
     func testGetGesturesForHeader() {
         presenter.mainViewDidLoad()
         let gestures = presenter.getGesturesForHeader(at: IndexPath(item: 0, section: 0))
-        XCTAssertTrue(gestures?.id == "1")
+        XCTAssertTrue(gestures?.id == "1", String(describing: gestures) )
         
     }
     
@@ -78,7 +78,7 @@ class What_sThisTestsPresenter: XCTestCase {
         let no1 = presenter.getTheNumberOfItemsInSection(0)
         let no2 = presenter.getTheNumberOfItemsInSection(1)
         
-        XCTAssertTrue((no1 == 2 && no2 == 1))
+        XCTAssertTrue((no1 == 2 && no2 == 1), String(describing: no1))
     }
     
     func testGetTheNumberOfItemsInsectionWithEmptyList() {
@@ -193,46 +193,4 @@ class What_sThisTestsPresenter: XCTestCase {
         vc.presenter = presenter
         list.presenter = presenter
     }
-    
-    /* these are viewController tests I have to seperate them this doesnt work
-
-    */
-//    func testMainViewDidLoad () {
-//        let wireframe = MockWireFrame()
-//        let interector = MockInterector()
-//        let client = MockClient()
-//        let presenter = GestureListPresenter(wireFrame: wireframe, interector: interector, client: client)
-//        interector.presenter = presenter
-//        presenter.mainViewDidLoad()
-//
-//        XCTAssertEqual(interector.gestures?.count, 2)
-//    }
-//
-//    func testFetchIsComplete () {
-//        let wireframe = MockWireFrame()
-//        let interector = MockInterector()
-//        let client = MockClient()
-//        let presenter = GestureListPresenter(wireFrame: wireframe, interector: interector, client: client)
-//
-//        presenter.view = viewC
-//        presenter.gestures = gestureArrayes.data
-//        interector.presenter = presenter
-//        presenter.fetchIsComplete()
-//
-//        XCTAssertTrue(viewC.dataReloaded)
-//    }
-//
-//    func testFetchFailed() {
-//        let wireframe = MockWireFrame()
-//        let interector = MockInterector()
-//        let client = MockClient()
-//        let presenter = GestureListPresenter(wireFrame: wireframe, interector: interector, client: client)
-//
-//        presenter.view = viewC
-//        interector.presenter = presenter
-//        presenter.fetchIsComplete()
-//
-//        XCTAssertTrue(viewC.fetchFailed)
-//
-//    }
 }
