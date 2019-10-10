@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import SDWebImage
 
-struct Gestures: Codable, Searchable, Equatable {
+struct Gestures: Codable, Equatable {
     var name: String
     var id: String
     var thumbNailImageURL: String
@@ -20,11 +20,6 @@ struct Response: Codable {
     var success: Bool
     var message: String
     var data : [String: [Gestures]]
-}
-
-protocol Searchable {
-    var name: String {get}
-    var id: String {get}
 }
 
 enum SearchTypes {
