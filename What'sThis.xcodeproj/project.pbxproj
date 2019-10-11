@@ -37,7 +37,6 @@
 		4782B441230C019500ED329D /* GestureCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4782B440230C019500ED329D /* GestureCollectionViewCell.swift */; };
 		47900D6A230C213700A316DE /* gestures.json in Resources */ = {isa = PBXBuildFile; fileRef = 47900D69230C213700A316DE /* gestures.json */; };
 		47900D6C230C3F4300A316DE /* TopLevelHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47900D6B230C3F4300A316DE /* TopLevelHelper.swift */; };
-		47900D8A230EE96D00A316DE /* EntityTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47900D89230EE96D00A316DE /* EntityTest.swift */; };
 		47900D8C230FF73900A316DE /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47900D8B230FF73900A316DE /* main.swift */; };
 		47C3A1AA2334CF4700110D37 /* TopBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C3A1A92334CF4700110D37 /* TopBarViewController.swift */; };
 		47C3A1AE2334FBAE00110D37 /* Comic Sans MS.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 47C3A1AC2334FBAE00110D37 /* Comic Sans MS.ttf */; };
@@ -131,7 +130,6 @@
 		4782B440230C019500ED329D /* GestureCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureCollectionViewCell.swift; sourceTree = "<group>"; };
 		47900D69230C213700A316DE /* gestures.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = gestures.json; sourceTree = "<group>"; };
 		47900D6B230C3F4300A316DE /* TopLevelHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopLevelHelper.swift; sourceTree = "<group>"; };
-		47900D89230EE96D00A316DE /* EntityTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityTest.swift; sourceTree = "<group>"; };
 		47900D8B230FF73900A316DE /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		47C3A1A92334CF4700110D37 /* TopBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBarViewController.swift; sourceTree = "<group>"; };
 		47C3A1AC2334FBAE00110D37 /* Comic Sans MS.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comic Sans MS.ttf"; sourceTree = "<group>"; };
@@ -367,7 +365,6 @@
 			children = (
 				47FAA1162316BFDF003C041A /* What_sThisTestInterector.swift */,
 				473DD83D22F9CCB10002524F /* What_sThisTestsPresenter.swift */,
-				47900D89230EE96D00A316DE /* EntityTest.swift */,
 				474FBEC52313ECFF00375421 /* ListMockClasses.swift */,
 				47FAA11A2317BC35003C041A /* What_ThisTestViewController.swift */,
 				47EC3216234F417F00D5BF80 /* What_sThisTestListWireFrame.swift */,
@@ -682,7 +679,6 @@
 				474FBEC62313ECFF00375421 /* ListMockClasses.swift in Sources */,
 				47900D6C230C3F4300A316DE /* TopLevelHelper.swift in Sources */,
 				473DD83E22F9CCB10002524F /* What_sThisTestsPresenter.swift in Sources */,
-				47900D8A230EE96D00A316DE /* EntityTest.swift in Sources */,
 				47EC3217234F417F00D5BF80 /* What_sThisTestListWireFrame.swift in Sources */,
 				47FAA1172316BFE0003C041A /* What_sThisTestInterector.swift in Sources */,
 			);

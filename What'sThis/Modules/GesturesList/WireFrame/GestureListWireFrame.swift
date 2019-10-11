@@ -33,6 +33,5 @@ class GestureListWireFrame: TopViewControllerGettable, GestureListWireFramProtoc
             // show the error
             return
         }
-        
     }
 }

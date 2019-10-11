@@ -47,10 +47,6 @@ class MockInterector: GestureListInputInterectorProtocl {
     
     weak var presenter: GestureListOutputPresenterProtocol?
     
-    init() {
-        self.inited = true
-    }
-    
     func filterContentForText(_ searchText: String, scope: SearchTypes, in searchDictionary: [String : [Gestures]]?) {
         self.fillGestures()
         presenter?.filteredResults(returnedResult: gestures!)
@@ -61,12 +57,12 @@ class MockInterector: GestureListInputInterectorProtocl {
     }
     
     init(shouldGestureListBeEmpty: Bool) {
+        self.inited = true
         self.shouldGestureListBeEmpty = shouldGestureListBeEmpty
     }
     
     func fetchGestureData() {
         self.fillGestures()
-
         presenter?.fetchIsComplete()
     }
     
@@ -74,7 +70,7 @@ class MockInterector: GestureListInputInterectorProtocl {
         if !shouldGestureListBeEmpty {
             let g1 = Gestures.init(name: "gest1", id: "1", thumbNailImageURL: "g1")
             let g2 = Gestures(name: "gest1", id: "2", thumbNailImageURL: "g1")
-            gestures = ["c1": [g1, g2], "c2": [g2]]
+            self.gestures = ["c1": [g1, g2], "c2": [g2]]
         }
     }
 }

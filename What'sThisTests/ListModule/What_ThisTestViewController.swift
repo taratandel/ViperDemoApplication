@@ -44,6 +44,24 @@ class What_ThisTestViewController: XCTestCase {
     }
     
     func testFetchFailed() {
+        let action = [UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) in
+        })]
+
+        vc.fetchFailed(title: "fakeTitle", message: "fakeMessage", actions: action)
         
+        XCTAssertTrue(vc.presentedViewController?.isKind(of: UIAlertController.self) ?? false)
+    }
+    
+    func testReloadSearchBar() {
+        vc.reloadSearchBar()
+        
+        XCTAssertTrue(vc.topBarView.searchBarIsEmpty())
+    }
+    
+    func testDidSelectCollectionView() {
+        vc.gesturesCollectionView.selectItem(at: IndexPath(row: 0, section: 0), animated: false, scrollPosition: UICollectionView.ScrollPosition.centeredHorizontally)
+        let selectedPath = vc.gesturesCollectionView.indexPathsForSelectedItems
+        XCTAssertTrue(selectedPath?.count == 1)
+        XCTAssertEqual(selectedPath, [IndexPath(row: 0, section: 0)])
     }
 }

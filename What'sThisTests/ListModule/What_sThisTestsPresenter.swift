@@ -13,6 +13,7 @@ class What_sThisTestsPresenter: XCTestCase {
 
     var presenter: GestureListPresenter!
     var vc: MockVC!
+    var interector: MockInterector!
 
     override func setUp() {
         super.setUp()
@@ -56,13 +57,24 @@ class What_sThisTestsPresenter: XCTestCase {
     func testGetTheTitleHeader() {
         presenter.mainViewDidLoad()
         let gestureHeaders = presenter.getTheTitleHeader(at: 0)
-        XCTAssertTrue(gestureHeaders == "c1", gestureHeaders ?? "nil")
+        
+        let list = interector.gestures
+        let items = list?.map {
+            $0.key
+        }
+        XCTAssertTrue(gestureHeaders == items?[0], gestureHeaders ?? "nil")
     }
     
     func testGetGesturesForHeader() {
         presenter.mainViewDidLoad()
         let gestures = presenter.getGesturesForHeader(at: IndexPath(item: 0, section: 0))
-        XCTAssertTrue(gestures?.id == "1", String(describing: gestures) )
+        let list = interector.gestures
+        
+        let items = list?.map {
+            $0.key
+        }
+        let id = list![items![0]]![0].id
+        XCTAssertTrue(gestures?.id == id, String(describing: gestures?.id) )
         
     }
     
@@ -75,10 +87,17 @@ class What_sThisTestsPresenter: XCTestCase {
     
     func testGetTheNumberOfItemsInSection() {
         presenter.mainViewDidLoad()
+        
+        let list = interector.gestures
+        
+        let items = list?.map {
+            $0.key
+        }
+        
         let no1 = presenter.getTheNumberOfItemsInSection(0)
         let no2 = presenter.getTheNumberOfItemsInSection(1)
         
-        XCTAssertTrue((no1 == 2 && no2 == 1), String(describing: no1))
+        XCTAssertTrue((no1 == list![items![0]]!.count && no2 == list![items![1]]!.count), String(describing: no1) + String(describing: no2))
     }
     
     func testGetTheNumberOfItemsInsectionWithEmptyList() {
@@ -184,13 +203,13 @@ class What_sThisTestsPresenter: XCTestCase {
     }
     
     func setUpView(with shouldBeEmpty: Bool) {
-        let list = MockInterector(shouldGestureListBeEmpty: shouldBeEmpty)
+        interector = MockInterector(shouldGestureListBeEmpty: shouldBeEmpty)
         let wireFrame = MockWireFrame()
         let client = MockClient()
         vc = MockVC()
-        presenter = GestureListPresenter(wireFrame: wireFrame, interector: list, client: client)
+        presenter = GestureListPresenter(wireFrame: wireFrame, interector: interector, client: client)
         presenter.view = vc
         vc.presenter = presenter
-        list.presenter = presenter
+        interector.presenter = presenter
     }
 }
